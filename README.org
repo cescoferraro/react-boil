@@ -4,19 +4,19 @@ Cutting edge React.js Boilerplate. This is created as a template for my cookie c
 The goal here is to enable developers deliver tommorow's web today faster.
 
 
-👀 `react` as the view.
-🔀 `react-router` v4 as the router.
-🚄 `express` server.
-🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
-🖌 PostCSS lets you use next css syntax now. 
-🖌 Isomorphic-style-loader injects only css critical path to the website. 
-✂️ Code splitting - easily define code split points in your source using `react-async-component`.
-🌍 Server Side Rendering.
-😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
-📦 All source is bundled using Webpack v2.
-🚀 Full ES2017+ support + Strict Types. Thanks Typescript! 
-🔥 Extreme live development using webpack/react native tooling. 
-🤖 Optimised Webpack builds via HappyPack and an auto generated Vendor DLL for smooth development experiences.
-🍃 Tree-shaking, courtesy of Webpack.
-🏜 Asset bundling support. e.g. images/fonts.
-🎛 Preconfigured to support development and optimised production builds.
+- 👀 `react` as the view
+- 🔀 `react-router` v4 as the router.
+- 🚄 `express` server.
+- 🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
+- 🖌 PostCSS lets you use next css syntax now.
+- 🖌 Isomorphic-style-loader injects only css critical path to the website.
+- ✂️ Code splitting - easily define code split points in your source using `react-async-component`.
+- 🌍 Server Side Rendering.
+- 😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
+- 📦 All source is bundled using Webpack v2.
+- 🚀 Full ES2017+ support + Strict Types. Thanks Typescript!
+- 🔥 Extreme live development using webpack/react native tooling.
+- 🤖 Optimised Webpack builds via HappyPack and an auto generated Vendor DLL for smooth development experiences.
+- 🍃 Tree-shaking, courtesy of Webpack.
+- 🏜 Asset bundling support. e.g. images/fonts.
+- 🎛 Preconfigured to support development and optimised production builds.
