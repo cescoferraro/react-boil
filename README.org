@@ -1,43 +1,22 @@
 * React-boil 
 
-Cutting edge React.js boilerplate.
-
-** Features 
-
-:eyes: react as the view.
-:twisted_rightwards_arrows: react-router v4 as the router.
-:bullettrain_side: express server.
-:performing_arts: enzime for testing -- NOT IMPLEMENTED YET -- 
-:paintbrush: Uses next syntax css with Postcss 
-:scissors: Code splitting - easily define code split points in your source using react-async-component.
-:earth_africa: Server Side Rendering.
-:sunglasses: Progressive Web Application ready, with offline support, via a Service Worker. --NOT IMPLEMENTED YET --
-:elephant: Long term browser caching of assets with automated cache invalidation.
-:package: All source is bundled using Webpack v2.
-:rocket: TypeScript gives you ES7 Javascript 
-:fire: Extreme live development using React/Webpack native features 
-:leaves: Tree-shaking, courtesy of Webpack.
-:desert: Asset bundling support. e.g. images/fonts.
+Cutting edge React.js Boilerplate. This is created as a template for my cookie cutter called react-cutter.
+The goal here is to enable developers deliver tommorow's web today faster.
 
 
- - 👀 `react` as the view.
-  - 🔀 `react-router` v4 as the router.
-  - 🚄 `express` server.
-  - 🎭 `jest` as the test framework.
-  - 💄 Combines `prettier` and Airbnb's ESlint configuration - performing code formatting on commit. Stop worrying about code style consistency.
-  - 🖌 Very basic CSS support - it's up to you to extend it with CSS Modules etc.
-  - ✂️ Code splitting - easily define code split points in your source using `react-async-component`.
-  - 🌍 Server Side Rendering.
-  - 😎 Progressive Web Application ready, with offline support, via a Service Worker.
-  - 🐘 Long term browser caching of assets with automated cache invalidation.
-  - 📦 All source is bundled using Webpack v2.
-  - 🚀 Full ES2017+ support - use the exact same JS syntax across the entire project. No more folder context switching! We also only use syntax that is stage-3 or later in the TC39 process.
-  - 🔧 Centralised application configuration with helpers to avoid boilerplate in your code. Also has support for environment specific configuration files.
-  - 🔥 Extreme live development - hot reloading of ALL changes to client/server source, with auto development server restarts when your application configuration changes.  All this with a high level of error tolerance and verbose logging to the console.
-  - ⛑ SEO friendly - `react-helmet` provides control of the page title/meta/styles/scripts from within your components.
-  - 🤖 Optimised Webpack builds via HappyPack and an auto generated Vendor DLL for smooth development experiences.
-  - 🍃 Tree-shaking, courtesy of Webpack.
-  - 👮 Security on the `express` server using `helmet` and `hpp`.
-  - 🏜 Asset bundling support. e.g. images/fonts.
-  - 🎛 Preconfigured to support development and optimised production builds.
-  - ❤️ Preconfigured to deploy to `now` with a single command.
+👀 `react` as the view.
+🔀 `react-router` v4 as the router.
+🚄 `express` server.
+🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
+🖌 PostCSS lets you use next css syntax now. 
+🖌 Isomorphic-style-loader injects only css critical path to the website. 
+✂️ Code splitting - easily define code split points in your source using `react-async-component`.
+🌍 Server Side Rendering.
+😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
+📦 All source is bundled using Webpack v2.
+🚀 Full ES2017+ support + Strict Types. Thanks Typescript! 
+🔥 Extreme live development using webpack/react native tooling. 
+🤖 Optimised Webpack builds via HappyPack and an auto generated Vendor DLL for smooth development experiences.
+🍃 Tree-shaking, courtesy of Webpack.
+🏜 Asset bundling support. e.g. images/fonts.
+🎛 Preconfigured to support development and optimised production builds.
