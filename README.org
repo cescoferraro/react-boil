@@ -13,19 +13,13 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🚀 Redux-Observable to perform async redux actions.
 
-🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
-
 🖌 PostCSS lets you use next css syntax now.
 
 🖌 Isomorphic-style-loader injects only css critical path to the website.
 
-✂️ Code splitting - easily define code split points in your source using `react-async-component`.
-
 🌍 Server Side Rendering.
 
 🌍 Connected-react-router syncs the react-router state inside redux store
-
-😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
 
 📦 All source is bundled using Webpack v2.
 
@@ -33,10 +27,21 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🔥 Extreme live development using webpack/react native tooling.
 
-🤖 Auto generated Vendor DLL for smooth development experiences.
-
 🍃 Tree-shaking, courtesy of Webpack.
+
+🎛 Preconfigured to support development and optimised production builds.
+
+
+* TODO 
+
+🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
+
+😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
+
+🤖 Auto generated Vendor DLL for smooth development experiences.
 
 🏜 Asset bundling support. e.g. images/fonts.
 
-🎛 Preconfigured to support development and optimised production builds.
+✂️ Code splitting - easily define code split points in your source using `react-async-component`.
+
+

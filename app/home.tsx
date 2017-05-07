@@ -19,13 +19,19 @@ import { push } from 'connected-react-router'
 export class HomeContainer extends React.Component<any, any> {
     render() {
         return (
-            <div className={HomeStyle.app} >
-                <h2>React-boil</h2>
-                <RaisedButton onClick={() => {
-                    this.props.dispatch(push("/whatver"))
-                }}
-                    label="Default" primary={true} />
+            <div>
+                <div className={HomeStyle.app}>
+                    <h2>React-boil</h2>
+                    <RaisedButton onClick={() => {
+                        this.props.dispatch(push("/whatver"))
+                    }}
+                        label="Default" primary={true} />
+                </div>
+                <div className={HomeStyle.container}>
+                    <h2>TWO</h2>
+                </div>
             </div >
         )
     }
 }
+

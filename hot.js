@@ -18,7 +18,7 @@ app.use(WebpackHotMiddleware(
 
 app.use(webpackHotServerMiddleware(compiler, {
     serverRendererOptions: {
-	foo: 'Craigs Development'
+	foo: 'React-boil Development'
     }
 }));
 

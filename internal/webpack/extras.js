@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+let FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const resolve = {
     extensions: ['.js', '.tsx', '.json', 'pcss']
@@ -41,6 +42,11 @@ const CLIENT_PLUGINS = [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new FaviconsWebpackPlugin({
+	prefix: 'icons/',
+	logo: './shared/icon/favicon.png'
+    }),
+
     LOADERS_OPTIONS];
 
 
