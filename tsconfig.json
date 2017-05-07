@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "target": "es5",
+    "jsx": "react",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "dist",
+    "typeRoots": [
+      "node_modules@types"
+    ]
+  },
+  "rules": {
+    "curly": true
+  },
+  "rulesDirectory": [
+  ]
+}
