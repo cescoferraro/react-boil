@@ -22,7 +22,6 @@ export default function serverRenderer({ clientStats, serverStats, foo }) {
     let initial = store.getState()
     const context = {};
     return (req, res, next) => {
-        console.log(actionTypes)
         let userAgent = req.headers['user-agent'];
         let container = (
             <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>

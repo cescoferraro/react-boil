@@ -1,4 +1,4 @@
-* React-boil 
+#+TITLE: React-boil 
 
 Cutting edge React.js Boilerplate. This is created as a template for my cookie cutter called react-cutter.
 The goal here is to enable developers deliver tommorow's web today faster.
@@ -8,6 +8,10 @@ The goal here is to enable developers deliver tommorow's web today faster.
 🔀 `react-router` v4 as the router.
 
 🚄 `express` server.
+
+🔥 Redux store ready! All the cool tooling and extensions.
+
+🚀 Redux-Observable to perform async redux actions.
 
 🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
 
@@ -19,6 +23,8 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🌍 Server Side Rendering.
 
+🌍 Connected-react-router syncs the react-router state inside redux store
+
 😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
 
 📦 All source is bundled using Webpack v2.
@@ -27,7 +33,7 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🔥 Extreme live development using webpack/react native tooling.
 
-🤖 Optimised Webpack builds via HappyPack and an auto generated Vendor DLL for smooth development experiences.
+🤖 Auto generated Vendor DLL for smooth development experiences.
 
 🍃 Tree-shaking, courtesy of Webpack.
 
