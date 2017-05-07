@@ -3,8 +3,6 @@
 Cutting edge React.js Boilerplate. This is created as a template for my cookie cutter called react-cutter.
 The goal here is to enable developers deliver tommorow's web today faster.
 
-:100:
-
 👀 `react` as the view
 
 🔀 `react-router` v4 as the router.

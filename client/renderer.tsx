@@ -6,7 +6,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
-
+import { ConnectedRouter as ReduxRouterProvider } from "connected-react-router";
 import { createBrowserHistory } from "history";
 
 
@@ -17,12 +17,14 @@ export const Renderer = Component => {
     const history = createBrowserHistory();
     ReactDOM.render(
         <WithStylesContext onInsertCss={styles => styles._insertCss()}>
-            <ReduxProvider store={configureStore()}>
+            <ReduxProvider store={configureStore(history)}>
                 <MuiThemeProvider muiTheme={
                     getMuiTheme({ userAgent: navigator.userAgent })}>
-                    <AppContainer>
-                        <Component />
-                    </AppContainer>
+                    <ReduxRouterProvider history={history}>
+                        <AppContainer>
+                            <Component />
+                        </AppContainer>
+                    </ReduxRouterProvider>
                 </MuiThemeProvider>
             </ReduxProvider>
         </WithStylesContext >
