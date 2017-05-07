@@ -1,3 +1,22 @@
-* Webpack Hot Server Middleware Example
+* React-boil 
 
-`npm install && npm start`
+Cutting edge React.js boilerplate.
+
+** Features 
+
+:eyes: react as the view.
+:twisted_rightwards_arrows: react-router v4 as the router.
+:bullettrain_side: express server.
+:performing_arts: enzime for testing -- NOT IMPLEMENTED YET -- 
+:paintbrush: Uses next syntax css with Postcss 
+:scissors: Code splitting - easily define code split points in your source using react-async-component.
+:earth_africa: Server Side Rendering.
+:sunglasses: Progressive Web Application ready, with offline support, via a Service Worker. --NOT IMPLEMENTED YET --
+:elephant: Long term browser caching of assets with automated cache invalidation.
+:package: All source is bundled using Webpack v2.
+:rocket: TypeScript gives you ES7 Javascript 
+:fire: Extreme live development using React/Webpack native features 
+:leaves: Tree-shaking, courtesy of Webpack.
+:desert: Asset bundling support. e.g. images/fonts.
+
+
