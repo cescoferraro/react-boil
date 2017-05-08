@@ -15,9 +15,11 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(WebpackHotMiddleware(
     compiler.compilers.find(compiler => compiler.name === 'client')));
 
+app.use(express.static("dist"));
 
 app.use(webpackHotServerMiddleware(compiler, {
     serverRendererOptions: {
+	production: false,
 	title: 'React-boil Development'
     }
 }));

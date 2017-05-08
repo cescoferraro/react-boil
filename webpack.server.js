@@ -13,7 +13,7 @@ module.exports = ( env ) => ( {
         libraryTarget: 'commonjs2'
     },
     devtool: 'source-map',
-    module: require("./internal/webpack/extras.js").LOADERS,
+    module: require("./internal/webpack/extras.js").LOADERS(env,false),
     resolve: require("./internal/webpack/extras.js").resolve,
     plugins:require("./internal/webpack/extras.js").SERVER_PLUGINS 
 } );

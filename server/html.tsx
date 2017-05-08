@@ -11,7 +11,7 @@ import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
 
 
-export const HTML = ({ userAgent, url, store, title }) => {
+export const HTML = ({ production, userAgent, url, store, title }) => {
     var css = []
     let container = renderToString(
         <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>
@@ -24,7 +24,6 @@ export const HTML = ({ userAgent, url, store, title }) => {
             </MuiThemeProvider>
         </WithStylesContext>
     )
-    console.log(css)
     return (<html>
         <head>
             <link rel="shortcut icon" href="icons/favicon.ico" />
@@ -34,6 +33,7 @@ export const HTML = ({ userAgent, url, store, title }) => {
         <body>
             <div id="root"
                 dangerouslySetInnerHTML={{ __html: container }} />
+            {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
             <script type={type} async src="/client.js"></script>
         </body>
     </html>)

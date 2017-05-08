@@ -16,7 +16,7 @@ module.exports = env => {
 	    filename: 'client.js'
 	},
 	devtool: require("./internal/webpack/extras.js").DEVTOOLS,
-	plugins:require("./internal/webpack/extras.js").CLIENT_PLUGINS, 
-	module: require("./internal/webpack/extras.js").LOADERS,
+	plugins:require("./internal/webpack/extras.js").CLIENT_PLUGINS(env,true), 
+	module: require("./internal/webpack/extras.js").LOADERS(env),
 	resolve: require("./internal/webpack/extras.js").resolve 
     } ); };

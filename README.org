@@ -31,6 +31,7 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🎛 Preconfigured to support development and optimised production builds.
 
+🤖 Auto generated Vendor DLL for smooth development experiences.
 
 * TODO 
 
@@ -38,7 +39,6 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
 
-🤖 Auto generated Vendor DLL for smooth development experiences.
 
 🏜 Asset bundling support. e.g. images/fonts.
 

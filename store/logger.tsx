@@ -5,6 +5,7 @@ const beginsWith = function(needle, haystack) {
 }
 
 export const logger = createLogger({
+    collapsed: (getState, action, logEntry) => { return !logEntry.error },
     predicate: (getState, action) => {
         const identifier = "@@reactReduxFirebase"
         const fromFirebase = (action.type.substr(0, identifier.length) == identifier)
