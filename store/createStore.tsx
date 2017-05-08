@@ -6,7 +6,8 @@ import { createEpicMiddleware } from "redux-observable";
 import { RootEpic } from "./epics";
 import { routerMiddleware, connectRouter } from "connected-react-router";
 import { allReducers } from "./reducers";
-
+import { createLogger } from 'redux-logger'
+import { logger } from "./logger";
 
 
 export const FIREBASE_CONFIG = {
@@ -21,18 +22,17 @@ export const FIREBASE_CONFIG = {
 
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 
-export const configureStore = (history = {}) => {
+export const configureStore = (history: any = {}) => {
     let startup = { todos: ['Use Redux'] }
     let FirebaseStoreCreator = compose(reactReduxFirebase(FIREBASE_CONFIG))(createStore);
     let composeEnhancers = composeWithDevTools(
         applyMiddleware(routerMiddleware(history),
+            logger,
             ReplacebleEpicMiddleware)
     )
     let store = FirebaseStoreCreator(
         connectRouter(history)(allReducers),
         startup, composeEnhancers)
-
-
 
     if (module.hot) {
         module.hot.accept(['./reducers.tsx'], () => {
