@@ -16,13 +16,13 @@ import { getFirebase } from 'react-redux-firebase';
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 injectTapEventPlugin();
 
-export default function serverRenderer({ clientStats, serverStats, foo }) {
+export default function serverRenderer({ clientStats, serverStats, title }) {
     const context = {};
     return (req, res, next) => {
         let store = configureStore();
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(
-                <HTML foo={foo}
+                <HTML title={title}
                     userAgent={req.headers['user-agent']}
                     url={req.url} store={store}
                 />

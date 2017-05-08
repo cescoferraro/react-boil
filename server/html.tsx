@@ -11,7 +11,7 @@ import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
 
 
-export const HTML = ({ userAgent, url, store, foo }) => {
+export const HTML = ({ userAgent, url, store, title }) => {
     var css = []
     let container = renderToString(
         <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>
@@ -29,7 +29,7 @@ export const HTML = ({ userAgent, url, store, foo }) => {
         <head>
             <link rel="shortcut icon" href="icons/favicon.ico" />
             <style type="text/css">{css.join('  ')}</style>
-            <title>{foo}</title>
+            <title>{title}</title>
         </head>
         <body>
             <div id="root"
