@@ -18,7 +18,7 @@ const LOADERS = (env, isClient)=>{
 	      {loader: 'postcss-loader'}]
 	},
 	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	{ enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+	{ enforce: "pre",  exclude: /node_modules/, test: /\.js$/, loader: "source-map-loader" },
 	{ test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
 	  use:[
 	      {	loader: 'file-loader',
@@ -51,7 +51,7 @@ const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
     }
 });
 const SERVER_PLUGINS = [LOADERS_OPTIONS];
-const DEVTOOLS = 'false'; 
+const DEVTOOLS = 'source-map'; 
 
 const CLIENT_PLUGINS = env => {
     const og = [
