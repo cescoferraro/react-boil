@@ -33,14 +33,14 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🤖 Auto generated Vendor DLL for smooth development experiences.
 
+
+🏜 Asset bundling support. e.g. images/fonts.
+
 * TODO 
 
 🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
 
 😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
-
-
-🏜 Asset bundling support. e.g. images/fonts.
 
 ✂️ Code splitting - easily define code split points in your source using `react-async-component`.
 

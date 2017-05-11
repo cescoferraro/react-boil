@@ -1,0 +1,84 @@
+meta:
+    project: react-boil 
+    default: dev 
+
+
+env=vars:
+    variables:
+      - FRONTEND_VERSION=0.0.1
+
+mount=source:
+    bind: .
+    path: /srv/react-boil
+
+image=dev-image:
+    image: cescoferraro/react-boil
+    tags: ["dev"]
+    dockerfile: build/docker/Dockerfile.dev
+    description: "Build the dev-image"
+
+image=frontend-image:
+    image: cescoferraro/react-boil
+    tags: ["{env.FRONTEND_VERSION}"]
+    dockerfile: build/docker/Dockerfile.frontend
+    depends: [frontend]
+    description: "Build the frontend-image"
+
+
+alias=hub:
+    description: Push Production Images to Docker Hub
+    tasks: ["frontend-image:push"]
+
+
+job=frontend:
+    description: "Runs Webpack Production"
+    use: dev-image
+    artifact: dist/app 
+    user: "{user.uid}"
+    mounts: [source]
+    interactive: true
+    command:  npm run production
+    depends: [vars]
+
+
+job=delete:
+    description: "delete dist/ folder"
+    use: dev-image
+    mounts: [source]
+    command:  rm -rf dist/
+
+
+job=dev:
+    net-mode: host
+    user: "{user.uid}"
+    use: dev-image
+    mounts: [source]
+    interactive: true
+    command: concurrently "node hot.js"
+    depends: [vars]
+    env:
+      - "NODE_ENV=development"
+
+
+job=stage:
+    net-mode: host
+    user: "{user.uid}"
+    use: dev-image
+    mounts: [source]
+    interactive: true
+    command: node www/server.bundle.js
+    depends: [vars,frontend]
+    env:
+      - "NODE_ENV=development"
+
+
+job=prod:
+    net-mode: host
+    user: "{user.uid}"
+    use: dev-image
+    mounts: [source]
+    interactive: true
+    command: node www/server.bundle.js
+    depends: [vars,frontend]
+    env:
+      - "NODE_ENV=production"
