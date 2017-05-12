@@ -10,20 +10,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
 
-
-export const HTML = ({ production, userAgent, url, store, title }) => {
-    var css = []
-    let container = renderToString(
-        <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>
-            <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: userAgent })}>
-                <StaticRouter location={url} context={{}}>
-                    <ReduxProvider store={store}>
-                        <Router />
-                    </ReduxProvider>
-                </StaticRouter>
-            </MuiThemeProvider>
-        </WithStylesContext>
-    )
+export const HTML = ({ production, css, appString, store, title }) => {
     return (<html>
         <head>
             <link rel="shortcut icon" href="icons/favicon.ico" />
@@ -32,7 +19,7 @@ export const HTML = ({ production, userAgent, url, store, title }) => {
         </head>
         <body>
             <div id="root"
-                dangerouslySetInnerHTML={{ __html: container }} />
+                dangerouslySetInnerHTML={{ __html: appString }} />
             {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
             <script type={type} async src="/client.js"></script>
         </body>

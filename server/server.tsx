@@ -22,14 +22,26 @@ export default function serverRenderer({ production,
     title }) {
     const context = {};
     return (req, res, next) => {
-        console.log(production)
         let store = configureStore();
+        var css = []
+        let container = renderToString(
+            <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>
+                <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: req.headers['user-agent'] })}>
+                    <StaticRouter location={req.url} context={{}}>
+                        <ReduxProvider store={store}>
+                            <Router />
+                        </ReduxProvider>
+                    </StaticRouter>
+                </MuiThemeProvider>
+            </WithStylesContext>
+        )
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(
                 <HTML title={title}
+                    css={css}
+                    appString={container}
                     production={production}
-                    userAgent={req.headers['user-agent']}
-                    url={req.url} store={store}
+                    store={store}
                 />
             ))
     };
