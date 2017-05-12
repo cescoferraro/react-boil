@@ -6,7 +6,7 @@ import * as Debug from 'debug';
 Debug.enable("*")
 
 
-export let Router = () => {
+export let AppRouter = () => {
     var debug = Debug("ROUTER")
     debug('Request if being handled!');
     return (
