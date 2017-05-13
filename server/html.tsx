@@ -20,11 +20,13 @@ export const HTML = ({ asyncState, production, css, appString, store, title }) =
             <title>{title}</title>
         </head>
         <body>
-            <div id="root"
-                dangerouslySetInnerHTML={{ __html: appString }} />
-            {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
+
+
+            <div id="root" dangerouslySetInnerHTML={{ __html: appString }} />
             <script type={type} dangerouslySetInnerHTML={{ __html: hey }} />
+            {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
             <script type={type} async src="/client.js"></script>
+
         </body>
     </html>)
 }
