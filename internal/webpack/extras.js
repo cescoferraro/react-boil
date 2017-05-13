@@ -38,7 +38,7 @@ const LOADERS = (env, isClient)=>{
 };
 
 
-const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
+const LOADERS_OPTIONS_PLUGIN =  new webpack.LoaderOptionsPlugin({
     minimize: false,
     debug: true,
     options: {
@@ -50,7 +50,7 @@ const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
 	    })]
     }
 });
-const SERVER_PLUGINS = [LOADERS_OPTIONS];
+const SERVER_PLUGINS = [LOADERS_OPTIONS_PLUGIN];
 const DEVTOOLS = 'source-map'; 
 
 const CLIENT_PLUGINS = env => {
@@ -62,7 +62,7 @@ const CLIENT_PLUGINS = env => {
 	    prefix: 'icons/',
 	    logo: './shared/icon/favicon.png'
 	}),
-	LOADERS_OPTIONS];
+	LOADERS_OPTIONS_PLUGIN];
     if (env.production !== true){
 	og.push(
 	    new webpack.DllReferencePlugin({

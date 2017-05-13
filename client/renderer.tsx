@@ -5,7 +5,6 @@ import { WithStylesContext } from "../shared/components/styles.context";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Provider as ReduxProvider } from "react-redux";
-import { configureStore } from "../store/createStore";
 import { ConnectedRouter as ReduxRouterProvider } from "connected-react-router";
 import { createBrowserHistory } from "history";
 
