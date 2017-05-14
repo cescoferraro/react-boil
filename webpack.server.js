@@ -15,5 +15,5 @@ module.exports = ( env ) => ( {
     devtool: 'source-map',
     module: require("./internal/webpack/extras.js").LOADERS(env,false),
     resolve: require("./internal/webpack/extras.js").resolve,
-    plugins:require("./internal/webpack/extras.js").SERVER_PLUGINS 
+    plugins:require("./internal/webpack/extras.js").SERVER_PLUGINS(env)
 } );

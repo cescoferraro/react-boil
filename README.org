@@ -13,6 +13,8 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🔥 [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastuture ready to ship!
 
+✂️ Code splitting - easily define code split points in your source using `react-async-component`.
+
 🚀 [[https://github.com/redux-observable/redux-observable][Redux-Observable]] to perform async redux actions.
 
 🖌 [[https://github.com/postcss/postcss][PostCSS]] lets you use next css syntax now.
@@ -37,12 +39,11 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🏜 Asset bundling support. e.g. images/fonts.
 
-* TODO Things Left to Do 
-
 🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
+
+* TODO Things Left to Do 
 
 😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
 
-✂️ Code splitting - easily define code split points in your source using `react-async-component`.
 
 

@@ -17,9 +17,7 @@ let history = createBrowserHistory();
 let store = configureStore(history)
 const app = Renderer(AppRouter, store, history)
 
-asyncBootstrapper(app).then(() => {
-    ReactDOM.render(app, tag)
-});
+ReactDOM.render(app, tag)
 
 if (module.hot) {
     module.hot.accept(
