@@ -4,7 +4,6 @@ import { AppRouter } from "../app/router"
 import { Renderer, tag } from "./renderer";
 import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { unmountComponentAtNode } from "react-dom";
-import asyncBootstrapper from 'react-async-bootstrapper'
 import { configureStore } from "../store/createStore";
 import { createBrowserHistory } from "history";
 

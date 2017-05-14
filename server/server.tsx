@@ -1,17 +1,13 @@
 import * as React from "react"
 import { renderToString, renderToStaticMarkup } from "react-dom/server"
 import { AppRouter } from "../app/router"
-import { PostCSSProvider } from "../shared/components/styles.context";
 import { HTML } from "./html";
-import *  as injectTapEventPlugin from "react-tap-event-plugin";
+import { PostCSSProvider } from "../shared/components/styles.context";
+import { MaterialUI } from "../shared/components/materialui";
+import { StaticRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
-import { StaticRouter } from "react-router-dom";
-import { dataToJS, watchEvent, actionTypes } from 'react-redux-firebase'
-import { getFirebase } from 'react-redux-firebase';
-import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
-import asyncBootstrapper from 'react-async-bootstrapper'
-import { MaterialUI } from "../shared/components/materialui";
+import *  as injectTapEventPlugin from "react-tap-event-plugin";
 
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 injectTapEventPlugin();
@@ -19,7 +15,6 @@ injectTapEventPlugin();
 export default function serverRenderer({ production, clientStats, serverStats, title }) {
     const context = {};
     return (req, res, next) => {
-        const asyncContext = createAsyncContext()
         let store = configureStore();
         var css = []
         let app = (
