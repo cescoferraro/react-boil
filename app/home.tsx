@@ -6,6 +6,7 @@ import { firebaseConnect, dataToJS } from 'react-redux-firebase'
 import { HomeStyle } from "./styles";
 import { push } from 'connected-react-router'
 import * as Debug from 'debug';
+import AsyncProduct from './components/AsyncProduct'
 
 @withStyles(HomeStyle)
 @firebaseConnect([
@@ -25,16 +26,11 @@ export class HomeContainer extends React.Component<any, any> {
             <div>
                 <div className={HomeStyle.app}>
                     <h2>React-boil</h2>
-                    <h2>React-boil</h2>
-                    <h2>React-boil</h2>
-                    <h2>React-boil</h2>
+                    <AsyncProduct id={1337} />
                     <RaisedButton onClick={() => {
                         this.props.dispatch(push("/whatver"))
                     }}
                         label="Default" primary={true} />
-                </div>
-                <div className={HomeStyle.container}>
-                    <h2>TWO</h2>
                 </div>
             </div >
         )

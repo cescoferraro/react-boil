@@ -1,29 +1,18 @@
 import * as React from "react"
 const type = "text/javascript";
 import { renderToString, renderToStaticMarkup } from "react-dom/server"
-import { Router } from "../app/router"
-import { WithStylesContext } from "../shared/components/styles.context";
+import { AppRouter } from "../app/router"
+import { PostCSSProvider } from "../shared/components/styles.context";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
+import * as serialize from 'serialize-javascript'
 
-
-export const HTML = ({ production, userAgent, url, store, title }) => {
-    var css = []
-    let container = renderToString(
-        <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>
-            <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: userAgent })}>
-                <StaticRouter location={url} context={{}}>
-                    <ReduxProvider store={store}>
-                        <Router />
-                    </ReduxProvider>
-                </StaticRouter>
-            </MuiThemeProvider>
-        </WithStylesContext>
-    )
+export const HTML = ({ production, css, appString, store, title }) => {
+    const hey = "window.ASYNC_COMPONENTS_STATE = " + serialize({})
     return (<html>
         <head>
             <link rel="shortcut icon" href="icons/favicon.ico" />
@@ -31,10 +20,11 @@ export const HTML = ({ production, userAgent, url, store, title }) => {
             <title>{title}</title>
         </head>
         <body>
-            <div id="root"
-                dangerouslySetInnerHTML={{ __html: container }} />
+            <div id="root" dangerouslySetInnerHTML={{ __html: appString }} />
+            <script type={type} dangerouslySetInnerHTML={{ __html: hey }} />
             {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
             <script type={type} async src="/client.js"></script>
+
         </body>
     </html>)
 }

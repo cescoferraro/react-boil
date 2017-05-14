@@ -1,14 +1,22 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { Router } from "../app/router"
-import { AppContainer } from 'react-hot-loader';
-import { WithStylesContext } from "../shared/components/styles.context";
+import { AppRouter } from "../app/router"
 import { Renderer, tag } from "./renderer";
 import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { unmountComponentAtNode } from "react-dom";
+import { configureStore } from "../store/createStore";
+import { createBrowserHistory } from "history";
+
 
 injectTapEventPlugin();
-Renderer(Router)
+
+
+
+let history = createBrowserHistory();
+let store = configureStore(history)
+const app = Renderer(AppRouter, store, history)
+
+ReactDOM.render(app, tag)
 
 if (module.hot) {
     module.hot.accept(
@@ -19,8 +27,8 @@ if (module.hot) {
         ],
         () => {
             unmountComponentAtNode(tag);
-            const NextEatApp = require("../app/router.tsx").Router;
-            const NewRenderer = require("./renderer.tsx").Renderer;
-            NewRenderer(NextEatApp);
+            const NextEatApp = require("../app/router.tsx").AppRouter;
+            const NextRenderer = require("./renderer.tsx").Renderer;
+            ReactDOM.render(NextRenderer(NextEatApp, store, history), tag)
         });
 }

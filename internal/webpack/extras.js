@@ -15,10 +15,23 @@ const LOADERS = (env, isClient)=>{
 			 sourceMap: true,
 			 modules: true,
 			 localIdentName: "[name]_[local]_[hash:base64:3]"}},
-	      {loader: 'postcss-loader'}]
+	      {loader: 'postcss-loader',
+	       options: {
+		   plugins: (loader) => [
+		       require("postcss-cssnext")({
+			   browsers: '> 0%', customProperties: true,
+			   colorFunction: true, customSelectors: true
+		       })
+		   ]}
+	      }]
 	},
-	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	{ enforce: "pre",  exclude: /node_modules/, test: /\.js$/, loader: "source-map-loader" },
+	{ test: /\.tsx?$/,
+	  exclude: /node_modules/, 
+	  loader: "awesome-typescript-loader" },
+	{  test: /\.js$/,
+	   enforce: "pre",  
+	   exclude: /node_modules/, 
+	   loader: "source-map-loader" },
 	{ test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
 	  use:[
 	      {	loader: 'file-loader',
@@ -26,35 +39,37 @@ const LOADERS = (env, isClient)=>{
 		    emitFile: isClient,
 		    name: "fonts/font-[sha512:hash:base64:7].[ext]"
 		}}]},
-	{
-	    test: /\.(jpe?g|png|gif|svg)$/,
-	    use:[
-		{loader: 'file-loader',
-		 options:{
-		     emitFile: isClient,
-		     name: "fonts/font-[sha512:hash:base64:7].[ext]"
-		 }}]}];
+	{ test: /\.(jpe?g|png|gif|svg)$/,
+	  use:[
+	      {loader: 'file-loader',
+	       options:{
+		   emitFile: isClient,
+		   name: "fonts/font-[sha512:hash:base64:7].[ext]"
+	       }}]}];
     return ( {rules: rules} ); 
 };
 
 
-const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
+const LOADERS_OPTIONS_PLUGIN =  new webpack.LoaderOptionsPlugin({
     minimize: false,
     debug: true,
     options: {
-	context: '/',
-	postcss: [
-	    require("postcss-cssnext")({
-		browsers: '> 0%', customProperties: true,
-		colorFunction: true, customSelectors: true
-	    })]
+	context: '/'
     }
 });
-const SERVER_PLUGINS = [LOADERS_OPTIONS];
+const SERVER_PLUGINS = env => {
+    let og = [LOADERS_OPTIONS_PLUGIN];
+    if (env.production !== true){og.push(dll);} 
+    return og; 
+    
+};
 const DEVTOOLS = 'source-map'; 
-
+const dll = new webpack.DllReferencePlugin({
+    context: process.cwd(),
+    manifest: require("../../dist/dll/vendor.json")
+});
 const CLIENT_PLUGINS = env => {
-    const og = [
+    let og = [
 	new webpack.HotModuleReplacementPlugin(),
 	new webpack.NamedModulesPlugin(),
 	new webpack.NoEmitOnErrorsPlugin(),
@@ -62,14 +77,9 @@ const CLIENT_PLUGINS = env => {
 	    prefix: 'icons/',
 	    logo: './shared/icon/favicon.png'
 	}),
-	LOADERS_OPTIONS];
-    if (env.production !== true){
-	og.push(
-	    new webpack.DllReferencePlugin({
-		context: process.cwd(),
-		manifest: require("../../dist/dll/vendor.json")
-	    }));
-    };
+	LOADERS_OPTIONS_PLUGIN];
+    if (env.production !== true){og.push(dll); 
+				};
     return  ( og );
 };
 
