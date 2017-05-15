@@ -14,21 +14,22 @@ injectTapEventPlugin();
 
 export default function serverRenderer({ production, clientStats, serverStats, title }) {
     const context = {};
-    return (req, res, next) => {
+    return async (req, res, next) => {
         let store = configureStore();
         var css = []
         let app = (
-            <PostCSSProvider onInsertCss={styles => { css.push(styles._getCss()) }}>
-                <MaterialUI userAgent={req.headers['user-agent']}>
-                    <StaticRouter location={req.url} context={{}}>
-                        <ReduxProvider store={store}>
-                            <AppRouter />
-                        </ReduxProvider>
-                    </StaticRouter>
-                </MaterialUI>
-            </PostCSSProvider>
+                <PostCSSProvider onInsertCss={styles => { css.push(styles._getCss()) }}>
+                    <MaterialUI userAgent={req.headers['user-agent']}>
+                        <StaticRouter location={req.url} context={{}}>
+                            <ReduxProvider store={store}>
+                                <AppRouter />
+                            </ReduxProvider>
+                        </StaticRouter>
+                    </MaterialUI>
+                </PostCSSProvider>
         )
         const appString = renderToString(app)
+
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(
                 <HTML title={title}

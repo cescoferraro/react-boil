@@ -28,10 +28,10 @@ const LOADERS = (env, isClient)=>{
 	{ test: /\.tsx?$/,
 	  exclude: /node_modules/, 
 	  loader: "awesome-typescript-loader" },
-	{  test: /\.js$/,
-	   enforce: "pre",  
-	   exclude: /node_modules/, 
-	   loader: "source-map-loader" },
+	{ test: /\.js$/,
+	  enforce: "pre",  
+	  exclude: /node_modules/, 
+	  loader: "source-map-loader" },
 	{ test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
 	  use:[
 	      {	loader: 'file-loader',
@@ -59,15 +59,11 @@ const LOADERS_OPTIONS_PLUGIN =  new webpack.LoaderOptionsPlugin({
 });
 const SERVER_PLUGINS = env => {
     let og = [LOADERS_OPTIONS_PLUGIN];
-    if (env.production !== true){og.push(dll);} 
     return og; 
     
 };
 const DEVTOOLS = 'source-map'; 
-const dll = new webpack.DllReferencePlugin({
-    context: process.cwd(),
-    manifest: require("../../dist/dll/vendor.json")
-});
+
 const CLIENT_PLUGINS = env => {
     let og = [
 	new webpack.HotModuleReplacementPlugin(),
@@ -78,9 +74,13 @@ const CLIENT_PLUGINS = env => {
 	    logo: './shared/icon/favicon.png'
 	}),
 	LOADERS_OPTIONS_PLUGIN];
-    if (env.production !== true){og.push(dll); 
-				};
-    return  ( og );
+    if (env.production !== true){
+	og.push(new webpack.DllReferencePlugin({
+	    context: process.cwd(),
+	    manifest: require("../../dist/dll/vendor.json")
+	})); 
+    };
+    return og;
 };
 
 

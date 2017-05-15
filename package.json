@@ -8,11 +8,11 @@
 	"//": " TEST COMMANDSS",
 	"dll": "webpack --config webpack.dll.js ",
 	"dev": "node hot.js",
-	"start": "yarn clean && yarn dll && yarn dev",
+	"start": "yarn run clean && yarn run dll && yarn run dev",
 	"client": "webpack --config webpack.client.js --env.production",
 	"server": "webpack --config webpack.server.js --env.production",
 	"prod": "webpack --config webpack.config.js --env.production",
-	"production": "yarn clean && yarn prod && node dist/server.js",
+	"production": "yarn run clean && yarn run prod && node dist/server.js",
 	"test": "jest --coverage"
     },
     "author": "",
