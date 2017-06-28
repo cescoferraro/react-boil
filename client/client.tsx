@@ -19,7 +19,7 @@ if (module.hot) {
         ],
         () => {
             unmountComponentAtNode(tag);
-            const NextEatApp = require("../app/router.tsx").Router;
+            const NextEatApp = require("../app/router.tsx").AppRouter;
             const NewRenderer = require("./renderer.tsx").Renderer;
             NewRenderer(NextEatApp);
         });

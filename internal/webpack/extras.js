@@ -15,7 +15,17 @@ const LOADERS = (env, isClient)=>{
 			 sourceMap: true,
 			 modules: true,
 			 localIdentName: "[name]_[local]_[hash:base64:3]"}},
-	      {loader: 'postcss-loader'}]
+	      {loader: 'postcss-loader',
+	       options: {
+		   plugins: (loader)=>{
+		       return [ require("postcss-cssnext")({
+			   browsers: '> 0%', customProperties: true,
+			   colorFunction: true, customSelectors: true
+		       }) ];
+		   }
+	       }
+
+	      }]
 	},
 	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
 	{ enforce: "pre",  exclude: /node_modules/, test: /\.js$/, loader: "source-map-loader" },
@@ -47,7 +57,8 @@ const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
 	    require("postcss-cssnext")({
 		browsers: '> 0%', customProperties: true,
 		colorFunction: true, customSelectors: true
-	    })]
+	    })
+	]
     }
 });
 const SERVER_PLUGINS = [LOADERS_OPTIONS];

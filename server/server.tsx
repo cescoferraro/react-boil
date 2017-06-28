@@ -9,7 +9,7 @@ import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
-import { dataToJS, watchEvent, actionTypes } from 'react-redux-firebase'
+import { dataToJS, actionTypes } from 'react-redux-firebase'
 import { getFirebase } from 'react-redux-firebase';
 import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
 import asyncBootstrapper from 'react-async-bootstrapper'
