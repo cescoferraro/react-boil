@@ -31,6 +31,7 @@ export const HTML = ({ clientStats, serverStats,
             <div id="root"
                 dangerouslySetInnerHTML={{ __html: appString }} />
             {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
+            <script type={type} src="/bootstrap.js"></script>
             <script type={type} async src="/client.js"></script>
         </body>
     </html>)

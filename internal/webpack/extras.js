@@ -64,7 +64,7 @@ const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
 const SERVER_PLUGINS = [LOADERS_OPTIONS];
 const DEVTOOLS = 'source-map'; 
 
-const CLIENT_PLUGINS = env => {
+const CLIENT_PLUGINS = ( env ) => {
     const og = [
 	new webpack.HotModuleReplacementPlugin(),
 	new webpack.NamedModulesPlugin(),
@@ -79,8 +79,13 @@ const CLIENT_PLUGINS = env => {
 	    new webpack.DllReferencePlugin({
 		context: process.cwd(),
 		manifest: require("../../dll/vendor.json")
+	    }),
+	    new webpack.optimize.CommonsChunkPlugin({
+		names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
+		filename: '[name].js',
+		minChunks: Infinity
 	    }));
-    };
+    }
     return  ( og );
 };
 
