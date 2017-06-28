@@ -3909,6 +3909,12 @@ react-tree-walker@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-2.1.1.tgz#80ab80a0caa78f029fea39f42306b13b5d51bb8d"
 
+react-universal-component@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-1.2.6.tgz#b9eb7322c5d33861cab71173c4f75f258e2b12f8"
+  dependencies:
+    require-universal-module "^1.2.8"
+
 react@^15.5.4:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
@@ -4161,6 +4167,10 @@ require-from-string@^1.1.0, require-from-string@^1.2.1:
 require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
+
+require-universal-module@^1.2.8:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/require-universal-module/-/require-universal-module-1.3.0.tgz#f611cb8d596460291386aedff4959bdbd89ea17a"
 
 resize-img@^1.1.0:
   version "1.1.2"
@@ -4927,6 +4937,10 @@ webpack-dev-middleware@^1.11.0:
     mime "^1.3.4"
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
+
+webpack-flush-chunks@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.0.10.tgz#f5a89aa5b1c023347b48619966b787298246f174"
 
 webpack-hot-middleware@^2.18.0:
   version "2.18.0"

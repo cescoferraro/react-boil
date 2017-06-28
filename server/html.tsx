@@ -10,9 +10,17 @@ import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
 import * as serialize from 'serialize-javascript'
+import { flushModuleIds } from 'react-universal-component/server'
+import flushChunks from 'webpack-flush-chunks'
 
-export const HTML = ({ asyncState, production, css, appString, store, title }) => {
-    const hey = "window.ASYNC_COMPONENTS_STATE = " + serialize(asyncState)
+export const HTML = ({ clientStats, serverStats,
+    production, css, appString, store, title }) => {
+    const ids = flushModuleIds()
+    const { js, styles } = flushChunks(clientStats, {
+        moduleIds: ids
+    })
+    console.log(ids)
+    console.log(js.toString())
     return (<html>
         <head>
             <link rel="shortcut icon" href="icons/favicon.ico" />
@@ -23,7 +31,6 @@ export const HTML = ({ asyncState, production, css, appString, store, title }) =
             <div id="root"
                 dangerouslySetInnerHTML={{ __html: appString }} />
             {production ? null : <script type={type} async src="/dll/vendor.js"></script>}
-            <script type={type} dangerouslySetInnerHTML={{ __html: hey }} />
             <script type={type} async src="/client.js"></script>
         </body>
     </html>)

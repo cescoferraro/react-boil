@@ -42,6 +42,7 @@
     "react-router": "4.1.1",
     "react-router-dom": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
+    "react-universal-component": "^1.2.6",
     "redux": "^3.7.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
@@ -53,6 +54,7 @@
     "typescript": "2.4.0",
     "webpack": "^3.0.0",
     "webpack-dev-middleware": "^1.11.0",
+    "webpack-flush-chunks": "^1.0.10",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-hot-server-middleware": "^0.1.0",
     "xmlhttprequest": "^1.8.0"

@@ -35,24 +35,18 @@ export default function serverRenderer({ production, clientStats, serverStats, t
                 </MuiThemeProvider>
             </WithStylesContext>
         </AsyncComponentProvider>)
-        asyncBootstrapper(app).then(() => {
-            // We can now render our app 👇
-            const appString = renderToString(app)
+        const appString = renderToString(app)
+        res.send("<!DOCTYPE html>" +
+            renderToStaticMarkup(
+                <HTML title={title}
+                    css={css}
+                    appString={appString}
+                    production={production}
+                    store={store}
+                    clientStats={clientStats}
+                    serverStats={serverStats}
+                />
+            ))
 
-            // Get the async component state. 👇
-            const asyncState = asyncContext.getState()
-
-            res.send("<!DOCTYPE html>" +
-                renderToStaticMarkup(
-                    <HTML title={title}
-                        css={css}
-                        asyncState={asyncState}
-                        appString={appString}
-                        production={production}
-                        store={store}
-                    />
-                ))
-
-        })
     };
 }
