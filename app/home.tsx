@@ -11,14 +11,8 @@ import * as Debug from 'debug';
 @firebaseConnect([
     '/app'
 ])
-@connect(
-    ({ firebase, todos }) => ({
-        app: dataToJS(firebase, '/app'),
-        todos: todos
-    })
-)
 export class HomeContainer extends React.Component<any, any> {
-    render() {
+    public render() {
         var debug = Debug("HomeContainer")
         debug('CREATED!');
         return (

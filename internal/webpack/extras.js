@@ -67,7 +67,7 @@ const CLIENT_PLUGINS = env => {
 	og.push(
 	    new webpack.DllReferencePlugin({
 		context: process.cwd(),
-		manifest: require("../../dist/dll/vendor.json")
+		manifest: require("../../dll/vendor.json")
 	    }));
     };
     return  ( og );
