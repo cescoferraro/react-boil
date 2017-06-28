@@ -8,14 +8,14 @@ const app = express();
 
 const compiler = webpack(config);
 
+app.use(express.static("dist"));
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true
 }));
 
 app.use(WebpackHotMiddleware(
-    compiler.compilers.find(compiler => compiler.name === 'client')));
+    compiler.compilers.find(( compiler ) => compiler.name === 'client')));
 
-app.use(express.static("dist"));
 
 app.use(webpackHotServerMiddleware(compiler, {
     serverRendererOptions: {
@@ -24,6 +24,6 @@ app.use(webpackHotServerMiddleware(compiler, {
     }
 }));
 
-app.listen(4000, () => {
+app.listen(5000, () => {
     console.log('Server started: http://localhost:4000');
 });

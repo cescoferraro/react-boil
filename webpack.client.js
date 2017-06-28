@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const extras = require("./internal/webpack/extras.js");
 
-module.exports = env => {
+module.exports = ( env ) => {
     console.log("hello");
     console.log(env);
     return ( {
