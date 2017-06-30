@@ -1,6 +1,5 @@
 import * as React from "react"
 
-
-export default function Product({ id }) {
-    return <div>Product {id}</div>
+export const Cesco = ({ }) => {
+    return <h2>Cesco</h2>
 }

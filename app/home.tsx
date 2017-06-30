@@ -6,6 +6,7 @@ import { firebaseConnect, dataToJS } from 'react-redux-firebase'
 import { HomeStyle } from "./styles"
 import { push } from 'connected-react-router'
 import * as Debug from 'debug'
+import { UniversalComponent } from "./components/load"
 
 @withStyles(HomeStyle)
 @firebaseConnect([
@@ -20,6 +21,7 @@ export class HomeContainer extends React.Component<any, any> {
                 <div className={HomeStyle.app}>
                     <h2>React-boil</h2>
                     <h2>React-boil</h2>
+                    <UniversalComponent />
                     <RaisedButton onClick={() => {
                         this.props.dispatch(push("/whatver"))
                     }}

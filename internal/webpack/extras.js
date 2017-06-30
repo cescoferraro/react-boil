@@ -77,8 +77,8 @@ const CLIENT_PLUGINS = ( env ) => {
     if (env.production !== true){
 	og.push(
 	    new webpack.DllReferencePlugin({
-		context: process.cwd(),
-		manifest: require("../../dll/vendor.json")
+	     	context: process.cwd(),
+	     	manifest: require("../../dll/vendor.json")
 	    }),
 	    new webpack.optimize.CommonsChunkPlugin({
 		names: ['bootstrap'], // needed to put webpack bootstrap code before chunks

@@ -11,8 +11,6 @@ import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
 import { dataToJS, actionTypes } from 'react-redux-firebase'
 import { getFirebase } from 'react-redux-firebase';
-import { AsyncComponentProvider, createAsyncContext } from 'react-async-component'
-import asyncBootstrapper from 'react-async-bootstrapper'
 
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 injectTapEventPlugin();
@@ -20,11 +18,10 @@ injectTapEventPlugin();
 export default function serverRenderer({ production, clientStats, serverStats, title }) {
     const context = {};
     return (req, res, next) => {
-        const asyncContext = createAsyncContext()
         let store = configureStore();
         var css = []
 
-        let app = (<AsyncComponentProvider asyncContext={asyncContext}>
+        let app = (
             <WithStylesContext onInsertCss={styles => { css.push(styles._getCss()) }}>
                 <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: req.headers['user-agent'] })}>
                     <StaticRouter location={req.url} context={{}}>
@@ -34,7 +31,7 @@ export default function serverRenderer({ production, clientStats, serverStats, t
                     </StaticRouter>
                 </MuiThemeProvider>
             </WithStylesContext>
-        </AsyncComponentProvider>)
+        )
         const appString = renderToString(app)
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(

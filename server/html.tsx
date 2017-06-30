@@ -4,23 +4,37 @@ import { renderToString, renderToStaticMarkup } from "react-dom/server"
 import { AppRouter } from "../app/router"
 import { WithStylesContext } from "../shared/components/styles.context";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import *  as injectTapEventPlugin from "react-tap-event-plugin";
-import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
-import * as serialize from 'serialize-javascript'
 import { flushModuleIds } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
+import { flushChunkNames } from 'react-universal-component/server'
+import { flushFiles } from 'webpack-flush-chunks'
+
+const idsSpace = (clientStats) => {
+    const moduleIds = flushModuleIds()
+    console.log(moduleIds)
+    const { js, styles } = flushChunks(clientStats,
+        {
+            moduleIds,
+            before: ['bootstrap'],
+            after: ['main']
+        }
+    )
+    console.log(js.toString())
+}
+
+const namesSpace = (clientStats) => {
+    const chunkNames = flushChunkNames()
+    console.log(chunkNames)
+    const scripts = flushFiles(clientStats, { chunkNames, filter: 'js' })
+    console.log(scripts)
+}
+
 
 export const HTML = ({ clientStats, serverStats,
     production, css, appString, store, title }) => {
-    const ids = flushModuleIds()
-    const { js, styles } = flushChunks(clientStats, {
-        moduleIds: ids
-    })
-    console.log(ids)
-    console.log(js.toString())
+    idsSpace(clientStats)
     return (<html>
         <head>
             <link rel="shortcut icon" href="icons/favicon.ico" />

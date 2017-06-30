@@ -18,5 +18,9 @@ module.exports = ( env ) => {
 	devtool: require("./internal/webpack/extras.js").DEVTOOLS,
 	plugins:require("./internal/webpack/extras.js").CLIENT_PLUGINS(env,true), 
 	module: require("./internal/webpack/extras.js").LOADERS(env),
-	resolve: require("./internal/webpack/extras.js").resolve 
+	resolve: require("./internal/webpack/extras.js").resolve ,
+	watch: true,
+	watchOptions: {
+	    aggregateTimeout: 1000
+	}
     } ); };
