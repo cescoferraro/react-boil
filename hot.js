@@ -7,13 +7,11 @@ const config = require('./webpack.config.js')({production:false});
 const app = express();
 
 const compiler = webpack(config);
+const clientCompiler = compiler.compilers[0]
 
-app.use(webpackDevMiddleware(compiler, {
-    noInfo: true
-}));
 
-app.use(WebpackHotMiddleware(
-    compiler.compilers.find(( compiler ) => compiler.name === 'client')));
+app.use(webpackDevMiddleware(compiler, {noInfo: true}));
+app.use(WebpackHotMiddleware(clientCompiler));
 
 
 app.use(webpackHotServerMiddleware(compiler, {

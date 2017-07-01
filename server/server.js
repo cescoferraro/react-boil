@@ -10,4 +10,4 @@ app.use('/icons', express.static(path.join(__dirname, 'icons')));
 const clientStats = require('./stats.json')
 const outputPath = "http://localhost:4000/"
 app.use(require("./server/main").default({ production: true, clientStats , outputPath}));
-app.listen(4000);
+app.listen(5000);
