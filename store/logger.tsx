@@ -4,6 +4,7 @@ const beginsWith = function(needle, haystack) {
     return (haystack.substr(0, needle.length) == needle);
 }
 
+
 export const logger = createLogger({
     collapsed: (getState, action, logEntry) => { return !logEntry.error },
     predicate: (getState, action) => {

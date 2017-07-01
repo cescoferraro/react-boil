@@ -7,23 +7,19 @@ const config = require('./webpack.config.js')({production:false});
 const app = express();
 
 const compiler = webpack(config);
+const clientCompiler = compiler.compilers[0]
 
-app.use(webpackDevMiddleware(compiler, {
-    noInfo: true
-}));
 
-app.use(WebpackHotMiddleware(
-    compiler.compilers.find(compiler => compiler.name === 'client')));
+app.use(webpackDevMiddleware(compiler, {noInfo: true}));
+app.use(WebpackHotMiddleware(clientCompiler));
 
-app.use(express.static("dist"));
 
 app.use(webpackHotServerMiddleware(compiler, {
     serverRendererOptions: {
 	production: false,
-	title: 'React-boil Development'
     }
 }));
 
-app.listen(4000, () => {
+app.listen(5000, () => {
     console.log('Server started: http://localhost:4000');
 });

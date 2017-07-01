@@ -1,6 +1,6 @@
 import * as React from "react"
 import { renderToString, renderToStaticMarkup } from "react-dom/server"
-import { Router } from "../app/router"
+import { AppRouter } from "../app/router"
 import { WithStylesContext } from "../shared/components/styles.context";
 import { HTML } from "./html";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
@@ -9,28 +9,30 @@ import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "../store/createStore";
 import { StaticRouter } from "react-router-dom";
-import { dataToJS, watchEvent, actionTypes } from 'react-redux-firebase'
+import { dataToJS, actionTypes } from 'react-redux-firebase'
 import { getFirebase } from 'react-redux-firebase';
-
+import { Renderer } from "./renderer";
 
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 injectTapEventPlugin();
 
-export default function serverRenderer({ production,
-    clientStats,
-    serverStats,
-    title }) {
+export default function serverRenderer({ production, clientStats, serverStats, title }) {
     const context = {};
     return (req, res, next) => {
-        console.log(production)
         let store = configureStore();
+        const render = Renderer(req, store)
+
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(
                 <HTML title={title}
+                    css={render.css}
+                    appString={render.string}
                     production={production}
-                    userAgent={req.headers['user-agent']}
-                    url={req.url} store={store}
+                    store={store}
+                    clientStats={clientStats}
+                    serverStats={serverStats}
                 />
             ))
+
     };
 }

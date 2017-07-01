@@ -24,7 +24,7 @@ let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 
 export const configureStore = (history: any = {}) => {
     let startup = { todos: ['Use Redux'] }
-    let FirebaseStoreCreator = compose(reactReduxFirebase(FIREBASE_CONFIG))(createStore);
+    let FirebaseStoreCreator = compose(reactReduxFirebase(FIREBASE_CONFIG, {}))(createStore);
     let composeEnhancers = composeWithDevTools(
         applyMiddleware(routerMiddleware(history),
             logger,

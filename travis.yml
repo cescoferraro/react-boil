@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "6"
+before_script:
+  - npm install
+  - npm run prod 
+script:
+  - cd dist/ && node server.js 

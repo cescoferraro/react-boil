@@ -6,13 +6,13 @@ module.exports = (env)=>( {
         vendor: ["react","react-dom"]
     },
     output: {
-        path: path.join(__dirname, "dist", "dll"),
+        path: path.join(__dirname, "dll"),
         filename: "[name].js",
         library: "[name]"
     },
     plugins: [
         new webpack.DllPlugin({
-            path: path.join(__dirname, "dist","dll", "[name].json"),
+            path: path.join(__dirname, "dll","[name].json"),
             name: "[name]",
             context: path.resolve(__dirname, "client")
         }),
