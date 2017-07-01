@@ -9,7 +9,7 @@ module.exports = ( env ) => {
 	entry: extras.HOTLOADER(['./client/client'],env),
 	output: {
 	    path:  path.join(__dirname, 'dist'),
-	    filename: 'js/[name].js',
+	    filename: 'js/[name]_[hash].js',
 	},
 	devtool: extras.DEVTOOLS,
 	plugins: extras.CLIENT_PLUGINS(env,true), 
