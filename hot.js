@@ -8,7 +8,6 @@ const app = express();
 
 const compiler = webpack(config);
 
-app.use(express.static("dist"));
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true
 }));

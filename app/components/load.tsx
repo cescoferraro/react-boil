@@ -1,9 +1,7 @@
-import universal from "react-universal-component"
+import * as Loadable from 'react-loadable';
+import * as React from "react"
 
-export const UniversalComponent = universal(() => import("./product"), {
-    resolve: () => require.resolveWeak("./product"),
-    chunkName: "Universla",
-    onError: (erros) => {
-        console.log(erros)
-    }
-})
+export const LoadableComponent = Loadable({
+    loader: () => import('./product'),
+    loading: () => (<h4>Cesco</h4>)
+});

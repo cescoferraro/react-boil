@@ -3,25 +3,23 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
 import { firebaseConnect, dataToJS } from 'react-redux-firebase'
-import { HomeStyle } from "./styles"
+import * as HomeStyle from "./css/app.pcss"
 import { push } from 'connected-react-router'
-import * as Debug from 'debug'
-import { UniversalComponent } from "./components/load"
+import { UniversalComponent } from "./components/universal"
+import { LoadableComponent } from "./components/load"
 
 @withStyles(HomeStyle)
-@firebaseConnect([
-    '/app'
-])
+@firebaseConnect(['/app'])
 export class HomeContainer extends React.Component<any, any> {
+
+
     public render() {
-        var debug = Debug("HomeContainer")
-        debug('CREATED!');
         return (
             <div>
                 <div className={HomeStyle.app}>
                     <h2>React-boil</h2>
                     <h2>React-boil</h2>
-                    <UniversalComponent />
+                    {<UniversalComponent />}
                     <RaisedButton onClick={() => {
                         this.props.dispatch(push("/whatver"))
                     }}

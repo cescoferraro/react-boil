@@ -8,19 +8,14 @@ module.exports = ( env ) => {
     return ( {
 	name: 'client',
 	target: 'web',
-	entry: ['react-hot-loader/patch', 
-		'webpack-hot-middleware/client',
-		'./client/client' ],
+	entry: extras.HOTLOADER(['./client/client'],env),
 	output: {
 	    path:  path.join(__dirname, 'dist'),
-	    filename: 'client.js'
+	    filename: 'js/[name]_[hash].js',
+	    publicPath: extras.PUBLIC_PATH(env) 
 	},
-	devtool: require("./internal/webpack/extras.js").DEVTOOLS,
-	plugins:require("./internal/webpack/extras.js").CLIENT_PLUGINS(env,true), 
-	module: require("./internal/webpack/extras.js").LOADERS(env),
-	resolve: require("./internal/webpack/extras.js").resolve ,
-	watch: true,
-	watchOptions: {
-	    aggregateTimeout: 1000
-	}
+	devtool: extras.DEVTOOLS,
+	plugins: extras.CLIENT_PLUGINS(env,true), 
+	module:  extras.LOADERS(env),
+	resolve: extras.resolve 
     } ); };
