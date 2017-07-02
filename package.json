@@ -11,7 +11,7 @@
     "client": "webpack --config webpack.client.js --env.production",
     "server": "webpack --config webpack.server.js --env.production",
     "prod": "webpack -p --config webpack.config.js --env.production",
-    "preview": "yarn run prod && cd dist/ && node server.js",
+    "preview": "yarn run clear && yarn run prod && cd dist/ && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
