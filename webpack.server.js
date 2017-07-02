@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const dist = path.join(__dirname, 'dist');
 const extras = require("./internal/webpack/extras.js") 
-
+const plugins = require("./internal/webpack/plugins.js");
+const loaders = require("./internal/webpack/loaders.js");
 
 module.exports = ( env ) => ( {
     name: 'server',
@@ -11,11 +12,10 @@ module.exports = ( env ) => ( {
     output: {
         path: dist,
         filename: 'server/[name].js',
-        libraryTarget: 'commonjs2',
-	publicPath: extras.PUBLIC_PATH(env) 
+        libraryTarget: 'commonjs2'
     },
     devtool: 'source-map',
-    module: extras.LOADERS(env,false),
+    module: loaders.SERVER_LOADERS(env),
     resolve: extras.resolve,
-    plugins:extras.SERVER_PLUGINS 
+    plugins: plugins.SERVER_PLUGINS(env)
 } );

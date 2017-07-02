@@ -1,5 +1,15 @@
 import * as React from "react"
+declare var System: any
+import * as CSS from "../css/teste.css"
 
 export default () => (
-    <div ><span>LOADED!!!</span></div>
+    <div className={CSS.test}>
+        <h2>HWY</h2>
+        <h2>HWY</h2>
+        <h2>HWY</h2>
+        <h2>HWY</h2>
+        <h2>HWY</h2>
+        <h2>HWY</h2>
+        <h2>HWY</h2>
+    </div>
 )
