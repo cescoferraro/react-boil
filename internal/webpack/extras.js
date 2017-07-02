@@ -2,7 +2,6 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const webpack = require("webpack");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
-
 let FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const resolve = {
@@ -11,77 +10,40 @@ const resolve = {
 
 const SERVER_LOADERS = (env)=>{
     let loader =[]
-    if(env.production){
-	loader = [
-	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	    {
-		test: /\.css$/,
-		exclude: /node_modules/,
-		use: {
-		    loader: 'css-loader/locals',
-		    options: {
-			modules: true,
-			localIdentName: '[name]__[local]--[hash:base64:5]'
-		    }
+    loader = [
+	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	{
+	    test: /\.css$/,
+	    exclude: /node_modules/,
+	    use: {
+		loader: 'css-loader/locals',
+		options: {
+		    modules: true,
+		    localIdentName: '[name]__[local]--[hash:base64:5]'
 		}
 	    }
-	]
-    }else {
-	loader = [
-	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	    {
-		test: /\.css$/,
-		exclude: /node_modules/,
-		use: {
-		    loader: 'css-loader/locals',
-		    options: {
-			modules: true,
-			localIdentName: '[name]__[local]--[hash:base64:5]'
-		    }
-		}
-	    }
-	]
-
-    }
+	}
+    ]
     return {rules:loader}
 };
 
 const CLIENT_LOADERS = (env)=>{
     let loader =[]
-    if(env.production){
-	loader =  [
-	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	    {
-		test: /\.css$/,
-		use: ExtractCssChunks.extract({
-		    use: {
-			loader: 'css-loader',
-			options: {
-			    modules: true,
-			    localIdentName: '[name]__[local]--[hash:base64:5]'
-			}
+    loader = [
+	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	{
+	    test: /\.css$/,
+	    use: ExtractCssChunks.extract({
+		use: {
+		    loader: 'css-loader',
+		    options: {
+			modules: true,
+			localIdentName: '[name]__[local]--[hash:base64:5]'
 		    }
-		})
-	    }
-	]
-    }else {
-	loader = [
-	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	    {
-		test: /\.css$/,
-		use: ExtractCssChunks.extract({
-		    use: {
-			loader: 'css-loader',
-			options: {
-			    modules: true,
-			    localIdentName: '[name]__[local]--[hash:base64:5]'
-			}
-		    }
-		})
-	    }
-	]
-
-    }
+		}
+	    })
+	}
+    ]
     return {rules:loader}
 };
 
@@ -149,6 +111,7 @@ const CLIENT_PLUGINS = ( env ) => {
 
     }else {
 	return [
+	    new webpack.HotModuleReplacementPlugin(),
 	    new ExtractCssChunks(),
 	    new webpack.optimize.CommonsChunkPlugin({
 		names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
@@ -156,7 +119,6 @@ const CLIENT_PLUGINS = ( env ) => {
 		minChunks: Infinity
 	    }),
 
-	    new webpack.HotModuleReplacementPlugin(),
 	    new webpack.NoEmitOnErrorsPlugin(),
 	    new webpack.DefinePlugin({
 		'process.env': {
@@ -193,16 +155,17 @@ const CLIENT_PLUGINS = ( env ) => {
 const DEVTOOLS = 'source-map'; 
 
 const PUBLIC_PATH = (env) => 
-    env.production ? "http://localhost:4000/" : "/";
+    env.production ? "http://localhost:5000/" : "/";
 
 const HOTLOADER = (entry, env)=>{
     if (!env.production) {
-	return ['react-hot-loader/patch',
-		'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&overlay=false', 
-		...entry]; 
+	return [
+	    'webpack-hot-middleware/client',
+	    'react-hot-loader/patch',
+	    ...entry
+	] ; 
     }
     return entry;
-
 };
 
 module.exports = {

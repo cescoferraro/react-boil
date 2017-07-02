@@ -6,11 +6,15 @@ module.exports = ( env ) => {
     return ( {
 	name: 'client',
 	target: 'web',
-	entry: extras.HOTLOADER(['./client/client'],env),
+	entry: [
+            'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
+	    'react-hot-loader/patch',
+	    path.resolve(__dirname, './client/client.tsx')
+	] ,
 	output: {
 	    path:  path.join(__dirname, 'dist'),
 	    filename: 'js/[name]_[hash].js',
-	    publicPath: extras.PUBLIC_PATH(env) 
+	    publicPath:  "http://localhost:5000/" 
 	},
 	devtool: extras.DEVTOOLS,
 	plugins: extras.CLIENT_PLUGINS(env), 

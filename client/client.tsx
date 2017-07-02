@@ -8,7 +8,6 @@ import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { unmountComponentAtNode } from "react-dom";
 
 injectTapEventPlugin();
-Renderer(AppRouter)
 
 if (module.hot) {
     module.hot.accept(
@@ -24,3 +23,5 @@ if (module.hot) {
             NewRenderer(NextEatApp);
         });
 }
+
+Renderer(AppRouter)
