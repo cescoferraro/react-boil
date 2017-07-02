@@ -10,9 +10,10 @@ module.exports = ( env ) => {
 	output: {
 	    path:  path.join(__dirname, 'dist'),
 	    filename: 'js/[name]_[hash].js',
+	    publicPath: extras.PUBLIC_PATH(env) 
 	},
 	devtool: extras.DEVTOOLS,
-	plugins: extras.CLIENT_PLUGINS(env,true), 
-	module:  extras.LOADERS(env),
+	plugins: extras.CLIENT_PLUGINS(env), 
+	module:  extras.CLIENT_LOADERS(env),
 	resolve: extras.resolve 
     } ); };

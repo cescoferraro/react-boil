@@ -15,7 +15,7 @@ module.exports = ( env ) => ( {
 	publicPath: extras.PUBLIC_PATH(env) 
     },
     devtool: 'source-map',
-    module: extras.LOADERS(env,false),
+    module: extras.SERVER_LOADERS(env),
     resolve: extras.resolve,
-    plugins:extras.SERVER_PLUGINS 
+    plugins:extras.SERVER_PLUGINS(env)
 } );

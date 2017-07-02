@@ -8,23 +8,18 @@ import { push } from 'connected-react-router'
 import { UniversalComponent } from "./components/universal"
 import { LoadableComponent } from "./components/load"
 
-@withStyles(HomeStyle)
-@firebaseConnect(['/app'])
 export class HomeContainer extends React.Component<any, any> {
 
-
     public render() {
+        console.log(this.props)
         return (
             <div>
-                <div className={HomeStyle.app}>
-                    <h2>React-boil</h2>
-                    <h2>React-boil</h2>
-                    {<UniversalComponent />}
-                    <RaisedButton onClick={() => {
-                        this.props.dispatch(push("/whatver"))
-                    }}
-                        label="Default" primary={true} />
-                </div>
+                <h2>React-boil</h2>
+                {<UniversalComponent />}
+                <RaisedButton onClick={() => {
+                    this.props.dispatch(push("/whatver"))
+                }}
+                    label="Default" primary={true} />
             </div >
         )
     }

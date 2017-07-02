@@ -16,7 +16,7 @@ import { Renderer } from "./renderer";
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 injectTapEventPlugin();
 
-export default function serverRenderer({ production, clientStats, serverStats, title }) {
+export default function serverRenderer(props) {
     const context = {};
     return (req, res, next) => {
         let store = configureStore();
@@ -24,13 +24,11 @@ export default function serverRenderer({ production, clientStats, serverStats, t
 
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(
-                <HTML title={title}
+                <HTML
+                    store={store}
                     css={render.css}
                     appString={render.string}
-                    production={production}
-                    store={store}
-                    clientStats={clientStats}
-                    serverStats={serverStats}
+                    {...props}
                 />
             ))
 

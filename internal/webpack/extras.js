@@ -1,3 +1,4 @@
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const webpack = require("webpack");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
@@ -5,102 +6,195 @@ const StatsPlugin = require('stats-webpack-plugin');
 let FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const resolve = {
-    extensions: ['.js', '.tsx', '.json', 'pcss']
+    extensions: ['.css','.js', '.tsx', '.json', '.pcss']
 };
 
-const LOADERS = (env, isClient)=>{
-    const typed = [{
-	loader: 'typed-css-modules-loader',
-	options: {
-	    searchDir: "**/*.pcss"
-	}
-    }];
-    let rules = [
-	{ test: /\.(pcss)$/,
-	  use:[ 
-	      {loader: 'isomorphic-style-loader'},
-	      {loader: 'css-loader',
-	       options: {importLoaders: 1,
-			 sourceMap: true,
-			 modules: true,
-			 localIdentName: "[name]_[local]_[hash:base64:3]"}},
-	      ... typed,
-	      {loader: 'postcss-loader',
-	       options: {
-		   plugins: (loader) => [
-		       require('postcss-import')({ root: loader.resourcePath }),
-		       require("postcss-cssnext")({
-			   browsers: '> 0%', customProperties: true,
-			   colorFunction: true, customSelectors: true
-		       })
-		   ]
-	       }}]
-	},
+const SERVER_LOADERS = (env)=>{
+    let loader =[]
+    if(env.production){
+	loader = [
+	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	    {
+		test: /\.css$/,
+		exclude: /node_modules/,
+		use: {
+		    loader: 'css-loader/locals',
+		    options: {
+			modules: true,
+			localIdentName: '[name]__[local]--[hash:base64:5]'
+		    }
+		}
+	    }
+	]
+    }else {
+	loader = [
+	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	    {
+		test: /\.css$/,
+		exclude: /node_modules/,
+		use: {
+		    loader: 'css-loader/locals',
+		    options: {
+			modules: true,
+			localIdentName: '[name]__[local]--[hash:base64:5]'
+		    }
+		}
+	    }
+	]
 
-
-	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
-	{ enforce: "pre",  exclude: /node_modules/, test: /\.js$/, loader: "source-map-loader" },
-	{ test: /\.(eot|svg|ttf|otf|woff|woff2)$/,
-	  use:[
-	      {	loader: 'file-loader',
-	       options:{
-		   emitFile: isClient,
-		   name: "fonts/font-[sha512:hash:base64:7].[ext]"
-	       }}]},
-	{
-	    test: /\.(jpe?g|png|gif|svg)$/,
-	    use:[
-		{loader: 'file-loader',
-		 options:{
-		     emitFile: isClient,
-		     name: "fonts/font-[sha512:hash:base64:7].[ext]"
-		 }}]}];
-    return ( {rules: rules} ); 
-};
-
-
-const LOADERS_OPTIONS =  new webpack.LoaderOptionsPlugin({
-    minimize: false,
-    debug: true,
-    options: {
-	context: '/'
     }
-});
-const SERVER_PLUGINS = [LOADERS_OPTIONS];
-const DEVTOOLS = 'source-map'; 
-const PUBLIC_PATH = (env) => 
-    env.production ? "http://localhost:4000/" : "http://localhost:4000/";
+    return {rules:loader}
+};
+
+const CLIENT_LOADERS = (env)=>{
+    let loader =[]
+    if(env.production){
+	loader =  [
+	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	    {
+		test: /\.css$/,
+		use: ExtractCssChunks.extract({
+		    use: {
+			loader: 'css-loader',
+			options: {
+			    modules: true,
+			    localIdentName: '[name]__[local]--[hash:base64:5]'
+			}
+		    }
+		})
+	    }
+	]
+    }else {
+	loader = [
+	    { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	    {
+		test: /\.css$/,
+		use: ExtractCssChunks.extract({
+		    use: {
+			loader: 'css-loader',
+			options: {
+			    modules: true,
+			    localIdentName: '[name]__[local]--[hash:base64:5]'
+			}
+		    }
+		})
+	    }
+	]
+
+    }
+    return {rules:loader}
+};
+
+
+
+const SERVER_PLUGINS = (env)=> {
+    if (env.production){
+	return [
+	    new webpack.optimize.LimitChunkCountPlugin({
+		maxChunks: 1
+	    }),
+
+	    new webpack.DefinePlugin({
+		'process.env': {
+		    NODE_ENV: JSON.stringify('production')
+		}
+	    })
+	]
+    }else {
+	return [
+	    new webpack.optimize.LimitChunkCountPlugin({
+		maxChunks: 1
+	    }),
+	    new webpack.DefinePlugin({
+		'process.env': {
+		    NODE_ENV: JSON.stringify('development')
+		}
+	    })
+	]
+    }
+};
+
 
 const CLIENT_PLUGINS = ( env ) => {
-    const og = [
-	new webpack.HotModuleReplacementPlugin(),
-	new webpack.NamedModulesPlugin(),
-	new webpack.NoEmitOnErrorsPlugin(),
-	new FaviconsWebpackPlugin({
-	    prefix: 'icons/',
-	    logo: './shared/icon/favicon.png'
-	}),
-	LOADERS_OPTIONS];
-    if (env.production !== true){
-	og.push(
-	    new webpack.DllReferencePlugin({
-	     	context: process.cwd(),
-	     	manifest: require("../../dll/vendor.json")
+    if (env.production){
+	return [
+	    new StatsPlugin('stats.json'),
+	    new ExtractCssChunks(),
+	    new webpack.optimize.CommonsChunkPlugin({
+		names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
+		filename: '[name].[chunkhash].js',
+		minChunks: Infinity
 	    }),
+
+	    new webpack.DefinePlugin({
+		'process.env': {
+		    NODE_ENV: JSON.stringify('production')
+		}
+	    }),
+	    new webpack.optimize.UglifyJsPlugin({
+		compress: {
+		    screw_ie8: true,
+		    warnings: false
+		},
+		mangle: {
+		    screw_ie8: true
+		},
+		output: {
+		    screw_ie8: true,
+		    comments: false
+		},
+		sourceMap: true
+	    })
+	]	
+
+    }else {
+	return [
+	    new ExtractCssChunks(),
 	    new webpack.optimize.CommonsChunkPlugin({
 		names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
 		filename: '[name].js',
 		minChunks: Infinity
-	    }));
-    } else {
-	og.push(
-	    new StatsPlugin("stats.json"),
-	    new CopyWebpackPlugin([ {from: "./server/server.js",to:"./server.js"} ])
-	);
+	    }),
 
-    };
-    return  ( og );
+	    new webpack.HotModuleReplacementPlugin(),
+	    new webpack.NoEmitOnErrorsPlugin(),
+	    new webpack.DefinePlugin({
+		'process.env': {
+		    NODE_ENV: JSON.stringify('development')
+		}
+	    })
+	]
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const DEVTOOLS = 'source-map'; 
+
+const PUBLIC_PATH = (env) => 
+    env.production ? "http://localhost:4000/" : "/";
+
 const HOTLOADER = (entry, env)=>{
     if (!env.production) {
 	return ['react-hot-loader/patch',
@@ -118,5 +212,6 @@ module.exports = {
     CLIENT_PLUGINS: CLIENT_PLUGINS,
     HOTLOADER:HOTLOADER,
     PUBLIC_PATH: PUBLIC_PATH,
-    LOADERS: LOADERS 
+    CLIENT_LOADERS: CLIENT_LOADERS,
+    SERVER_LOADERS: SERVER_LOADERS 
 };
