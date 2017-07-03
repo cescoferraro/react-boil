@@ -5,10 +5,10 @@ const plugins = require("./internal/webpack/plugins.js");
 const loaders = require("./internal/webpack/loaders.js");
 
 module.exports = ( env ) => {
-    return ( {
+    const client = {
 	name: 'client',
 	target: 'web',
-	entry: extras.HOTLOADER(path.resolve(__dirname, './client/client.tsx'),env),
+	entry: {main: extras.HOTLOADER(path.resolve(__dirname, './client/client.tsx'),env) },
 	output: {
 	    path:  path.join(__dirname, 'dist'),
 	    filename: 'js/[name]_[hash].js',
@@ -18,4 +18,9 @@ module.exports = ( env ) => {
 	plugins: plugins.CLIENT_PLUGINS(env), 
 	module:  loaders.CLIENT_LOADERS(env),
 	resolve: extras.resolve 
-    } ); };
+    }
+    if(env.production){
+	client.entry.vendorC = ["react","lodash", "react-dom", "rxjs"]
+    }
+    return ( client ); 
+};

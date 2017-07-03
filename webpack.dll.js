@@ -7,7 +7,7 @@ module.exports = (env)=>( {
     },
     output: {
         path: path.join(__dirname, "dll"),
-        filename: "[name].js",
+        filename: "dll.js",
         library: "[name]"
     },
     plugins: [

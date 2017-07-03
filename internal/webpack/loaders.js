@@ -1,9 +1,7 @@
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 
-
 const SERVER_LOADERS = (env)=>{
-    let loader =[]
-    loader = [
+    let loader = [
 	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
 	{
 	    test: /\.css$/,
@@ -21,8 +19,7 @@ const SERVER_LOADERS = (env)=>{
 };
 
 const CLIENT_LOADERS = (env)=>{
-    let loader =[]
-    loader = [
+    let loader = [
 	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
 	{
 	    test: /\.css$/,

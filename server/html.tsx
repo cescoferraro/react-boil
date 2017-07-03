@@ -1,20 +1,35 @@
 import * as React from "react"
 import { flushedAssets } from "./flush"
+import { getScripts, getStyles } from "./helpers"
+
+const path = require("path")
+const fs = require("fs")
 
 export const HTML = ({ clientStats, serverStats,
     outputPath, production, cssString, appString, store, title }) => {
     console.log("receiver")
-    const { Js, scripts, stylesheets } = flushedAssets(clientStats, outputPath)
+    const place = path.resolve(outputPath, '../dll/dll.js')
+    console.log(place)
+    const vendorDllFileExists = fs.existsSync(place)
+    console.log(vendorDllFileExists)
+    const assets = flushedAssets(clientStats, outputPath, production)
+    const { preload, scripts } = getScripts(assets.scripts);
+    const styles = getStyles(assets.stylesheets);
     return (<html>
         <head>
-            {stylesheets.map((styleUrl) =>
-                (<link key={Math.random()} rel="stylesheet" type="text/css" href={styleUrl} />))}
             <link rel="shortcut icon" href="icons/favicon.ico" />
+            {styles}
         </head>
         <body>
             <div id="root"
                 dangerouslySetInnerHTML={{ __html: appString }} />
-            <Js />
+            {vendorDllFileExists &&
+                <script
+                    src={'/dll.js'}
+                    defer
+                    charSet="UTF-8"
+                />}
+            {scripts}
         </body>
     </html>)
 }

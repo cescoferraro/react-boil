@@ -17,7 +17,7 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🖌 [[https://github.com/postcss/postcss][PostCSS]] lets you use next css syntax now.
 
-🖌 [[https://github.com/kriasoft/isomorphic-style-loader][Isomorphic-style-loader]] injects only css critical path to the website.
+🖌 [[https://github.com/kriasoft/isomorphic-style-loader][Extract-Css-Chunks]] injects only css critical path to the website.
 
 🌍 [[https://facebook.github.io/react/docs/react-dom-server.html][Server Side Rendering]].
 
@@ -37,12 +37,13 @@ The goal here is to enable developers deliver tommorow's web today faster.
 
 🏜 Asset bundling support. e.g. images/fonts.
 
+✂️ Code splitting - Thanks to webpack-flush-chunks
+
 * TODO Things Left to Do 
 
-🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
+  🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
 
-😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
+  😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
 
-✂️ Code splitting - easily define code split points in your source using `react-async-component`.
 
 
