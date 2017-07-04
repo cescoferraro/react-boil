@@ -21,13 +21,11 @@ export default function serverRenderer(props) {
     return (req, res, next) => {
         let store = configureStore();
         const render = Renderer(req, store)
-
         res.send("<!DOCTYPE html>" +
             renderToStaticMarkup(
                 <HTML
                     store={store}
-                    css={render.css}
-                    appString={render.string}
+                    content={render.string}
                     {...props}
                 />
             ))

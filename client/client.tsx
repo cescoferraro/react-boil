@@ -6,7 +6,7 @@ import { WithStylesContext } from "../shared/components/styles.context";
 import { Renderer, tag } from "./renderer";
 import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { unmountComponentAtNode } from "react-dom";
-
+import {runServiceWorker} from "./sw"
 injectTapEventPlugin();
 
 if (module.hot) {
@@ -25,3 +25,4 @@ if (module.hot) {
 }
 
 Renderer(AppRouter)
+runServiceWorker()

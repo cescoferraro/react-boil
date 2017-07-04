@@ -8,7 +8,6 @@ import { UniversalComponent } from "./components/universal"
 import { MyHelmet } from "../shared/helmet"
 
 export class HomeContainer extends React.Component<any, any> {
-
     public render() {
         return (
             <div>

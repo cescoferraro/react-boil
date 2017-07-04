@@ -1,35 +1,37 @@
 import * as React from "react"
 import { flushedAssets } from "./flush"
-import { getScripts, getStyles } from "./helpers"
+import { getScripts, getStyles, Helmator } from "./helpers"
 
 const path = require("path")
-const fs = require("fs")
+const CachedFs = require('cachedfs'),
+    fs = new CachedFs();
 
-export const HTML = ({ clientStats, serverStats,
-    outputPath, production, cssString, appString, store, title }) => {
-    console.log("receiver")
+export const HTML = (
+    { clientStats, serverStats, outputPath, production, content, store }
+) => {
     const place = path.resolve(outputPath, '../dll/dll.js')
-    console.log(place)
-    const vendorDllFileExists = fs.existsSync(place)
-    console.log(vendorDllFileExists)
     const assets = flushedAssets(clientStats, outputPath, production)
     const { preload, scripts } = getScripts(assets.scripts);
     const styles = getStyles(assets.stylesheets);
-    return (<html>
-        <head>
-            <link rel="shortcut icon" href="icons/favicon.ico" />
+    const MyHelmet = Helmator()
+    console.log(fs.existsSync(place))
+    return (
+	<html {...MyHelmet.html}>
+        <head >
+            {MyHelmet.title}
+            {MyHelmet.meta}
+            {MyHelmet.link}
             {styles}
+            {preload}
         </head>
-        <body>
+        <body {...MyHelmet.html}>
             <div id="root"
-                dangerouslySetInnerHTML={{ __html: appString }} />
-            {vendorDllFileExists &&
-                <script
-                    src={'/dll.js'}
-                    defer
-                    charSet="UTF-8"
-                />}
-            {scripts}
-        </body>
-    </html>)
+                dangerouslySetInnerHTML={{ __html: content }} />
+            {fs.existsSync(place) ?
+                <script id="dll"
+                    dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, 'utf8') }} /> :
+                null}
+            {scripts} </body>
+    </html>
+    )
 }

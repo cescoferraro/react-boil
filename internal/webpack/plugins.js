@@ -1,13 +1,27 @@
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const webpack = require("webpack")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const noop = require('noop-webpack-plugin')
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+
+const icons =  new FaviconsWebpackPlugin({
+    prefix: 'icons/',
+    logo: './shared/icon/favicon.png',
+    config: {
+	appName: "react-boil",
+	lang: "pt",
+	start_url: '/',
+	theme_color: '#00bfff'
+    }
+})
 
 const SERVER_PLUGINS = (env)=> {
     if (env.production){
 	return [
+	    icons,
 	    new CopyWebpackPlugin([ {from: "./server/server.js",to:"./server.js"} ]),
 	    new webpack.optimize.LimitChunkCountPlugin({
 		maxChunks: 1
@@ -20,6 +34,7 @@ const SERVER_PLUGINS = (env)=> {
 	]
     }else {
 	return [
+	    icons,
 	    new webpack.optimize.LimitChunkCountPlugin({
 		maxChunks: 1
 	    }),
@@ -32,9 +47,17 @@ const SERVER_PLUGINS = (env)=> {
     }
 };
 
+const SW = new SWPrecacheWebpackPlugin({
+    staticFileGlobs: ['/?pwa=true'],
+    filename: "js/sw.js",
+    staticFileGlobsIgnorePatterns: [/\.map$/], 
+    mergeStaticsConfig: true
+}) 
+
 const CLIENT_PLUGINS = ( env ) => {
     if (env.production){
 	return [
+	    SW,
 	    new StatsPlugin('stats.json'),
 	    new ExtractCssChunks({
 		filename: 'css/[name]_[hash].css'
