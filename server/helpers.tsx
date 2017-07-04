@@ -1,11 +1,6 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 
-declare module 'React' {
-    interface HTMLAttributes<T> extends React.DOMAttributes<T> {
-        as?: string
-    }
-}
 
 export const getScripts = (scripts: Array<string>) => {
     return scripts.reduce(
@@ -17,7 +12,6 @@ export const getScripts = (scripts: Array<string>) => {
                     rel="preload"
                     href={scriptPath}
                     key={script}
-                    as="script"
                 />
             );
 

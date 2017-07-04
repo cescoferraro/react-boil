@@ -23,7 +23,6 @@ export const HTML = (
             {MyHelmet.meta}
             {MyHelmet.link}
             {styles}
-            {preload}
         </head>
         <body {...MyHelmet.html}>
             <div id="root"
