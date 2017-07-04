@@ -1,5 +1,4 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path'); const webpack = require('webpack');
 const extras = require("./internal/webpack/extras.js");
 const plugins = require("./internal/webpack/plugins.js");
 const loaders = require("./internal/webpack/loaders.js");
@@ -21,6 +20,10 @@ module.exports = ( env ) => {
     }
     if(env.production){
 	client.entry.vendorC = ["react","lodash", "react-dom", "rxjs"]
+    } else {
+	client.externals = {
+	    "vendor": "react"
+	}
     }
     return ( client ); 
 };

@@ -13,11 +13,9 @@ import { getFirebase } from 'react-redux-firebase';
 export const Renderer = (req, store) => {
     let app = (
         <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: req.headers['user-agent'] })}>
-            <StaticRouter location={req.url} context={{}}>
-                <ReduxProvider store={store}>
-                    <AppRouter />
-                </ReduxProvider>
-            </StaticRouter>
+            <ReduxProvider store={store}>
+                <AppRouter />
+            </ReduxProvider>
         </MuiThemeProvider>
     )
     return { string: renderToString(app) }

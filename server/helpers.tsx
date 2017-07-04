@@ -1,11 +1,21 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 
+const CachedFs = require('cachedfs'),
+    fs = new CachedFs();
 
-export const getScripts = (scripts: Array<string>) => {
+const path = require("path")
+/* declare module 'React' {*/
+/* interface HTMLAttributes<T> extends DOMAttributes<T> {*/
+/* as?: string*/
+/* }*/
+/* }*/
+
+export const getScripts = (scripts: Array<string>, outputPath, production) => {
     return scripts.reduce(
         (acc, script: string) => {
             const scriptPath = `/${script}`;
+            const place = path.join(outputPath, scriptPath)
 
             const preload = (
                 <link
@@ -20,7 +30,6 @@ export const getScripts = (scripts: Array<string>) => {
                     src={scriptPath}
                     key={script}
                     type="text/javascript"
-                    defer={true}
                 />
             );
 

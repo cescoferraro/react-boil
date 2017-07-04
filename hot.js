@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -13,9 +14,7 @@ const compiler = webpack(config);
 const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 
-app.get('/dll.js', (req, res) => {
-    res.sendFile("./dll.js",{root: "./dll"});
-});
+app.use('/dll', express.static(path.join(__dirname, 'dll')));
 app.use(webpackDevMiddleware(compiler, {noInfo: false, publicPath}));
 app.use(WebpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
 app.use(webpackHotServerMiddleware(compiler, {

@@ -83,8 +83,8 @@ const CLIENT_PLUGINS = ( env ) => {
     }else {
 	return [
 	    new webpack.DllReferencePlugin({
-		context: process.cwd(),
-		manifest: require("../../dll/vendor.json")
+		manifest: require("../../dll/vendor.dll.json"),
+		name: "react"
 	    }),
 	    new webpack.HotModuleReplacementPlugin(),
 	    new ExtractCssChunks(),	    

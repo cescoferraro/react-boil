@@ -1,20 +1,34 @@
-var path = require("path");
-var webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
-module.exports = (env)=>( {
+const dll = {
+    devtool: 'source-map',
+    target: 'web',
+
     entry: {
-        vendor: ["react","react-dom"]
+        vendor: [
+            'react',
+            'react-dom',
+        ],
     },
+
     output: {
-        path: path.join(__dirname, "dll"),
-        filename: "dll.js",
-        library: "[name]"
+        path: path.resolve(__dirname, "dll"),
+        filename: '[name].dll.js',
+        library: '[name]',
     },
+
+    resolve: {
+        modules: ['node_modules'],
+    },
+
     plugins: [
         new webpack.DllPlugin({
-            path: path.join(__dirname, "dll","[name].json"),
-            name: "[name]",
-            context: path.resolve(__dirname, "client")
-        }),
-    ]
-});
+            path: path.resolve(__dirname,"dll", '[name].dll.json'),
+            name: '[name]',
+        })
+
+    ],
+};
+
+module.exports = dll;
