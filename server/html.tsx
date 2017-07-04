@@ -14,6 +14,7 @@ export const HTML = (
     const { preload, scripts } = getScripts(assets.scripts);
     const styles = getStyles(assets.stylesheets);
     const MyHelmet = Helmator()
+    console.log(place)
     console.log(fs.existsSync(place))
     return (
 	<html {...MyHelmet.html}>

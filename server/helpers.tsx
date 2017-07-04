@@ -2,11 +2,10 @@ import * as React from "react"
 import { Helmet } from "react-helmet"
 
 declare module 'React' {
-    interface HTMLAttributes<T> extends DOMAttributes<T> {
+    interface HTMLAttributes<T> extends React.DOMAttributes<T> {
         as?: string
     }
 }
-
 
 export const getScripts = (scripts: Array<string>) => {
     return scripts.reduce(
