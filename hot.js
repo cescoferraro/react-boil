@@ -4,10 +4,8 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const WebpackHotMiddleware = require('webpack-hot-middleware');
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
-
 const config = require('./webpack.config.js')({production:false});
 const clientConfig = require('./webpack.client.js')({production:false})
-
 const app = express();
 const compiler = webpack(config);
 const publicPath = clientConfig.output.publicPath
@@ -23,6 +21,4 @@ app.use(webpackHotServerMiddleware(compiler, {
     }
 }));
 
-app.listen(5000, () => {
-    console.log('Server started: http://localhost:5000');
-});
+app.listen(5000, () => {console.log('Server started: http://localhost:5000')});
