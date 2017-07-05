@@ -1,0 +1,22 @@
+{"extends": ["tslint:latest", "tslint-react"],
+ "rules":{
+   "semicolon": [true, "never"],
+   "trailing-comma": [
+     true,
+     {
+       "multiline": {
+	 "objects": "never",
+	 "arrays": "never",
+	 "functions": "never",
+	 "typeLiterals": "ignore"
+       }
+     }
+   ],
+   "align": [true, "parameters", "statements"],
+   "no-console": [false],
+   "no-var-requires": false,
+   "no-unused-variable": true,
+   "ordered-imports": false,
+   "object-literal-sort-keys":false
+ }
+}
