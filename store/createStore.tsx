@@ -18,12 +18,9 @@ function todos(state = [], action) {
             return state
     }
 }
-const routesMap = {
-    HOME: "/",
-    USER: "/user/:id"
-}
 import { NOT_FOUND } from 'redux-first-router'
 import { logger } from "./logger";
+import { routesMap } from "../app/route.map";
 
 export const userIdReducer = (state = null, action: any = {}) => {
     switch (action.type) {
@@ -38,16 +35,39 @@ export const userIdReducer = (state = null, action: any = {}) => {
 }
 
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
+export const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyCR1eRcu-FHxG6Yp1RarrBq1wKWWi8Ha2k",
+    authDomain: "craigs-8e724.firebaseapp.com",
+    databaseURL: "https://craigs-8e724.firebaseio.com",
+    projectId: "craigs-8e724",
+    storageBucket: "craigs-8e724.appspot.com",
+    enableRedirectHandling: false,
+    messagingSenderId: "794041684762"
+};
 
 export const configureStore = (history: any = {}) => {
     const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
-    const rootReducer = combineReducers({ location: reducer, userId: userIdReducer })
+    const rootReducer = allReducers(reducer)
 
     let middlewares = composeWithDevTools(
         applyMiddleware(middleware,
             logger,
             ReplacebleEpicMiddleware)
     )
-    const store = createStore(rootReducer, compose(enhancer, middlewares))
+    let FirebaseStoreCreator = compose(reactReduxFirebase(FIREBASE_CONFIG, {}))(createStore);
+    const store = FirebaseStoreCreator(rootReducer, compose(enhancer, middlewares))
+
+
+
+    if (module.hot) {
+        module.hot.accept(['./reducers.tsx'], () => {
+            const nextRootReducer = require('./reducers.tsx').allReducers(reducer);
+            store.replaceReducer(nextRootReducer);
+        });
+        module.hot.accept(["./epics.tsx"], () => {
+            const nextRootEpic = require('./epics.tsx').RootEpic;
+            ReplacebleEpicMiddleware.replaceEpic(nextRootEpic);
+        });
+    }
     return store
 }
