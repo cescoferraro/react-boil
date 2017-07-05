@@ -11,19 +11,15 @@ module.exports = ( env ) => {
 	output: {
 	    path:  path.join(__dirname, 'dist'),
 	    filename: 'js/[name]_[hash].js',
-	    publicPath:  "http://localhost:5000/" 
+	    publicPath:  "/" 
 	},
-	devtool: extras.DEVTOOLS,
+	devtool: extras.DEVTOOLS(env),
 	plugins: plugins.CLIENT_PLUGINS(env), 
 	module:  loaders.CLIENT_LOADERS(env),
 	resolve: extras.resolve 
     }
     if(env.production){
 	client.entry.vendorC = ["react","lodash", "react-dom", "rxjs"]
-    } else {
-	client.externals = {
-	    "vendor": "react"
-	}
     }
     return ( client ); 
 };

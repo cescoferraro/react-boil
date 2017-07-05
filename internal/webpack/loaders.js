@@ -2,7 +2,14 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 
 const SERVER_LOADERS = (env)=>{
     let loader = [
-	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader",
+          options: {
+              sourceMap: true, 
+              useCache: true, 
+              useBabel: false 
+          }
+
+	},
 	{
 	    test: /\.css$/,
 	    exclude: /node_modules/,
@@ -20,7 +27,13 @@ const SERVER_LOADERS = (env)=>{
 
 const CLIENT_LOADERS = (env)=>{
     let loader = [
-	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
+	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" ,
+          options: {
+              sourceMap: true, 
+              useCache: true, 
+              useBabel: false 
+          }
+},
 	{
 	    test: /\.css$/,
 	    use: ExtractCssChunks.extract({

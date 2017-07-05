@@ -9,7 +9,6 @@ const config = require('./webpack.config.js')({production:false});
 const clientConfig = require('./webpack.client.js')({production:false})
 
 const app = express();
-
 const compiler = webpack(config);
 const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path

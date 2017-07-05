@@ -30,6 +30,8 @@ export const getScripts = (scripts: Array<string>, outputPath, production) => {
                     src={scriptPath}
                     key={script}
                     type="text/javascript"
+                    async={true}
+                    defer={true}
                 />
             );
 

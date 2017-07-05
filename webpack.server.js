@@ -14,7 +14,7 @@ module.exports = ( env ) => ( {
         filename: 'server/[name].js',
         libraryTarget: 'commonjs2'
     },
-    devtool: 'source-map',
+    devtool: extras.DEVTOOLS(env),
     module: loaders.SERVER_LOADERS(env),
     resolve: extras.resolve,
     plugins: plugins.SERVER_PLUGINS(env)

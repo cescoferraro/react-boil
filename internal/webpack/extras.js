@@ -2,7 +2,7 @@ const resolve = {
     extensions: ['.css','.js', '.tsx', '.json', '.pcss']
 };
 
-const DEVTOOLS = 'source-map'; 
+const DEVTOOLS = (env)=> env.production ? 'source-map' : 'eval'; 
 
 const PUBLIC_PATH = (env) => 
     env.production ? "http://localhost:5000/" : "/";

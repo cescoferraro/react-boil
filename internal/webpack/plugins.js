@@ -84,6 +84,7 @@ const CLIENT_PLUGINS = ( env ) => {
 	return [
 	    new webpack.DllReferencePlugin({
 		manifest: require("../../dll/vendor.dll.json"),
+		context: __dirname, 
 		name: "react"
 	    }),
 	    new webpack.HotModuleReplacementPlugin(),

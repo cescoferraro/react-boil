@@ -30,7 +30,8 @@ export const HTML = (
                 {fs.existsSync(place) ?
                     <script id="dll" src="/dll/vendor.dll.js" type="text/javascript" /> :
                     null}
-                {scripts} </body>
+                {scripts}
+            </body>
         </html>
     )
 }
