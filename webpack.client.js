@@ -11,7 +11,7 @@ module.exports = ( env ) => {
 	output: {
 	    path:  path.join(__dirname, 'dist'),
 	    filename: 'js/[name]_[hash].js',
-	    publicPath:  "/" 
+	    publicPath: extras.PUBLIC_PATH(env)
 	},
 	devtool: extras.DEVTOOLS(env),
 	plugins: plugins.CLIENT_PLUGINS(env), 

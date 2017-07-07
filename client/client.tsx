@@ -25,5 +25,4 @@ if (module.hot) {
 }
 
 Renderer(AppRouter)
-
-/* runServiceWorker()*/
+runServiceWorker()

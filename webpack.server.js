@@ -12,7 +12,8 @@ module.exports = ( env ) => ( {
     output: {
         path: dist,
         filename: 'server/[name].js',
-        libraryTarget: 'commonjs2'
+        libraryTarget: 'commonjs2',
+	publicPath: extras.PUBLIC_PATH(env)
     },
     devtool: extras.DEVTOOLS(env),
     module: loaders.SERVER_LOADERS(env),

@@ -10,5 +10,8 @@ app.use('/icons', express.static(path.join(__dirname, 'icons')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 const clientStats = require('./stats.json')
 const outputPath = __dirname 
+app.get('/service-worker.js', (req, res) => {
+    res.sendFile("./service-worker.js",{root: "./"});
+});
 app.use(require("./server/main").default({ production: true, clientStats , outputPath}));
 app.listen(5000);

@@ -5,11 +5,6 @@ const CachedFs = require('cachedfs'),
     fs = new CachedFs();
 
 const path = require("path")
-/* declare module 'React' {*/
-/* interface HTMLAttributes<T> extends DOMAttributes<T> {*/
-/* as?: string*/
-/* }*/
-/* }*/
 
 export const getScripts = (scripts: Array<string>, outputPath, production) => {
     return scripts.reduce(
@@ -30,8 +25,6 @@ export const getScripts = (scripts: Array<string>, outputPath, production) => {
                     src={scriptPath}
                     key={script}
                     type="text/javascript"
-                    async={true}
-                    defer={true}
                 />
             );
 
@@ -57,6 +50,7 @@ export const getStyles = (styles: Array<string>) => {
                 key={style}
                 media="screen, projection"
                 rel="stylesheet"
+                async={true}
                 type="text/css"
                 charSet="UTF-8"
             />

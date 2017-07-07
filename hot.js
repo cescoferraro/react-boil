@@ -13,7 +13,7 @@ const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 
 app.use('/dll', express.static(path.join(__dirname, 'dll')));
-app.use(webpackDevMiddleware(compiler, {noInfo: false, publicPath}));
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath}));
 app.use(WebpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
 app.use(webpackHotServerMiddleware(compiler, {
     serverRendererOptions: {

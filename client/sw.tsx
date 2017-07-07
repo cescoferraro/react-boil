@@ -1,5 +1,7 @@
 export const runServiceWorker = () => {
+    if (document.location.hostname !== "localhost") {
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/js/sw.js');
+            navigator.serviceWorker.register('/service-worker.js');
         }
+    }
 }

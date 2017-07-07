@@ -18,12 +18,7 @@ const icons =  new FaviconsWebpackPlugin({
     prefix: "icons/",
 });
 
-const SW = new SWPrecacheWebpackPlugin({
-    filename: "/sw/sw.js",
-    mergeStaticsConfig: true,
-    staticFileGlobs: ["/?pwa=true"],
-    staticFileGlobsIgnorePatterns: [/\.map$/],
-});
+const SW = new SWPrecacheWebpackPlugin();
 
 const SERVER_PLUGINS = (env) => {
     if (env.production) {
@@ -57,8 +52,6 @@ const SERVER_PLUGINS = (env) => {
 const CLIENT_PLUGINS = ( env ) => {
     if (env.production) {
         return [
-
-            SW,
             new StatsPlugin("stats.json"),
             new ExtractCssChunks({
                 filename: "css/[name]_[hash].css",
@@ -79,6 +72,7 @@ const CLIENT_PLUGINS = ( env ) => {
                 },
             }),
             env.analyzer ? new BundleAnalyzerPlugin() : noop(),
+	    icons,
 	    SW,
         ];
     } else {

@@ -5,7 +5,8 @@ const resolve = {
 const DEVTOOLS = (env)=> env.production ? 'source-map' : 'eval'; 
 
 const PUBLIC_PATH = (env) => 
-    env.production ? "http://localhost:5000/" : "/";
+    env.production ? "https://boil.cescoferraro.xyz/" : "http://localhost:5000/";
+
 
 const HOTLOADER = (entry, env)=>{
     if (!env.production) {

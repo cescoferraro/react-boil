@@ -1,5 +1,18 @@
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 
+const postCSS =  {
+    loader: 'postcss-loader',
+    options: {
+	plugins: (loader) => [
+	    require('postcss-import')({ root: loader.resourcePath }),
+	    require("postcss-cssnext")({
+		browsers: '> 0%', customProperties: true,
+		colorFunction: true, customSelectors: true
+	    }),
+	]
+    }
+}
+
 const SERVER_LOADERS = (env)=>{
     let loader = [
 	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader",
@@ -11,15 +24,18 @@ const SERVER_LOADERS = (env)=>{
 
 	},
 	{
-	    test: /\.css$/,
+	    test: /\.pcss$/,
 	    exclude: /node_modules/,
-	    use: {
-		loader: 'css-loader/locals',
-		options: {
-		    modules: true,
-		    localIdentName: '[name]__[local]--[hash:base64:5]'
-		}
-	    }
+	    use: [ 
+		{
+		    loader: 'css-loader/locals',
+		    options: {
+			modules: true,
+			localIdentName: '[name]__[local]--[hash:base64:5]'
+		    }
+		},
+		postCSS
+	    ]
 	}
     ]
     return {rules:loader}
@@ -33,17 +49,20 @@ const CLIENT_LOADERS = (env)=>{
               useCache: true, 
               useBabel: false 
           }
-},
+	},
 	{
-	    test: /\.css$/,
+	    test: /\.pcss$/,
 	    use: ExtractCssChunks.extract({
-		use: {
-		    loader: 'css-loader',
-		    options: {
-			modules: true,
-			localIdentName: '[name]__[local]--[hash:base64:5]'
-		    }
-		}
+		use: [
+		    {
+			loader: 'css-loader',
+			options: {
+			    modules: true,
+			    localIdentName: '[name]__[local]--[hash:base64:5]'
+			}
+		    },
+		    postCSS
+		]
 	    })
 	}
     ]
