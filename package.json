@@ -19,7 +19,6 @@
     "docker/push": "docker push cescoferraro/boil:latest",
     "docker/preview": "yarn run clean && yarn build && yarn docker/run",
     "push": "yarn run clean && yarn run prod && yarn run docker/build && yarn run docker/push"
-
   },
   "author": "",
   "license": "ISC",
@@ -46,6 +45,7 @@
     "material-ui": "^0.18.6",
     "morgan": "^1.8.2",
     "noop-webpack-plugin": "^1.0.1",
+    "offline-plugin": "^4.8.1",
     "postcss-cssnext": "^3.0.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
