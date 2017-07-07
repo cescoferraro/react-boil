@@ -1,19 +1,23 @@
 import { firebaseStateReducer } from "react-redux-firebase"
 import { combineReducers } from "redux"
 
-function todos(state = [], action) {
+
+
+import { NOT_FOUND } from 'redux-first-router'
+export const userIdReducer = (state = null, action: any = {}) => {
     switch (action.type) {
-        case "TODO":
-            return state.concat([action.text])
-        case "ADD_TODO":
-            console.log("djdjd")
-            return state.concat([action.text])
+        case 'HOME':
+        case NOT_FOUND:
+            return null
+        case 'USER':
+            return action.payload.id
         default:
             return state
     }
 }
+
 export let allReducers = (location) => combineReducers({
     location,
-    todos,
+    userId: userIdReducer,
     firebase: firebaseStateReducer
 })

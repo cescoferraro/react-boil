@@ -18,21 +18,9 @@ function todos(state = [], action) {
             return state
     }
 }
-import { NOT_FOUND } from 'redux-first-router'
 import { logger } from "./logger";
 import { routesMap } from "../app/route.map";
 
-export const userIdReducer = (state = null, action: any = {}) => {
-    switch (action.type) {
-        case 'HOME':
-        case NOT_FOUND:
-            return null
-        case 'USER':
-            return action.payload.id
-        default:
-            return state
-    }
-}
 
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 export const FIREBASE_CONFIG = {
