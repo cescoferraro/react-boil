@@ -43,6 +43,7 @@ const SERVER_LOADERS = (env)=>{
 
 const CLIENT_LOADERS = (env)=>{
     let loader = [
+      { test: /\.ejs$/, loader: 'ejs-loader?variable=data' },
 	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" ,
           options: {
               sourceMap: true, 

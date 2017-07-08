@@ -11,12 +11,12 @@ import { compose } from "recompose"
 const AppRouterClass = (props) => {
     switch (props.location.type) {
         case "HOME":
+        case "INDEX":
             return (
                 <div id="HOME">
                     <h2> {props.location.type} </h2>
                     <MyHelmet title="Home" />
                     <h2>React-boil</h2>
-                    <UniversalComponent />
                     <Link to="/user/123">User 123</Link>
                     <Link to={{ type: 'USER', payload: { id: 456 } }}>User 456</Link>
                 </div>
@@ -26,6 +26,7 @@ const AppRouterClass = (props) => {
                 <div>
                     <h2>{props.location.type}</h2>
                     <h2>{props.userId}</h2>
+                    <UniversalComponent />
                     <RaisedButton
                         onClick={() => { props.dispatch({ type: "PING" }) }}
                         label="Default"

@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const webpack = require("webpack");
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
@@ -6,6 +7,8 @@ const StatsPlugin = require("stats-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const noop = require("noop-webpack-plugin");
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
+const path = require("path");
+
 
 const icons =  new FaviconsWebpackPlugin({
     config: {
@@ -18,7 +21,21 @@ const icons =  new FaviconsWebpackPlugin({
     prefix: "icons/",
 });
 
-const SW = new SWPrecacheWebpackPlugin();
+const SW = new SWPrecacheWebpackPlugin({
+    directoryIndex : "html/index.html"
+});
+
+const HTML = [ 
+    new HtmlWebpackPlugin({
+	filename: "html/index.html",
+	template:  "./server/index.ejs",
+	chunks:['bootstrap','vendor', 'main'],
+	chunksSortMode: (a, b) => { 
+	    var order = ['bootstrap','vendor', 'main']; 
+	    return order.indexOf(a.names[0]) - order.indexOf(b.names[0]); 
+	}
+    })
+];
 
 const SERVER_PLUGINS = (env) => {
     if (env.production) {
@@ -74,7 +91,8 @@ const CLIENT_PLUGINS = ( env ) => {
             env.analyzer ? new BundleAnalyzerPlugin() : noop(),
 	    icons,
 	    SW,
-        ];
+            ...HTML
+	];
     } else {
         return [
             new webpack.DllReferencePlugin({
