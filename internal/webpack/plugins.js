@@ -15,6 +15,7 @@ const icons =  new FaviconsWebpackPlugin({
         appName: "react-boil",
         lang: "pt",
         start_url: "/",
+	display: " fullscreen",
         theme_color: "#00bfff",
     },
     logo: "./shared/icon/favicon.png",
@@ -69,6 +70,7 @@ const SERVER_PLUGINS = (env) => {
 const CLIENT_PLUGINS = ( env ) => {
     if (env.production) {
         return [
+	    icons,
             new StatsPlugin("stats.json"),
             new ExtractCssChunks({
                 filename: "css/[name]_[hash].css",
@@ -95,6 +97,7 @@ const CLIENT_PLUGINS = ( env ) => {
 	];
     } else {
         return [
+	    icons,
             new webpack.DllReferencePlugin({
                 context: __dirname,
                 manifest: require("../../dll/vendor.dll.json"),
