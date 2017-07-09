@@ -54,7 +54,6 @@ const SERVER_PLUGINS = (env) => {
         ];
     } else {
         return [
-            icons,
             new webpack.optimize.LimitChunkCountPlugin({
                 maxChunks: 1,
             }),

@@ -1,16 +1,15 @@
 #+TITLE: React-boil 
-
 Cutting edge PWA ready React.js Boilerplate. 
 This is created as a template for my cookie cutter called [[http://github.com/cescoferraro/react-boiler][react-boiler]].
 The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
 
 👀 `[[https://github.com/facebook/react][react]]` as the view
 
-🔀 `[[https://reacttraining.com/react-router/][react-router]]` v4 as the router.
+🔥 [[http://redux.js.org/docs/introduction/][Redux]] store ready! All the cool tooling and extensions.
+
+🔀 `[[https://github.com/faceyspacey/redux-first-router][redux-first-router]]` as the router.
 
 🚄 `[[https://expressjs.com/][express]]` server.
-
-🔥 [[http://redux.js.org/docs/introduction/][Redux]] store ready! All the cool tooling and extensions.
 
 🔥 [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastuture ready to ship!
 
@@ -22,9 +21,7 @@ The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
 
 🖌 [[https://github.com/postcss/postcss][PostCSS]] lets you use next css syntax now.
 
-🖌 [[https://github.com/kriasoft/isomorphic-style-loader][Extract-Css-Chunks]] injects only css critical path to the website.
-
-🌍 [[https://github.com/supasate/connected-react-router][Connected-react-router]] syncs the react-router state inside redux store
+👼 [[https://github.com/kriasoft/isomorphic-style-loader][Extract-Css-Chunks]] injects only css critical path to the website.
 
 📦 All source is bundled using [[https://webpack.js.org/configuration/][Webpack v3]].
 
@@ -38,7 +35,7 @@ The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
 
 🚀 Full ES2017+ support + Strict Types. Thanks [[https://www.typescriptlang.org/][Typescript]] 
 
-👏🏽 [[https://github.com/s-panferov/awesome-typescript-loader][awesome-typescript-loader]] and its caching capibilities.  
+👾 [[https://github.com/s-panferov/awesome-typescript-loader][awesome-typescript-loader]] and its caching capabilities.  
   
 🏜 Asset bundling support. e.g. images/fonts.
 
