@@ -30,7 +30,7 @@ export const HTML = (
                 <meta name="application-name" content="react-boil" />
                 <meta name="apple-mobile-web-app-title" content="react-boil" />
                 <meta name="msapplication-starturl" content="/" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {MyHelmet.title}
                 {MyHelmet.meta}
                 {MyHelmet.link}

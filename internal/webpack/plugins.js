@@ -41,7 +41,6 @@ const HTML = [
 const SERVER_PLUGINS = (env) => {
     if (env.production) {
         return [
-            icons,
             new CopyWebpackPlugin([ {from: "./server/server.js", to: "./server.js"} ]),
             new webpack.optimize.LimitChunkCountPlugin({
                 maxChunks: 1,
@@ -90,7 +89,6 @@ const CLIENT_PLUGINS = ( env ) => {
                 },
             }),
             env.analyzer ? new BundleAnalyzerPlugin() : noop(),
-	    icons,
 	    SW,
             ...HTML
 	];

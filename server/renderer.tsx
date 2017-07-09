@@ -7,14 +7,15 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Provider as ReduxProvider } from "react-redux";
 import { getFirebase } from 'react-redux-firebase';
+import { BoilTheme } from "../shared/theme";
 
 export const Renderer = (req, store) => {
     let app = (
-        <MuiThemeProvider muiTheme={getMuiTheme({ userAgent: req.headers['user-agent'] })}>
+        <MuiThemeProvider muiTheme={getMuiTheme(BoilTheme, { userAgent: req.headers['user-agent'] })}>
             <ReduxProvider store={store}>
                 <AppRouter />
             </ReduxProvider>
-        </MuiThemeProvider>
+        </MuiThemeProvider >
     )
     return { string: renderToString(app) }
 }

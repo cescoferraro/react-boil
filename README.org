@@ -1,4 +1,5 @@
 #+TITLE: React-boil 
+
 Cutting edge PWA ready React.js Boilerplate. 
 This is created as a template for my cookie cutter called [[http://github.com/cescoferraro/react-boiler][react-boiler]].
 The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
@@ -39,7 +40,7 @@ The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
   
 🏜 Asset bundling support. e.g. images/fonts.
 
-✂️ Code splitting - Thanks to 💩  [[https://github.com/facespacey/webpack-flush-chunks][webpack-flush-chunks]]
+✂️ Code splitting - Thanks to 💩  [[https://www.npmjs.com/package/react-universal-component][react-universal-component]]
 
 😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
   

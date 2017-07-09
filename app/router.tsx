@@ -42,7 +42,6 @@ const AppRouterClass = (props) => {
                     <RaisedButton
                         onClick={() => { props.dispatch({ type: "PING" }) }}
                         label="Default"
-                        primary={true}
                     />
                 </Shell>
             )

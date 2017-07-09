@@ -1,13 +1,14 @@
 {
-  "name": "react-boil",
+  "name": "React-Boil",
   "version": "1.0.0",
-  "description": "Cutting edge React.js boilerplate.",
-  "main": "index.js",
+  "description": "Cutting edge PWA React.js boilerplate.",
+  "main": "hot.js",
   "scripts": {
     "dll": "webpack --config webpack.dll.js ",
     "clear": "rm -rf dll/ dist/",
     "clean": "rm -rf dist/",
     "dev": "node hot.js",
+    "start": "yarn run clear && yarn run dll && yarn run ",
     "client": "webpack --config webpack.client.js --env.production",
     "server": "webpack --config webpack.server.js --env.production",
     "prod": "webpack -p --config webpack.config.js --env.production",
