@@ -42,8 +42,10 @@ The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
 
 ✂️ Code splitting - Thanks to 💩  [[https://www.npmjs.com/package/react-universal-component][react-universal-component]]
 
-😎 Progressive Web Application ready, with offline support, via a Service Worker. -- NOT YET IMPLEMENTED --
-  
+😎 Progressive Web Application ready, with offline support, via a Service Worker. 
+
+🕸 Is this reality? Believe at the web http://boil.cescoferraro.xyz
+ 
 * TODO Things Left to Do 
 
   🎭 `jest` as the test framework. -- YET TO BE IMPLEMENTED --
