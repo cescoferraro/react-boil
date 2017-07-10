@@ -8,6 +8,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const noop = require("noop-webpack-plugin");
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 const path = require("path");
+const PreloadWebpackPlugin = require('./css.js');
 
 
 const icons =  new FaviconsWebpackPlugin({
@@ -37,7 +38,8 @@ const HTML = [
 	    var order = ['bootstrap','vendor', 'main']; 
 	    return order.indexOf(a.names[0]) - order.indexOf(b.names[0]); 
 	}
-    })
+    }),
+    new PreloadWebpackPlugin()
 ];
 
 const SERVER_PLUGINS = (env) => {
