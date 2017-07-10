@@ -5,7 +5,7 @@ export const Shell = ({ children, id }) => {
     return (
         <div id={id} >
             <AppBar title="React-Boil" />
-            <div id="CONTENT">
+            <div id={id}>
                 {children}
             </div>
         </div>

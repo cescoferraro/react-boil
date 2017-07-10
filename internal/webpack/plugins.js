@@ -7,7 +7,6 @@ const StatsPlugin = require("stats-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const noop = require("noop-webpack-plugin");
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
-const path = require("path");
 const PreloadWebpackPlugin = require('./css.js');
 
 
@@ -42,58 +41,44 @@ const HTML = [
     new PreloadWebpackPlugin()
 ];
 
-const SERVER_PLUGINS = (env) => {
-    if (env.production) {
-        return [
-            new CopyWebpackPlugin([ {from: "./server/server.js", to: "./server.js"} ]),
-            new webpack.optimize.LimitChunkCountPlugin({
-                maxChunks: 1,
-            }),
-            new webpack.DefinePlugin({
-                "process.env": {
-                    NODE_ENV: JSON.stringify("production"),
-                },
-            }),
-        ];
-    } else {
-        return [
-            new webpack.optimize.LimitChunkCountPlugin({
-                maxChunks: 1,
-            }),
-            new webpack.DefinePlugin({
-                "process.env": {
-                    NODE_ENV: JSON.stringify("development"),
-                },
-            }),
-        ];
-    }
-};
+const LIMIT= () => new webpack.optimize.LimitChunkCountPlugin({
+    maxChunks: 1,
+})
+const COPY = () => (
+    new CopyWebpackPlugin([ {from: "./server/server.js", to: "./server.js"} ])
+) 
+
+const DEFINE = (env) => (
+    new webpack.DefinePlugin({
+        "process.env": {
+            NODE_ENV: JSON.stringify(env.production ? "production" : "development")
+        },
+    })
+)
+const COMMON = () => (
+    new webpack.optimize.CommonsChunkPlugin({
+        filename: "js/[name]_[hash].js",
+        minChunks: Infinity,
+        names: ["bootstrap"],
+    })
+)
+const VENDOR= () => (
+    new webpack.optimize.CommonsChunkPlugin({
+        chunks: ["main", "vendorC"],
+        filename: "js/vendor.js",
+        name: "vendor",
+    })
+)
 
 const CLIENT_PLUGINS = ( env ) => {
     if (env.production) {
         return [
 	    icons,
             new StatsPlugin("stats.json"),
-            new ExtractCssChunks(
-		{
-		    filename: "css/[name]_[hash].css",
-		}
-	    ),
-            new webpack.optimize.CommonsChunkPlugin({
-                filename: "js/[name]_[hash].js",
-                minChunks: Infinity,
-                names: ["bootstrap"],
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                chunks: ["main", "vendorC"],
-                filename: "js/vendor.js",
-                name: "vendor",
-            }),
-            new webpack.DefinePlugin({
-                "process.env": {
-                    NODE_ENV: JSON.stringify("production"),
-                },
-            }),
+            new ExtractCssChunks({filename: "css/[name]_[hash].css"}),
+	    COMMON(),
+	    DEFINE(env),
+	    VENDOR(),
             env.analyzer ? new BundleAnalyzerPlugin() : noop(),
 	    SW,
             ...HTML
@@ -108,19 +93,19 @@ const CLIENT_PLUGINS = ( env ) => {
             }),
             new webpack.HotModuleReplacementPlugin(),
             new ExtractCssChunks(),
-            new webpack.optimize.CommonsChunkPlugin({
-                filename: "js/[name].js",
-                minChunks: Infinity,
-                names: ["bootstrap"],
-            }),
+	    COMMON(),
             new webpack.NoEmitOnErrorsPlugin(),
-            new webpack.DefinePlugin({
-                "process.env": {
-                    NODE_ENV: JSON.stringify("development"),
-                },
-            }),
+	    DEFINE(env),
 	    SW,
         ];
+    }
+};
+
+const SERVER_PLUGINS = (env) => {
+    if (env.production) {
+        return [COPY(), LIMIT(), DEFINE(env)];
+    } else {
+        return [LIMIT(), DEFINE(env)];
     }
 };
 

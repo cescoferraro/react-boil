@@ -9,6 +9,7 @@ app.use('/vendor', express.static(path.join(__dirname, 'vendor')));
 app.use('/icons', express.static(path.join(__dirname, 'icons')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/html', express.static(path.join(__dirname, 'html')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/appcache', express.static(path.join(__dirname, 'appcache')));
 const clientStats = require('./stats.json')
 const outputPath = __dirname 

@@ -13,62 +13,76 @@ const postCSS =  {
     }
 }
 
-const SERVER_LOADERS = (env)=>{
-    let loader = [
-	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader",
-          options: {
-              sourceMap: true, 
-              useCache: true, 
-              useBabel: false 
-          }
-
-	},
-	{
-	    test: /\.css$/,
-	    exclude: /node_modules/,
-	    use:  
-		{
-		    loader: 'css-loader/locals',
-		    options: {
-			modules: true,
-			localIdentName: '[name]__[local]--[hash:base64:5]'
-		    }
+const IMAGES = (client = false) => {
+    return   {
+	test: /\.(gif|png|jpe?g|svg)$/i,
+	loaders: [
+	    {
+		loader: 'file-loader',
+		query: {
+		    emitFile: client ,
+		    name:"images/img-[sha512:hash:base64:7].[ext]"
 		}
-		/* postCSS*/
-	    
-	}
-    ]
-    return {rules:loader}
-};
-
-const CLIENT_LOADERS = (env)=>{
-    let loader = [
-      { test: /\.ejs$/, loader: 'ejs-loader?variable=data' },
-	{ test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" ,
-          options: {
-              sourceMap: true, 
-              useCache: true, 
-              useBabel: false 
-          }
-	},
-	{
-	    test: /\.css$/,
-	    use: ExtractCssChunks.extract({
-		use: [
-		    {
-			loader: 'css-loader',
-			options: {
-			    modules: true,
-			    localIdentName: '[name]__[local]--[hash:base64:5]'
-			}
+	    },
+	    {
+		loader: 'image-webpack-loader',
+		query: {
+		    mozjpeg: {
+			progressive: true,
 		    },
-		    /* postCSS*/
-		]
-	    })
+		    gifsicle: {
+			interlaced: false,
+		    },
+		    optipng: {
+			optimizationLevel: 4,
+		    },
+		    pngquant: {
+			quality: '75-90',
+			speed: 3,
+		    },
+		}
+	    }
+	]
+    }
+}
+
+const TypeScript = () => (
+    { test: /\.tsx?$/, 
+      exclude: /node_modules/, 
+      loader: "awesome-typescript-loader",
+      options: {
+          sourceMap: true, 
+          useCache: true, 
+          useBabel: false 
+      }
+    }
+)
+
+const CSS_HELPER = (client) => {
+    return {
+	loader:   client ? 'css-loader' : 'css-loader/locals' ,
+	options: {
+	    modules: true,
+	    localIdentName: '[name]__[local]--[hash:base64:5]'
 	}
-    ]
-    return {rules:loader}
-};
+    }
+}
+
+const CSS = (client = false) =>{
+    const local = [ CSS_HELPER(client) ]
+    return {
+	test: /\.css$/,
+	use: client ? ExtractCssChunks.extract({use: local}) : local
+    }
+}
+
+const SERVER_LOADERS = (env)=>({
+    rules:[IMAGES(), TypeScript(), CSS()]
+})
+
+const CLIENT_LOADERS = (env)=>({
+    rules:[IMAGES(true), TypeScript(), CSS(true)]
+}) 
 
 module.exports = {
     CLIENT_LOADERS: CLIENT_LOADERS,

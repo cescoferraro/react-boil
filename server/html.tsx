@@ -26,13 +26,6 @@ export const HTML = (
         <html {...MyHelmet.html}>
             <head >
                 {production ? <link rel="manifest" href="/icons/manifest.json" /> : null}
-                <meta name="theme-color" content="#00bfff" />
-                <meta name="mobile-web-app-capable" content="yes" />
-                <meta name="apple-mobile-web-app-capable" content="yes" />
-                <meta name="application-name" content="react-boil" />
-                <meta name="apple-mobile-web-app-title" content="react-boil" />
-                <meta name="msapplication-starturl" content="/" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {MyHelmet.title}
                 {MyHelmet.meta}
                 {MyHelmet.link}
