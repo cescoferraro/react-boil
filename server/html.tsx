@@ -45,7 +45,7 @@ export const HTML = (
                 {fs.existsSync(place) ?
                     <script id="dll" src="/dll/vendor.dll.js" type="text/javascript" /> :
                     null}
-                <Js />
+                {scripts}
             </body>
         </html>
     )

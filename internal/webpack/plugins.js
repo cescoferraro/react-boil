@@ -72,7 +72,11 @@ const CLIENT_PLUGINS = ( env ) => {
         return [
 	    icons,
             new StatsPlugin("stats.json"),
-            new ExtractCssChunks(),
+            new ExtractCssChunks(
+		{
+		    filename: "css/[name]_[hash].css",
+		}
+	    ),
             new webpack.optimize.CommonsChunkPlugin({
                 filename: "js/[name]_[hash].js",
                 minChunks: Infinity,
