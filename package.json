@@ -25,6 +25,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/debug": "^0.0.29",
+    "@types/material-ui": "^0.17.15",
     "@types/react": "^15.0.35",
     "@types/react-redux": "^4.4.45",
     "autoprefixer": "^7.1.2",
@@ -42,6 +43,8 @@
     "favicons-webpack-plugin": "git+https://github.com/cescoferraro/favicons-webpack-plugin.git",
     "fs-extra": "^3.0.1",
     "history": "^4.6.3",
+    "html-webpack-include-assets-plugin": "^0.0.5",
+    "html-webpack-inline-source-plugin": "^0.0.9",
     "html-webpack-plugin": "^2.29.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.6",

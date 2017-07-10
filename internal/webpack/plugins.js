@@ -29,7 +29,9 @@ const SW = new SWPrecacheWebpackPlugin({
 const HTML = [ 
     new HtmlWebpackPlugin({
 	filename: "html/index.html",
-	template:  "./server/index.ejs",
+	template:  "./server/index.html",
+	showErrors: true,
+	inject: true,
 	chunks:['bootstrap','vendor', 'main'],
 	chunksSortMode: (a, b) => { 
 	    var order = ['bootstrap','vendor', 'main']; 
@@ -70,9 +72,7 @@ const CLIENT_PLUGINS = ( env ) => {
         return [
 	    icons,
             new StatsPlugin("stats.json"),
-            new ExtractCssChunks({
-                filename: "css/[name]_[hash].css",
-            }),
+            new ExtractCssChunks(),
             new webpack.optimize.CommonsChunkPlugin({
                 filename: "js/[name]_[hash].js",
                 minChunks: Infinity,

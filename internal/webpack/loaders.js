@@ -24,18 +24,18 @@ const SERVER_LOADERS = (env)=>{
 
 	},
 	{
-	    test: /\.pcss$/,
+	    test: /\.css$/,
 	    exclude: /node_modules/,
-	    use: [ 
+	    use:  
 		{
 		    loader: 'css-loader/locals',
 		    options: {
 			modules: true,
 			localIdentName: '[name]__[local]--[hash:base64:5]'
 		    }
-		},
-		postCSS
-	    ]
+		}
+		/* postCSS*/
+	    
 	}
     ]
     return {rules:loader}
@@ -52,7 +52,7 @@ const CLIENT_LOADERS = (env)=>{
           }
 	},
 	{
-	    test: /\.pcss$/,
+	    test: /\.css$/,
 	    use: ExtractCssChunks.extract({
 		use: [
 		    {
@@ -62,7 +62,7 @@ const CLIENT_LOADERS = (env)=>{
 			    localIdentName: '[name]__[local]--[hash:base64:5]'
 			}
 		    },
-		    postCSS
+		    /* postCSS*/
 		]
 	    })
 	}
