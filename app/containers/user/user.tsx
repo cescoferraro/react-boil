@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Shell } from "../../../shared/components/shell";
-import { UniversalComponent } from "../../components/universal";
+import { UniversalComponent } from "../../components/product";
 import RaisedButton from 'material-ui/RaisedButton'
 
 export const UserContainer = (props) => (

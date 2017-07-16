@@ -1,6 +1,6 @@
 import * as React from "react"
 declare var System: any
-import * as CSS from "../css/teste/teste.css"
+import * as CSS from "./css/teste.css"
 
 export default () => (
     <div className={CSS.test}>

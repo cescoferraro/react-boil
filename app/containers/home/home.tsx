@@ -1,7 +1,6 @@
 import * as React from "react"
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
-import { UniversalComponent } from "../../components/universal"
 import { MyHelmet } from "../../../shared/helmet"
 import Link from 'redux-first-router-link'
 import AppBar from 'material-ui/AppBar'

@@ -1,6 +1,5 @@
 import * as React from "react"
 import { connect } from 'react-redux'
-import { UniversalComponent } from "./components/universal"
 import { MyHelmet } from "../shared/helmet"
 import Link from 'redux-first-router-link'
 import { compose } from "recompose"

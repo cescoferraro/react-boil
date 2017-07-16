@@ -69,11 +69,11 @@ const CSS_HELPER = (client) => {
 }
 
 const CSS = (client = false) =>{
-    const local = [ CSS_HELPER(client) ]
+    const local = [ CSS_HELPER(client) , postCSS ];
     return {
-	test: /\.css$/,
+        test: /\.css$/,
 	use: client ? ExtractCssChunks.extract({use: local}) : local
-    }
+    };
 }
 
 const SERVER_LOADERS = (env)=>({
