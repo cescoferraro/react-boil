@@ -20,21 +20,21 @@ const IMAGES = (client = false) => {
 	    {
 		loader: 'file-loader',
 		query: {
-		    emitFile: client ,
-		    name:"images/img-[sha512:hash:base64:7].[ext]"
-		}
-	    },
-	    {
-		loader: 'image-webpack-loader',
-		query: {
-		    mozjpeg: {
-			progressive: true,
-		    },
-		    gifsicle: {
-			interlaced: false,
-		    },
-		    optipng: {
-			optimizationLevel: 4,
+                    emitFile: client ,
+                    name:"images/img-[sha512:hash:base64:7].[ext]"
+                }
+            },
+            {
+                loader: 'image-webpack-loader',
+                query: {
+                    mozjpeg: {
+                        progressive: true,
+                    },
+                    gifsicle: {
+                        interlaced: false,
+                    },
+                    optipng: {
+                        optimizationLevel: 4,
 		    },
 		    pngquant: {
 			quality: '75-90',

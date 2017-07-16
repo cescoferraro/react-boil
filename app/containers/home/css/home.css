@@ -1,0 +1,9 @@
+.container {
+    margin: 20px;
+    overflow:auto;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px 10px;
+}

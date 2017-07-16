@@ -17,7 +17,6 @@ export const HTML = (
     const place = path.resolve(outputPath, '../dll/vendor.dll.js')
     const assets = flushedAssets(clientStats, outputPath, production)
     const { Js, cssHash } = assets
-    console.log(cssHash.toString())
     const { preload, scripts } = getScripts(assets.scripts, outputPath, production);
     const styles = getStyles(assets.stylesheets);
     const MyHelmet = Helmator()
