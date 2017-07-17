@@ -6,27 +6,45 @@ const CachedFs = require('cachedfs'),
 
 const path = require("path")
 
+declare module 'React' {
+    interface HTMLAttributes<T> extends React.DOMAttributes<T> {
+        as?: string
+    }
+}
+
 export const getScripts = (scripts: Array<string>, outputPath, production) => {
     return scripts.reduce(
         (acc, script: string) => {
             const scriptPath = `/${script}`;
             const place = path.join(outputPath, scriptPath)
 
-            const preload = (
+            let preload = (
                 <link
                     rel="preload"
                     href={scriptPath}
                     key={script}
+                    as="script"
                 />
             );
 
-            const scriptTag = (
+            let scriptTag = (
                 <script
                     src={scriptPath}
                     key={script}
                     type="text/javascript"
                 />
             );
+            if (production) {
+                if (place.includes("bootstrap")) {
+                    scriptTag = (
+                        <script
+                            type="text/javascript"
+                            dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, 'utf8') }}
+                        />
+                    )
+                    preload = null;
+                }
+            }
 
             return {
                 preload: [...acc.preload, preload],
@@ -40,21 +58,25 @@ export const getScripts = (scripts: Array<string>, outputPath, production) => {
     );
 };
 
-export const getStyles = (styles: Array<string>) => {
+export const getStyles = (styles: Array<string>, outputPath, production) => {
     return styles.map((style: string) => {
         const stylePath = `/${style}`;
-
-        return (
-            <link
-                href={stylePath}
-                key={style}
-                media="screen, projection"
-                rel="stylesheet"
-                async={true}
-                type="text/css"
-                charSet="UTF-8"
+        const place = outputPath + stylePath
+        return production ? (
+            <style
+                dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, 'utf8') }}
             />
-        );
+        ) : (
+                <link
+                    href={stylePath}
+                    key={style}
+                    media="screen, projection"
+                    rel="stylesheet"
+                    async={true}
+                    type="text/css"
+                    charSet="UTF-8"
+                />
+            );
     });
 };
 

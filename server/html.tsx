@@ -1,15 +1,10 @@
 import * as React from "react"
 import { flushedAssets } from "./flush"
 import { getScripts, getStyles, Helmator } from "./helpers"
+import { BaseStyle } from "../shared/helmet"
 const path = require("path")
 const CachedFs = require('cachedfs'),
     fs = new CachedFs();
-
-const BaseStyle = () => (
-    <style type="text/css">
-        {`body {background-color: whitesmoke; height:100vh; margin:0;}`}
-    </style>
-)
 
 export const HTML = (
     { clientStats, serverStats, outputPath, production, content, store }
@@ -18,7 +13,7 @@ export const HTML = (
     const assets = flushedAssets(clientStats, outputPath, production)
     const { Js, cssHash } = assets
     const { preload, scripts } = getScripts(assets.scripts, outputPath, production);
-    const styles = getStyles(assets.stylesheets);
+    const styles = getStyles(assets.stylesheets, outputPath, production);
     const MyHelmet = Helmator()
     console.log(fs.existsSync(place) ? "using dll" : " not using dll")
     return (
@@ -29,6 +24,7 @@ export const HTML = (
                 {MyHelmet.meta}
                 {MyHelmet.link}
                 {styles}
+                {preload}
                 <BaseStyle />
             </head>
             <body {...MyHelmet.html}>

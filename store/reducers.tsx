@@ -1,9 +1,9 @@
-import { firebaseStateReducer } from "react-redux-firebase"
 import { combineReducers } from "redux"
 
 
 
 import { NOT_FOUND } from 'redux-first-router'
+import { DRAWER_ACTION_NAME, DRAWER_TOGGLE_ACTION_NAME } from "./actions";
 export const userIdReducer = (state = null, action: any = {}) => {
     switch (action.type) {
         case 'HOME':
@@ -16,8 +16,19 @@ export const userIdReducer = (state = null, action: any = {}) => {
     }
 }
 
+export const drawer = (state = false, action: any = {}) => {
+    switch (action.type) {
+        case DRAWER_TOGGLE_ACTION_NAME:
+            return !state
+        case DRAWER_ACTION_NAME:
+            return action.payload
+        default:
+            return state
+    }
+}
+
 export let allReducers = (location) => combineReducers({
     location,
     userId: userIdReducer,
-    firebase: firebaseStateReducer
+    drawer
 })

@@ -1,37 +1,15 @@
 import { connectRoutes } from 'redux-first-router'
 import { createStore, applyMiddleware, compose } from "redux"
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { reactReduxFirebase, firebaseStateReducer } from "react-redux-firebase"
 import { combineReducers } from "redux"
 import { createEpicMiddleware } from "redux-observable"
 import { RootEpic } from "./epics"
 import { allReducers } from "./reducers"
-
-function todos(state = [], action) {
-
-    switch (action.type) {
-        case "TODO":
-            return state.concat([action.text])
-        case "ADD_TODO":
-            return state.concat([action.text])
-        default:
-            return state
-    }
-}
 import { logger } from "./logger";
 import { routesMap } from "../app/route.map";
 
 
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
-export const FIREBASE_CONFIG = {
-    apiKey: "AIzaSyCR1eRcu-FHxG6Yp1RarrBq1wKWWi8Ha2k",
-    authDomain: "craigs-8e724.firebaseapp.com",
-    databaseURL: "https://craigs-8e724.firebaseio.com",
-    projectId: "craigs-8e724",
-    storageBucket: "craigs-8e724.appspot.com",
-    enableRedirectHandling: false,
-    messagingSenderId: "794041684762"
-};
 
 export const configureStore = (history: any = {}) => {
     const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
@@ -42,8 +20,7 @@ export const configureStore = (history: any = {}) => {
             logger,
             ReplacebleEpicMiddleware)
     )
-    let FirebaseStoreCreator = compose(reactReduxFirebase(FIREBASE_CONFIG, {}))(createStore);
-    const store = FirebaseStoreCreator(rootReducer, compose(enhancer, middlewares))
+    const store = createStore(rootReducer, compose(enhancer, middlewares))
 
 
 
@@ -57,5 +34,6 @@ export const configureStore = (history: any = {}) => {
             ReplacebleEpicMiddleware.replaceEpic(nextRootEpic);
         });
     }
+
     return store
 }

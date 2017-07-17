@@ -6,8 +6,8 @@ import { WithStylesContext } from "../shared/components/styles.context";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Provider as ReduxProvider } from "react-redux";
-import { getFirebase } from 'react-redux-firebase';
 import { BoilTheme } from "../shared/theme";
+const { render } = require("rapscallion");
 
 export const Renderer = (req, store) => {
     let app = (
@@ -17,5 +17,5 @@ export const Renderer = (req, store) => {
             </ReduxProvider>
         </MuiThemeProvider >
     )
-    return { string: renderToString(app) }
+    return { app, string: renderToString(app) }
 }

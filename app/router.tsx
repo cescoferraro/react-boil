@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { MyHelmet } from "../shared/helmet"
 import Link from 'redux-first-router-link'
 import { compose } from "recompose"
-import { Shell } from "../shared/components/shell"
 import { HomeContainer } from "./containers/home/home"
 import { UserContainer } from "./containers/user/user"
+import { APP_ACTIONS } from "../store/actions";
 
 const AppRouterClass = (props) => {
     switch (props.location.type) {
@@ -19,4 +19,7 @@ const AppRouterClass = (props) => {
     }
 }
 
-export const AppRouter = compose(connect(({ location, userId }) => ({ location, userId })))(AppRouterClass)
+export const AppRouter = compose(
+    connect(({ location, userId, drawer }) =>
+        ({ location, userId, drawer }), APP_ACTIONS)
+)(AppRouterClass)

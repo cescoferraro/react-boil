@@ -1,23 +1,23 @@
 var path = require("path");
 var webpack = require("webpack");
 
-module.exports = (env)=>( {
+module.exports = (env) => ( {
     entry: {
         vendor: [
-	    "react",
-	    "react-dom"
-	]
+            "react",
+            "react-dom",
+        ],
     },
     output: {
-        path: path.join(__dirname, "dll"),
         filename: "[name].dll.js",
-        library: "[name]"
+        library: "[name]",
+        path: path.join(__dirname, "dll"),
     },
     plugins: [
         new webpack.DllPlugin({
-            path: path.join(__dirname, "dll","[name].dll.json"),
+            context: __dirname,
             name: "[name]",
-	    context: __dirname 
+            path: path.join(__dirname, "dll", "[name].dll.json"),
         }),
-    ]
+    ],
 });
