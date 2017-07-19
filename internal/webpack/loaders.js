@@ -58,13 +58,10 @@ const typeScript = () => ({
   exclude: /node_modules/,
   use: [
     {
-      loader: 'babel-loader'
-    },
-    {
       loader: 'awesome-typescript-loader',
       options: {
         sourceMap: true,
-        useBabel: true,
+        useBabel: false,
         useCache: true
       }
     }
