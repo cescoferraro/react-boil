@@ -19,8 +19,7 @@
     "docker/run": "docker run -p 4000:4000 -v dist/:/srv/boil cescoferraro/boil:latest",
     "docker/push": "docker push cescoferraro/boil:latest",
     "docker/preview": "yarn run clean && yarn build && yarn docker/run",
-    "push": "yarn run clean && yarn run prod && yarn run docker/build && yarn run docker/push",
-    "webpack-defaults": "webpack-defaults"
+    "push": "yarn run clean && yarn run prod && yarn run docker/build && yarn run docker/push"
   },
   "author": "Francesco Antonello Ferraro",
   "license": "ISC",
@@ -33,7 +32,6 @@
     "awesome-typescript-loader": "^3.2.1",
     "babel": "^6.23.0",
     "babel-loader": "^7.1.1",
-    "babel-plugin-dual-import": "^1.1.0",
     "cachedfs": "^0.3.3",
     "cheerio": "^1.0.0-rc.2",
     "classnames": "^2.2.5",
@@ -42,6 +40,7 @@
     "core-js": "^2.4.1",
     "css-loader": "^0.28.4",
     "ejs-loader": "^0.3.0",
+    "eslint-config-cesco": "^0.0.2",
     "eslint-plugin-prettier": "^2.1.2",
     "express": "^4.15.3",
     "extract-css-chunks-webpack-plugin": "1.0.15",
@@ -49,7 +48,6 @@
     "faker": "^4.1.0",
     "favicons-webpack-plugin": "git+https://github.com/cescoferraro/favicons-webpack-plugin.git",
     "file-loader": "^0.11.2",
-    "fs-extra": "^3.0.1",
     "global": "^4.3.2",
     "history": "^4.6.3",
     "html-webpack-include-assets-plugin": "^0.0.5",

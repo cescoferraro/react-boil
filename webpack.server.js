@@ -5,20 +5,18 @@ const plugins = require('./internal/webpack/plugins.js');
 const loaders = require('./internal/webpack/loaders.js');
 
 module.exports = env => ({
-  devtool: extras.DEVTOOLS(env),
+  devtool: extras.devTools(env),
   entry: './server/middleware',
-  externals: {
-    vertx: 'vertx'
-  },
-  module: loaders.SERVER_LOADERS(env),
+  externals: { vertx: 'vertx' },
+  module: loaders.serverLoaders(env),
   name: 'server',
   output: {
     filename: 'server/[name].js',
     libraryTarget: 'commonjs2',
     path: dist,
-    publicPath: extras.PUBLIC_PATH(env)
+    publicPath: extras.publicPath(env)
   },
-  plugins: plugins.SERVER_PLUGINS(env),
+  plugins: plugins.serverPlugins(env),
   resolve: extras.resolve,
   target: 'node'
 });

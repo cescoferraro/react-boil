@@ -3,3 +3,4 @@ dll/
 .awcache/
 
 node_modules/
+.wercker/

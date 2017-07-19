@@ -2,12 +2,12 @@ const resolve = {
   extensions: ['.css', '.js', '.tsx', '.json', '.pcss']
 };
 
-const DEVTOOLS = env => (env.production ? 'source-map' : 'eval');
+const devTools = env => (env.production ? 'source-map' : 'eval');
 
-const PUBLIC_PATH = env =>
+const publicPath = env =>
   env.production ? 'https://boil.cescoferraro.xyz/' : 'http://localhost:5000/';
 
-const HOTLOADER = (entry, env) => {
+const hotLoader = (entry, env) => {
   if (!env.production) {
     return [
       'webpack-hot-middleware/client?' +
@@ -21,7 +21,7 @@ const HOTLOADER = (entry, env) => {
 
 module.exports = {
   resolve: resolve,
-  DEVTOOLS: DEVTOOLS,
-  PUBLIC_PATH: PUBLIC_PATH,
-  HOTLOADER: HOTLOADER
+  devTools: devTools,
+  publicPath: publicPath,
+  hotLoader: hotLoader
 };

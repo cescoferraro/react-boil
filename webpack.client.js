@@ -5,9 +5,9 @@ const loaders = require('./internal/webpack/loaders.js');
 
 module.exports = env => {
   const client = {
-    devtool: extras.DEVTOOLS(env),
+    devtool: extras.devTools(env),
     entry: {
-      main: extras.HOTLOADER(
+      main: extras.hotLoader(
         path.resolve(__dirname, './client/client.tsx'),
         env
       )
@@ -15,14 +15,14 @@ module.exports = env => {
     externals: {
       vertx: 'vertx'
     },
-    module: loaders.CLIENT_LOADERS(env),
+    module: loaders.clientLoaders(env),
     name: 'client',
     output: {
       filename: 'js/[name]_[hash].js',
       path: path.join(__dirname, 'dist'),
-      publicPath: extras.PUBLIC_PATH(env)
+      publicPath: extras.publicPath(env)
     },
-    plugins: plugins.CLIENT_PLUGINS(env),
+    plugins: plugins.clientPlugins(env),
     resolve: extras.resolve,
     target: 'web'
   };

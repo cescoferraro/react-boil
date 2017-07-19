@@ -21,7 +21,7 @@ const postCSS = {
   }
 };
 
-const IMAGES = (client = false) => {
+const images = (client = false) => {
   return {
     test: /\.(gif|png|jpe?g)$/i,
     loaders: [
@@ -54,7 +54,7 @@ const IMAGES = (client = false) => {
   };
 };
 
-const TypeScript = () => ({
+const typeScript = () => ({
   exclude: /node_modules/,
   use: [
     {
@@ -72,7 +72,7 @@ const TypeScript = () => ({
   test: /\.tsx?$/
 });
 
-const CSS_HELPER = client => {
+const cssHelper = client => {
   return {
     loader: client ? 'css-loader' : 'css-loader/locals',
     options: {
@@ -82,30 +82,30 @@ const CSS_HELPER = client => {
   };
 };
 
-const CSS = (client = false) => {
-  const local = [CSS_HELPER(client), postCSS];
+const css = (client = false) => {
+  const local = [cssHelper(client), postCSS];
   return {
     test: /\.css$/,
     use: client ? ExtractCssChunks.extract({ use: local }) : local
   };
 };
 
-const ORG = () => {
+const org = () => {
   return {
     test: /\.org/,
     loader: 'org-loader'
   };
 };
 
-const SERVER_LOADERS = env => ({
-  rules: [IMAGES(), SVG, TypeScript(), CSS(), ORG()]
+const serverLoaders = env => ({
+  rules: [images(), SVG, typeScript(), css(), org()]
 });
 
-const CLIENT_LOADERS = env => ({
-  rules: [IMAGES(true), SVG, TypeScript(), CSS(true), ORG()]
+const clientLoaders = env => ({
+  rules: [images(true), SVG, typeScript(), css(true), org()]
 });
 
 module.exports = {
-  CLIENT_LOADERS: CLIENT_LOADERS,
-  SERVER_LOADERS: SERVER_LOADERS
+  clientLoaders: clientLoaders,
+  serverLoaders: serverLoaders
 };
