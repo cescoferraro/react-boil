@@ -7,7 +7,7 @@ const CachedFs = require('cachedfs'),
 const path = require("path")
 
 declare module 'React' {
-    interface HTMLAttributes<T> extends React.DOMAttributes<T> {
+    interface HTMLAttributes<T> extends DOMAttributes<T> {
         as?: string
     }
 }

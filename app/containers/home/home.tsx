@@ -6,7 +6,7 @@ import AppBar from 'material-ui/AppBar'
 import * as CSS from "./css/home.css"
 import { Shell } from "../../../shared/components/shell"
 const ImageSrc = require("../../../shared/images/boil.jpg")
-const test = require("../../../internal/webpack/org.js!../../../README.org")
+const test = require("../../../README.org")
 
 export const HomeContainer = (props) => {
     return (
