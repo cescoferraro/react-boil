@@ -17,6 +17,10 @@
   version "6.0.83"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.83.tgz#dd022db01ac2c01c1057775e88ccffce96d1d6fe"
 
+"@types/offline-js@^0.7.28":
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/@types/offline-js/-/offline-js-0.7.28.tgz#a0c08deecc8194993f5a59376f04c2571f2c36f1"
+
 "@types/react-addons-linked-state-mixin@*":
   version "0.14.18"
   resolved "https://registry.yarnpkg.com/@types/react-addons-linked-state-mixin/-/react-addons-linked-state-mixin-0.14.18.tgz#6977ae59e19aa0ce3a5d7a9e057961aaf1afe959"
@@ -1098,7 +1102,7 @@ class-utils@^0.3.4:
     lazy-cache "^2.0.2"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
+classnames@^2.2.3, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -2342,6 +2346,10 @@ event-emitter@~0.3.5:
   dependencies:
     d "1"
     es5-ext "~0.10.14"
+
+eventemitter3@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
 
 events@^1.0.0:
   version "1.1.1"
@@ -4941,6 +4949,10 @@ object.pick@^1.2.0:
   dependencies:
     isobject "^2.1.0"
 
+offline-js@^0.7.19:
+  version "0.7.19"
+  resolved "https://registry.yarnpkg.com/offline-js/-/offline-js-0.7.19.tgz#60b68b6dccf3cd5528b5c8577280dceebdebab99"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -5995,6 +6007,10 @@ rapscallion@^2.1.13:
     bluebird "^3.4.7"
     lodash "^4.17.4"
 
+raw-loader@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
+
 rc@^1.0.1, rc@^1.1.2, rc@^1.1.6, rc@^1.1.7:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.1.tgz#2e03e8e42ee450b8cb3dce65be1bf8974e1dfd95"
@@ -6063,6 +6079,14 @@ react-redux-firebase@1.5.0-beta.3:
     jwt-decode "^2.2.0"
     lodash "^4.17.4"
     prop-types "^15.5.8"
+
+react-redux-toastr@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-redux-toastr/-/react-redux-toastr-7.0.0.tgz#455beda58f7f75c7eccce430112f3ec8df362a42"
+  dependencies:
+    classnames "^2.2.3"
+    eventemitter3 "^2.0.3"
+    prop-types "^15.5.7"
 
 react-redux@^5.0.5:
   version "5.0.5"

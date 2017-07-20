@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-
+import { reducer as toastrReducer } from 'react-redux-toastr'
 
 
 import { NOT_FOUND } from 'redux-first-router'
@@ -29,6 +29,7 @@ export const drawer = (state = false, action: any = {}) => {
 
 export let allReducers = (location) => combineReducers({
     location,
+    toastr: toastrReducer,
     userId: userIdReducer,
     drawer
 })

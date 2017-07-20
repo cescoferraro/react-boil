@@ -11,6 +11,8 @@ const BoilLogo = require("../../images/boil.svg");
 const Cancel = require("../../images/cancel.svg");
 const Boy = require("../../images/boy.svg");
 const Girl = require("../../images/girl.svg");
+import { isServer } from "../../../store/logger"
+import ReduxToastr from 'react-redux-toastr'
 
 export const Shell = (props) => {
     return (
@@ -31,6 +33,14 @@ export const Shell = (props) => {
             <div className={CSS.container}>
                 {props.children}
             </div>
+            <ReduxToastr
+                timeOut={4000}
+                newestOnTop={false}
+                preventDuplicates
+                position="top-left"
+                transitionIn="fadeIn"
+                transitionOut="fadeOut"
+                progressBar />
             <Drawer
                 onRequestChange={open => { props.DRAWER_ACTION(open) }}
                 docked={false}

@@ -8,6 +8,7 @@ import *  as injectTapEventPlugin from "react-tap-event-plugin";
 import { unmountComponentAtNode } from "react-dom";
 import { runServiceWorker } from "./sw"
 injectTapEventPlugin();
+require('offline-js');
 
 if (module.hot) {
     module.hot.accept(
@@ -23,6 +24,8 @@ if (module.hot) {
             NewRenderer(NextEatApp);
         });
 }
+
+
 
 Renderer(AppRouter)
 runServiceWorker()

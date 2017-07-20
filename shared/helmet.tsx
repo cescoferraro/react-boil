@@ -9,7 +9,7 @@ export const MyHelmet = ({ title }) => (
         <link rel="shortcut icon" href="icons/favicon.ico" />
         <title>{title + " | React-boil"} </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#00bfff" />
+        <meta name="theme-color" content="#303F9F" />
     </Helmet>
 
 )

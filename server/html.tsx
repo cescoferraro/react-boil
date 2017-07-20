@@ -2,10 +2,10 @@ import * as React from "react"
 import { flushedAssets } from "./flush"
 import { getScripts, getStyles, Helmator } from "./helpers"
 import { BaseStyle } from "../shared/helmet"
+import { ToastrCSS } from "../shared/components/toastrCSS";
 const path = require("path")
 const CachedFs = require('cachedfs'),
     fs = new CachedFs();
-
 export const HTML = (
     { clientStats, serverStats, outputPath, production, content, store }
 ) => {
@@ -26,6 +26,7 @@ export const HTML = (
                 {styles}
                 {preload}
                 <BaseStyle />
+                <ToastrCSS />
             </head>
             <body {...MyHelmet.html}>
                 <div id="root"

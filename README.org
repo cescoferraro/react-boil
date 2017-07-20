@@ -3,23 +3,23 @@
 
 Cutting edge PWA ready React.js Boilerplate.  This is created as a
 template for my cookie cutter called [[http://github.com/cescoferraro/react-boiler][react-boiler]].  The goal here is
-to enable developers, a.k.a. me, deliver tommorow's web today.
+to enable developers, a.k.a. me, deliver tomorrow's web today.
 
 | 👀 | [[https://github.com/facebook/react][react]] as the view                                                                                                     |
 | 🔥 | [[http://redux.js.org/docs/introduction/][Redux]] store ready! All the cool tooling and extensions.                                                               |
 | 🔀 | [[https://github.com/faceyspacey/redux-first-router][redux-first-router]] as the router.                                                                                     |
 | 🚄 | [[https://expressjs.com/][express]] server.                                                                                                       |
-| 🖌 | [[https://github.com/michaelcontento/redux-storage][ReduxStorage]] makes the app remmeber where the user was last time with ALL THE DATA! Native app expirience             |
-| 🔥 | [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastuture ready to ship!                                     |
-| 🚀 | [[https://github.com/redux-observable/redux-observable][Redux-Observable]] to perform async redux actions.                                                                      |
+| 🖌 | [[https://github.com/michaelcontento/redux-storage][ReduxStorage]] makes the app remember where the user was last time with ALL THE DATA! Native app experience             |
+| 🔥 | [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastructure ready to ship!                                     |
+| 🚀 | [[https://github.com/redux-observable/redux-observable][Redux-Observable]] to perform asynchronous redux actions.                                                                |
 | 🌍 | [[https://facebook.github.io/react/docs/react-dom-server.html][Server Side Rendering]] because its 2017.                                                                               |
-| 💩 | [[https://github.com/facespacey/webpack-flush-chunks][webpack-flush-chunks]] frameworkless CodeSplitting & SSR FULL CONTROL                                                   |
+| 💩 | [[https://github.com/facespacey/webpack-flush-chunks][webpack-flush-chunks]] framework less code splitting & SSR FULL CONTROL                                                   |
 | 🖌 | [[https://github.com/postcss/postcss][PostCSS]] lets you use next css syntax now.                                                                             |
 | 👼 | [[https://github.com/kriasoft/isomorphic-style-loader][Extract-Css-Chunks]] injects only css critical path to the website.                                                     |
 | 📦 | All source is bundled using [[https://webpack.js.org/configuration/][Webpack v3]].                                                                               |
 | 🔥 | Extreme live development using [[https://webpack.js.org/configuration/][webpack]] standard tooling like [[https://github.com/60frames/webpack-hot-server-middleware][webpack-hot-server-middleware]] &  [[https://github.com/glenjamin/webpack-hot-middleware][webpack-hot-middleware]]. |
 | 🍃 | Tree-shaking, courtesy of Webpack.                                                                                    |
-| 🎛 | Preconfigured to support development and optimised production builds.                                                 |
+| 🎛 | Pre-configured to support development and optimized production builds.                                                |
 | 🤖 | [[https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin][Vendor DLL]] for smooth development experiences.                                                                        |
 | 💩 | Code splitting  Thanks to   [[https://www.npmjs.com/package/react-universal-component][react-universal-component]]                                                                 |
 | 😎 | Progressive Web Application ready, with offline support, via a Service Worker.                                        |
@@ -28,3 +28,5 @@ to enable developers, a.k.a. me, deliver tommorow's web today.
 
 
 
+
+#  LocalWords:  Pre redux PWA js SSR css LocalWords
