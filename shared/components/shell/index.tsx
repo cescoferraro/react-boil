@@ -19,6 +19,7 @@ export const Shell = (props) => {
                 showMenuIconButton={false}
                 onTitleTouchTap={() => {
                     props.dispatch({ type: "HOME" })
+                    props.DRAWER_ACTION(false)
                 }}
                 iconElementRight={
                     <BoilLogo

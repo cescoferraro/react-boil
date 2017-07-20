@@ -17,7 +17,7 @@ export const configureStore = (history: any = {}) => {
     const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
     const rootReducer = allReducers(reducer)
     const reducerXXX = storage.reducer(rootReducer);
-    const middlewareXXX = storage.createMiddleware(engine, ["HOME", "USER"]);
+    const middlewareXXX = storage.createMiddleware(engine, Object.keys(routesMap));
     let middlewares = composeWithDevTools(
         applyMiddleware(middleware,
             middlewareXXX,
