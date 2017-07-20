@@ -1,14 +1,15 @@
 #+TITLE: React-boil 
 #+OPTIONS: toc:nil 
 
-Cutting edge PWA ready React.js Boilerplate. 
-This is created as a template for my cookie cutter called [[http://github.com/cescoferraro/react-boiler][react-boiler]].
-The goal here is to enable developers, a.k.a. me, deliver tommorow's web today.
+Cutting edge PWA ready React.js Boilerplate.  This is created as a
+template for my cookie cutter called [[http://github.com/cescoferraro/react-boiler][react-boiler]].  The goal here is
+to enable developers, a.k.a. me, deliver tommorow's web today.
 
 | 👀 | [[https://github.com/facebook/react][react]] as the view                                                                                                     |
 | 🔥 | [[http://redux.js.org/docs/introduction/][Redux]] store ready! All the cool tooling and extensions.                                                               |
 | 🔀 | [[https://github.com/faceyspacey/redux-first-router][redux-first-router]] as the router.                                                                                     |
 | 🚄 | [[https://expressjs.com/][express]] server.                                                                                                       |
+| 🖌 | [[https://github.com/michaelcontento/redux-storage][ReduxStorage]] makes the app remmeber where the user was last time with ALL THE DATA! Native app expirience             |
 | 🔥 | [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastuture ready to ship!                                     |
 | 🚀 | [[https://github.com/redux-observable/redux-observable][Redux-Observable]] to perform async redux actions.                                                                      |
 | 🌍 | [[https://facebook.github.io/react/docs/react-dom-server.html][Server Side Rendering]] because its 2017.                                                                               |
