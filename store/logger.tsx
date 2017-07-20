@@ -8,9 +8,4 @@ export const isServer = () => !(typeof window !== "undefined" && window.document
 
 export const logger = createLogger({
     collapsed: (getState, action, logEntry) => { return !logEntry.error },
-    predicate: (getState, action) => {
-        const identifier = "@@reactReduxFirebase"
-        const fromFirebase = (action.type.substr(0, identifier.length) == identifier)
-        return !fromFirebase && !isServer
-    }
 })

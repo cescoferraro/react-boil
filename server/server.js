@@ -1,12 +1,15 @@
+const compression = require('compression');
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const path = require('path');
-const maxAge = { maxAge: 86400000 };
-const maxAgeII = { root: './', maxAge: 86400000 };
+const maxAge = { maxAge: 86400000 * 30 };
+const maxAgeJS = { maxAge: 86400000 * 30 };
+const maxAgeII = { root: './', maxAge: 86400000 * 30 };
 app.disable('x-powered-by');
 app.use(morgan('combined'));
-app.use('/js', express.static(path.join(__dirname, 'js'), maxAge));
+app.use(compression());
+app.use('/js', express.static(path.join(__dirname, 'js'), maxAgeJS));
 app.use('/vendor', express.static(path.join(__dirname, 'vendor'), maxAge));
 app.use('/icons', express.static(path.join(__dirname, 'icons'), maxAge));
 app.use('/css', express.static(path.join(__dirname, 'css'), maxAge));

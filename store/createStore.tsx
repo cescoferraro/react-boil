@@ -7,20 +7,26 @@ import { RootEpic } from "./epics"
 import { allReducers } from "./reducers"
 import { logger } from "./logger";
 import { routesMap } from "../app/route.map";
-
-
+import * as storage from 'redux-storage'
+import createEngine from 'redux-storage-engine-localstorage';
+import * as reducers from './reducers';
+export const engine = createEngine('my-save-key');
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 
 export const configureStore = (history: any = {}) => {
     const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
     const rootReducer = allReducers(reducer)
-
+    const reducerXXX = storage.reducer(rootReducer);
+    const middlewareXXX = storage.createMiddleware(engine, ["HOME", "USER"]);
     let middlewares = composeWithDevTools(
         applyMiddleware(middleware,
+            middlewareXXX,
             logger,
-            ReplacebleEpicMiddleware)
+            ReplacebleEpicMiddleware
+        )
     )
-    const store = createStore(rootReducer, compose(enhancer, middlewares))
+    const createStoreWithMiddleware = applyMiddleware(middlewareXXX)(createStore);
+    const store = createStoreWithMiddleware(reducerXXX, compose(enhancer, middlewares))
 
 
 
