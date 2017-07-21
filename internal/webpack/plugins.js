@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin-cesco');
 const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -17,6 +17,8 @@ const icons = new FaviconsWebpackPlugin({
     display: ' fullscreen',
     lang: 'pt',
     start_url: '/',
+    statsFilename: 'icons/[name].[ext]',
+    gcm_sender_id: '482941778795',
     theme_color: '#00bfff'
   },
   emitStats: true,
@@ -51,8 +53,21 @@ const limit = () =>
     maxChunks: 1
   });
 
-const copy = () =>
-  new CopyWebpackPlugin([{ from: './server/server.js', to: './server.js' }]);
+const copy = () => [
+  new CopyWebpackPlugin([{ from: './server/server.js', to: './server.js' }]),
+  new CopyWebpackPlugin([
+    {
+      from: './shared/signal/OneSignalSDKWorker.js',
+      to: './signal/OneSignalSDKWorker.js'
+    }
+  ]),
+  new CopyWebpackPlugin([
+    {
+      from: './shared/signal/OneSignalSDKUpdaterWorker.js',
+      to: './signal/OneSignalSDKUpdaterWorker.js'
+    }
+  ])
+];
 
 const define = env =>
   new webpack.DefinePlugin({
@@ -109,7 +124,7 @@ const clientPlugins = env => {
 
 const serverPlugins = env => {
   if (env.production) {
-    return [copy(), limit(), define(env), Uglify];
+    return [...copy(), limit(), define(env), Uglify];
   } else {
     return [limit(), define(env)];
   }

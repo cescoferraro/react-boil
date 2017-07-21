@@ -2401,8 +2401,8 @@ exenv@^1.2.1:
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
 
 exif-parser@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/exif-parser/-/exif-parser-0.1.9.tgz#1d087e05fd2b079e3a8eaf8ff249978cb5f6fba7"
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/exif-parser/-/exif-parser-0.1.12.tgz#58a9d2d72c02c1f6f02a0ef4a9166272b7760922"
 
 expand-brackets@^0.1.4:
   version "0.1.5"
@@ -2568,15 +2568,15 @@ fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
 
-"favicons-webpack-plugin@git+https://github.com/cescoferraro/favicons-webpack-plugin.git":
-  version "0.0.7"
-  resolved "git+https://github.com/cescoferraro/favicons-webpack-plugin.git#de13e85a4082a424cd61cae88d524b0aa5d9b987"
+favicons-webpack-plugin-cesco@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/favicons-webpack-plugin-cesco/-/favicons-webpack-plugin-cesco-0.0.4.tgz#2339e50925248473f130cd6b1d8d073d45f9f925"
   dependencies:
-    favicons "^4.8.3"
+    favicons "^4.8.6"
     loader-utils "^0.2.14"
     webpack "^1.13.0"
 
-favicons@^4.8.3:
+favicons@^4.8.6:
   version "4.8.6"
   resolved "https://registry.yarnpkg.com/favicons/-/favicons-4.8.6.tgz#a2b13800ab3fec2715bc8f27fa841d038d4761e2"
   dependencies:

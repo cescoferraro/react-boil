@@ -8,8 +8,8 @@ import { Provider as ReduxProvider } from "react-redux";
 import { configureStore, engine } from "../store/createStore";
 import { createBrowserHistory } from "history";
 import { BoilTheme } from "../shared/theme";
-import * as storage from 'redux-storage'
-import { toastr } from 'react-redux-toastr'
+import * as storage from "redux-storage"
+import { toastr } from "react-redux-toastr"
 
 export const tag = document.getElementById("root")
 
@@ -21,27 +21,27 @@ var downHandler = (e) => {
     toastr.error('The down', 'rot in hell')
     console.log("downnnnn")
 }
-const randomHandler = (name) => (e) => {
-    toastr.warning(name, name)
-    console.log(name)
 
-}
 const offlineCheck = (store) => {
     const { Offline } = (window as any);
-    // Set our options for the Offline detection library
     Offline.options = {
         checkOnLoad: true,
         checks: {
             image: {
-                url: () => {
-                    return 'http://esri.github.io/offline-editor-js/tiny-image.png?_='
-                        + (Math.floor(Math.random() * 1000000000));
-                }
+                url: () => ('https://esri.github.io/offline-editor-js/tiny-image.png?_='
+                    + (Math.floor(Math.random() * 1000000000)))
+
             },
             active: 'image'
         }
     };
-    Offline.check()
+    setInterval(() => {
+        if (document.hidden) {
+            return
+        }
+        console.log(Offline.state)
+        Offline.check();
+    }, 5000);
     Offline.on("up", upHandler);
     Offline.on("down", downHandler);
 }

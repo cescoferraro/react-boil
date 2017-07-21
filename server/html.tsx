@@ -3,6 +3,7 @@ import { flushedAssets } from "./flush"
 import { getScripts, getStyles, Helmator } from "./helpers"
 import { BaseStyle } from "../shared/helmet"
 import { ToastrCSS } from "../shared/components/toastrCSS";
+import { PushComponent } from "../shared/push/pushComponent";
 const path = require("path")
 const CachedFs = require('cachedfs'),
     fs = new CachedFs();
@@ -19,7 +20,7 @@ export const HTML = (
     return (
         <html {...MyHelmet.html}>
             <head >
-                {production ? <link rel="manifest" href="/icons/manifest.json" /> : null}
+                {production ? <link rel="manifest" href="/manifest.json" /> : null}
                 {MyHelmet.title}
                 {MyHelmet.meta}
                 {MyHelmet.link}
@@ -27,6 +28,12 @@ export const HTML = (
                 {preload}
                 <BaseStyle />
                 <ToastrCSS />
+                <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async={true} />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html:
+                        ` var OneSignal = window.OneSignal || []; OneSignal.push(["init", {appId: "396fb320-f5e2-4ed2-af88-efbee83b2564", autoRegister: true, notifyButton: {enable: true /* Set to false to hide */}}]); `
+                    }} />
             </head>
             <body {...MyHelmet.html}>
                 <div id="root"
