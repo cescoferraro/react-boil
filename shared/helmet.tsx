@@ -14,8 +14,3 @@ export const MyHelmet = ({ title }) => (
 
 )
 
-export const BaseStyle = () => (
-    <style type="text/css">
-        {`body {background-color: whitesmoke; height:100vh; margin:0;}`}
-    </style>
-)

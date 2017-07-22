@@ -1,26 +1,22 @@
 import * as React from "react"
+import {
+    getScripts, getStyles, Helmator, Manifest,
+    OneSignalCDN, OneSignalInit, App, Dll, Javascript, BaseStyle
+} from "./helpers"
 import { flushedAssets } from "./flush"
-import { getScripts, getStyles, Helmator } from "./helpers"
-import { BaseStyle } from "../shared/helmet"
-import { ToastrCSS } from "../shared/components/toastrCSS";
-import { PushComponent } from "../shared/push/pushComponent";
-const path = require("path")
-const CachedFs = require('cachedfs'),
-    fs = new CachedFs();
+import { ToastrCSS } from "../shared/components/toastrCSS"
+
 export const HTML = (
     { clientStats, serverStats, outputPath, production, content, store }
 ) => {
-    const place = path.resolve(outputPath, '../dll/vendor.dll.js')
     const assets = flushedAssets(clientStats, outputPath, production)
-    const { Js, cssHash } = assets
-    const { preload, scripts } = getScripts(assets.scripts, outputPath, production);
-    const styles = getStyles(assets.stylesheets, outputPath, production);
+    const { preload, scripts } = getScripts(assets.scripts, outputPath, production)
+    const styles = getStyles(assets.stylesheets, outputPath, production)
     const MyHelmet = Helmator()
-    console.log(fs.existsSync(place) ? "using dll" : " not using dll")
     return (
         <html {...MyHelmet.html}>
             <head >
-                {production ? <link rel="manifest" href="/manifest.json" /> : null}
+                <Manifest production={production} />
                 {MyHelmet.title}
                 {MyHelmet.meta}
                 {MyHelmet.link}
@@ -28,20 +24,13 @@ export const HTML = (
                 {preload}
                 <BaseStyle />
                 <ToastrCSS />
-                <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async={true} />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html:
-                        ` var OneSignal = window.OneSignal || []; OneSignal.push(["init", {appId: "396fb320-f5e2-4ed2-af88-efbee83b2564", autoRegister: true, notifyButton: {enable: true /* Set to false to hide */}}]); `
-                    }} />
+                <OneSignalCDN production={production} />
+                <OneSignalInit production={production} />
             </head>
             <body {...MyHelmet.html}>
-                <div id="root"
-                    dangerouslySetInnerHTML={{ __html: content }} />
-                {fs.existsSync(place) ?
-                    <script id="dll" src="/dll/vendor.dll.js" type="text/javascript" /> :
-                    null}
-                {scripts}
+                <App content={content} />
+                <Dll outputPath={outputPath} />
+                <Javascript scripts={scripts} />
             </body>
         </html>
     )

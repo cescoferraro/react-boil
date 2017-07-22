@@ -9,7 +9,6 @@ const ImageSrc = require("../../../shared/images/boil.jpg")
 const test = require("../../../README.org")
 
 export const HomeContainer = (props) => {
-    console.log(props)
     return (
         <Shell {...props}>
             <MyHelmet title="Home" />

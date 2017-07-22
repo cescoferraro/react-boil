@@ -9,11 +9,13 @@ to enable developers, a.k.a. me, deliver tomorrow's web today.
 | 🔥 | [[http://redux.js.org/docs/introduction/][Redux]] store ready! All the cool tooling and extensions.                                                               |
 | 🔀 | [[https://github.com/faceyspacey/redux-first-router][redux-first-router]] as the router.                                                                                     |
 | 🚄 | [[https://expressjs.com/][express]] server.                                                                                                       |
+| 🎛 | Offilne first. Try going offline for a bit.                                                                           |
+| 🔥 | [[https://onesignal.com][OneSignal]] gives us web push Notifications to keep in touch with our customers                                         |
 | 🖌 | [[https://github.com/michaelcontento/redux-storage][ReduxStorage]] makes the app remember where the user was last time with ALL THE DATA! Native app experience             |
-| 🔥 | [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastructure ready to ship!                                     |
-| 🚀 | [[https://github.com/redux-observable/redux-observable][Redux-Observable]] to perform asynchronous redux actions.                                                                |
+| 🔥 | [[https://firebase.google.com/][Firebase]] totally integrated Redux store ready! Google Infrastructure ready to ship!                                   |
+| 🚀 | [[https://github.com/redux-observable/redux-observable][Redux-Observable]] to perform asynchronous redux actions.                                                               |
 | 🌍 | [[https://facebook.github.io/react/docs/react-dom-server.html][Server Side Rendering]] because its 2017.                                                                               |
-| 💩 | [[https://github.com/facespacey/webpack-flush-chunks][webpack-flush-chunks]] framework less code splitting & SSR FULL CONTROL                                                   |
+| 💩 | [[https://github.com/facespacey/webpack-flush-chunks][webpack-flush-chunks]] framework less code splitting & SSR FULL CONTROL                                                 |
 | 🖌 | [[https://github.com/postcss/postcss][PostCSS]] lets you use next css syntax now.                                                                             |
 | 👼 | [[https://github.com/kriasoft/isomorphic-style-loader][Extract-Css-Chunks]] injects only css critical path to the website.                                                     |
 | 📦 | All source is bundled using [[https://webpack.js.org/configuration/][Webpack v3]].                                                                               |
