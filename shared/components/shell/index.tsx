@@ -48,9 +48,8 @@ export const Shell = (props) => {
             >
                 <div className={cs(CSS.flex, CSS.main)}>
                     <BoilLogo
-
                         onClick={() => {
-                            props.dispatch({ type: 'PING' })
+                            props.GO_HOME_ACTION()
                             props.DRAWER_ACTION(false)
                         }}
                         className={cs(CSS.svg)}

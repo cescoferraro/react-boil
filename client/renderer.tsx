@@ -14,11 +14,15 @@ import { toastr } from "react-redux-toastr"
 export const tag = document.getElementById("root")
 
 var upHandler = (e) => {
-    toastr.success('The UP', 'cloud 9')
+    toastr.success('The UP', 'cloud 9', {
+        position: "bottom-left"
+    })
     console.log("upppp")
 }
 var downHandler = (e) => {
-    toastr.error('The down', 'rot in hell')
+    toastr.error('The down', 'rot in hell', {
+        position: "bottom-left"
+    })
     console.log("downnnnn")
 }
 
@@ -35,13 +39,6 @@ const offlineCheck = (store) => {
             active: 'image'
         }
     };
-    setInterval(() => {
-        if (document.hidden) {
-            return
-        }
-        console.log(Offline.state)
-        Offline.check();
-    }, 5000);
     Offline.on("up", upHandler);
     Offline.on("down", downHandler);
 }

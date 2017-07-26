@@ -22,10 +22,15 @@ export function USER_ACTION(id) {
     return { type: 'USER', payload: { id } }
 }
 
+export function GO_HOME_ACTION(id) {
+    return { type: 'HOME' }
+}
+
 export const APP_ACTIONS = (dispatch) => {
     return bindActionCreators({
         DRAWER_ACTION,
         USER_ACTION,
+        GO_HOME_ACTION,
         DRAWER_TOGGLE_ACTION,
         dispatch
     }, dispatch);

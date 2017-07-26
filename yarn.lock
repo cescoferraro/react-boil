@@ -6,9 +6,9 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.29.tgz#a1e514adfbd92f03a224ba54d693111dbf1f3754"
 
-"@types/material-ui@^0.17.16":
-  version "0.17.16"
-  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.17.16.tgz#b228a8a2869eee5b2e3ce5cd3a42d95bf8308928"
+"@types/material-ui@^0.17.18":
+  version "0.17.18"
+  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.17.18.tgz#9bba8dcaf4b6466ae698c5d06083ab9a2af00ba9"
   dependencies:
     "@types/react" "*"
     "@types/react-addons-linked-state-mixin" "*"
@@ -582,6 +582,10 @@ base@^0.11.1:
 basic-auth@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-1.1.0.tgz#45221ee429f7ee1e5035be3f51533f1cdfd29884"
+
+batch-processor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
 
 bcrypt-pbkdf@^1.0.0:
   version "1.0.1"
@@ -2020,6 +2024,12 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.14:
   version "1.3.15"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.15.tgz#08397934891cbcfaebbd18b82a95b5a481138369"
 
+element-resize-detector@^1.1.12:
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.1.12.tgz#8b3fd6eedda17f9c00b360a0ea2df9927ae80ba2"
+  dependencies:
+    batch-processor "^1.0.0"
+
 elliptic@^6.0.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.0.tgz#cac9af8762c85836187003c8dfe193e5e2eae5df"
@@ -2741,6 +2751,10 @@ firebase@^3.9.0:
 first-chunk-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/first-chunk-stream/-/first-chunk-stream-1.0.0.tgz#59bfb50cd905f60d7c394cd3d9acaab4e6ad934e"
+
+flag-icon-css@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/flag-icon-css/-/flag-icon-css-2.8.0.tgz#ec10c20fe417ade787a095200630069ca436a569"
 
 flat-cache@^1.2.1:
   version "1.2.2"
@@ -3533,7 +3547,7 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1:
+invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -6042,6 +6056,18 @@ react-event-listener@^0.4.5:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-flag-icon-css@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/react-flag-icon-css/-/react-flag-icon-css-1.0.19.tgz#e1f717010880f2528d2096165de685e9100e13a3"
+  dependencies:
+    classnames "^2.2.5"
+    flag-icon-css "^2.8.0"
+    prop-types "^15.5.8"
+
+react-flags@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/react-flags/-/react-flags-0.1.12.tgz#1ef52048ea57bad3cd40d8e3a193f4cbc963165c"
+
 react-helmet@^5.1.3:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.1.3.tgz#cd40626593a29eecf684b6d38d711f44c48188af"
@@ -6107,6 +6133,14 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-sizeme@^2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-2.3.4.tgz#dd662ff43d65e7bd37992a2bb86e7d7df8a67836"
+  dependencies:
+    element-resize-detector "^1.1.12"
+    invariant "^2.2.2"
+    lodash "^4.17.4"
+
 react-tap-event-plugin@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-tap-event-plugin/-/react-tap-event-plugin-2.0.1.tgz#316beb3bc6556e29ec869a7293e89c826a9074d2"
@@ -6128,6 +6162,13 @@ react-universal-component@^1.4.1:
   resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-1.4.1.tgz#5d3eccbd08dd897c0425fd586b083fa90dc32bc8"
   dependencies:
     require-universal-module "^1.2.8"
+
+react-world-flags@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-world-flags/-/react-world-flags-0.0.3.tgz#cb5c834fca5b0957c4e5d4c2ea1f3916e47b6e0b"
+  dependencies:
+    svg-country-flags "^1.0.0"
+    world-countries "^1.8.1"
 
 react@^15.5.4:
   version "15.6.1"
@@ -6332,6 +6373,10 @@ redux-logger@^3.0.6:
 redux-observable@^0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-0.14.1.tgz#9f3d870c69388fdc427ded6770a3e326f3b69693"
+
+redux-storage-decorator-debounce@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/redux-storage-decorator-debounce/-/redux-storage-decorator-debounce-1.1.3.tgz#34475e5368a8a0ae094cd68633bc1b9a5ca0b842"
 
 redux-storage-engine-localstorage@^1.1.4:
   version "1.1.4"
@@ -7231,6 +7276,10 @@ supports-color@^4.0.0, supports-color@^4.1.0:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.1.0.tgz#92cc14bb3dad8928ca5656c33e19a19f20af5c7a"
   dependencies:
     has-flag "^2.0.0"
+
+svg-country-flags@^1.0.0:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/svg-country-flags/-/svg-country-flags-1.1.2.tgz#30d6de950b788bc6dc959c41dfdd7a90434d6592"
 
 svg-react-loader@^0.4.4:
   version "0.4.4"
@@ -8134,6 +8183,10 @@ wordwrap@0.0.2, wordwrap@~0.0.2:
 wordwrap@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
+
+world-countries@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/world-countries/-/world-countries-1.8.1.tgz#14ba7d735d422d63de70deb6e35ec5e49341b209"
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

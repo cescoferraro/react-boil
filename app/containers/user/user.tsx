@@ -5,9 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { MyHelmet } from "../../../shared/helmet"
 
 export const UserContainer = (props) => {
-    console.log(props)
     return (<Shell id="USER" {...props}>
         <MyHelmet title="User" />
-        <AsyncUser profile={props.profile} />
+        <AsyncUser {...props} />
     </Shell>)
 }

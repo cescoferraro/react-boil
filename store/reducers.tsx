@@ -12,14 +12,91 @@ export const userIdReducer = (state = null, action: any = {}) => {
         case 'USER':
             return action.payload.id
         case 'USER_FOUND':
-            console.log(action.payload)
             return action.payload.user.id
         default:
             return state
     }
 }
+interface Location {
+    city: string
+    postcode: number
+    state: string
+    street: string
+}
+interface Login {
+    md5: string
+    password: string
+    salt: string
+    sha1: string
+    sha256: string
+    username: string
 
-export const profileReducer = (state = {
+}
+interface Name {
+    first: string
+    last: string
+    title: string
+}
+interface Picture {
+    thumbnail: string
+    medium: string
+    large: string
+}
+
+export interface Profile {
+    cell: string
+    dob: string
+    email: string
+    gender: string
+    id: number
+    location: Location
+    login: Login
+    name: Name
+    nat: string
+    phone: string
+    registered: string
+    picture: Picture
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+export class ProfileClass implements Profile {
+    cell: string
+    dob: string
+    email: string
+    gender: string
+    id: number
+    location: Location
+    login: Login
+    name: Name
+    nat: string
+    phone: string
+    registered: string
+    picture: Picture
+    constructor(obj: Profile) {
+        this.cell = obj.cell
+        this.dob = obj.dob
+        this.email = obj.email
+        this.gender = obj.gender
+        this.id = obj.id
+        this.location = obj.location
+        this.login = obj.login
+        this.name = obj.name
+        this.nat = obj.nat
+        this.phone = obj.phone
+        this.registered = obj.registered
+        this.picture = obj.picture
+    }
+    fullname() {
+        return capitalizeFirstLetter(this.name.title) +
+            " " +
+            capitalizeFirstLetter(this.name.first) +
+            " " +
+            capitalizeFirstLetter(this.name.last)
+    }
+}
+export const profileStartup: Profile = {
     cell: "(057)-526-3510",
     dob: "1986-08-29 16:48:32",
     email: "gabriel.mathieu@example.com",
@@ -43,19 +120,20 @@ export const profileReducer = (state = {
         username: "crazymouse692"
     },
     name: {
-        first: "gabriel",
-        last: "mathieu",
-        title: "monsieur"
+        first: "John",
+        last: "Doe",
+        title: "Mr."
     },
-    nat: "CH",
+    nat: "BR",
     phone: "(009)-085-3186",
     picture: {
         large: "https://randomuser.me/api/portraits/men/68.jpg",
         medium: "https://randomuser.me/api/portraits/med/men/68.jpg",
-        thumbnail: "https://randomuser.me/api/portraits/thumb/men/68.jpg",
+        thumbnail: "http://via.placeholder.com/150x150",
     },
     registered: "2013-02-04 00:12:29"
-}, action: any = {}) => {
+}
+export const profileReducer = (state = profileStartup, action: any = {}) => {
     switch (action.type) {
         case 'USER_FOUND':
             return action.payload.user
@@ -74,10 +152,23 @@ export const drawer = (state = false, action: any = {}) => {
     }
 }
 
+export const profilesReducer = (state = {}, action: any = {}) => {
+    switch (action.type) {
+        case 'USER_FOUND':
+            console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]")
+            console.log(action.payload)
+            let Newer = state
+            Newer[action.payload.user.id] = action.payload.user
+            return Newer
+        default:
+            return state
+    }
+}
 export let allReducers = (location) => combineReducers({
     location,
     toastr: toastrReducer,
     userId: userIdReducer,
     profile: profileReducer,
+    profiles: profilesReducer,
     drawer
 })

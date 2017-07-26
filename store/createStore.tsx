@@ -10,7 +10,9 @@ import { routesMap } from "../app/route.map";
 import * as storage from 'redux-storage'
 import createEngine from 'redux-storage-engine-localstorage';
 import * as reducers from './reducers';
-export const engine = createEngine('my-save-key');
+import debounce from 'redux-storage-decorator-debounce'
+export let engine = createEngine('my-save-key');
+engine = debounce(engine, 3000);
 let ReplacebleEpicMiddleware = createEpicMiddleware(RootEpic);
 
 export const configureStore = (history: any = {}) => {

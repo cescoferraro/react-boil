@@ -12,13 +12,6 @@ export function PING_ACTION() {
         type: PING_ACTION_NAME
     }
 }
-const userEpic = action$ => {
-    return action$.
-        ofType("GET_USER")
-        .mergeMap((action) =>
-            (Observable.of(
-                { type: "USER", payload: action.payload.id })))
-};
 
 const pingEpic = action$ =>
     action$.filter(action => action.type === 'PING')
@@ -26,5 +19,5 @@ const pingEpic = action$ =>
         .mapTo({ type: 'USER', payload: 78878 });
 
 export const RootEpic = combineEpics(
-    pingEpic, userEpic
+    pingEpic
 );
