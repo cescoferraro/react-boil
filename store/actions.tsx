@@ -18,9 +18,14 @@ export function DRAWER_TOGGLE_ACTION() {
     }
 }
 
+export function USER_ACTION(id) {
+    return { type: 'USER', payload: { id } }
+}
+
 export const APP_ACTIONS = (dispatch) => {
     return bindActionCreators({
         DRAWER_ACTION,
+        USER_ACTION,
         DRAWER_TOGGLE_ACTION,
         dispatch
     }, dispatch);

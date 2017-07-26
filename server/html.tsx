@@ -5,6 +5,7 @@ import {
 } from "./helpers"
 import { flushedAssets } from "./flush"
 import { ToastrCSS } from "../shared/components/toastrCSS"
+import * as serialize from 'serialize-javascript';
 
 export const HTML = (
     { clientStats, serverStats, outputPath, production, content, store }
@@ -24,6 +25,11 @@ export const HTML = (
                 {preload}
                 <BaseStyle />
                 <ToastrCSS />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.__PRODUCTION__ = ${serialize(production)}`
+                    }}
+                />
                 <OneSignalCDN production={production} />
                 <OneSignalInit production={production} />
             </head>

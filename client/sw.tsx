@@ -1,7 +1,7 @@
 export const runServiceWorker = () => {
     if (document.location.hostname !== "localhost") {
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
+            navigator.serviceWorker.register('/OneSignalSDKWorker.js').then(function(reg) {
                 reg.onupdatefound = function() {
                     var installingWorker = reg.installing;
 

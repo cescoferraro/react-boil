@@ -50,12 +50,14 @@ export const Renderer = Component => {
     const history = createBrowserHistory()
     const store = configureStore(history)
     offlineCheck(store)
-    const load = storage.createLoader(engine);
-    load(store)
-        .then((newState) => {
-            store.dispatch(newState.location)
-        })
-        .catch(() => console.log('Failed to load previous state'));
+    if ((window as any).__PRODUCTION__) {
+        const load = storage.createLoader(engine);
+        load(store)
+            .then((newState) => {
+                store.dispatch(newState.location)
+            })
+            .catch(() => console.log('Failed to load previous state'));
+    }
     ReactDOM.render(
         <WithStylesContext onInsertCss={styles => styles._insertCss()}>
             <ReduxProvider store={store}>

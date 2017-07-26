@@ -60,7 +60,7 @@ export const Shell = (props) => {
                 <MenuItem
                     leftIcon={<Boy className={CSS.button} />}
                     onClick={() => {
-                        props.dispatch({ type: 'USER', payload: { id: 123 } })
+                        props.USER_ACTION(6542)
                         props.DRAWER_ACTION(false)
                     }}
                 >
@@ -69,7 +69,8 @@ export const Shell = (props) => {
                 <MenuItem
                     leftIcon={<Girl className={CSS.button} />}
                     onClick={() => {
-                        props.dispatch({ type: 'USER', payload: { id: 456 } })
+
+                        props.USER_ACTION(6534)
                         props.DRAWER_ACTION(false)
                     }}
                 >

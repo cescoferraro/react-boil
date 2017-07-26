@@ -4,13 +4,10 @@ import { AsyncUser } from "../../components/user";
 import RaisedButton from 'material-ui/RaisedButton'
 import { MyHelmet } from "../../../shared/helmet"
 
-export const UserContainer = (props) => (
-    <Shell id="USER" {...props}>
+export const UserContainer = (props) => {
+    console.log(props)
+    return (<Shell id="USER" {...props}>
         <MyHelmet title="User" />
-        <AsyncUser id={props.userId} />
-        <RaisedButton
-            onClick={() => { props.dispatch({ type: "PING" }) }}
-            label="Default"
-        />
-    </Shell>
-)
+        <AsyncUser profile={props.profile} />
+    </Shell>)
+}
