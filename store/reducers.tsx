@@ -127,8 +127,8 @@ export const profileStartup: Profile = {
     nat: "BR",
     phone: "(009)-085-3186",
     picture: {
-        large: "https://randomuser.me/api/portraits/men/68.jpg",
-        medium: "https://randomuser.me/api/portraits/med/men/68.jpg",
+        large: "http://via.placeholder.com/700x700",
+        medium: "http://via.placeholder.com/300x300",
         thumbnail: "http://via.placeholder.com/150x150",
     },
     registered: "2013-02-04 00:12:29"

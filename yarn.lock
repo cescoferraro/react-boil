@@ -6248,9 +6248,9 @@ react-transition-group@^1.1.2:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-universal-component@^2.0.15:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.15.tgz#f598aaca4e51a612eae757322ae2d2ef6a422b99"
+react-universal-component@^2.0.18:
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.18.tgz#78c922d88108d2bc22c30a78052f856dfa8f4109"
 
 react-world-flags@^0.0.3:
   version "0.0.3"
@@ -6454,17 +6454,17 @@ redux-devtools-extension@^2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
 
-redux-first-router-link@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-1.1.2.tgz#4841b92da0ad537cb96fcdcbf20128823b3204d6"
+redux-first-router-link@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-1.1.3.tgz#eeafa4e9b422f52d0c5a76826420244c6a4b7273"
   dependencies:
     path-to-regexp "^1.7.0"
     prop-types "15.5.10"
     rudy-match-path "^0.1.0"
 
-redux-first-router@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-1.9.0.tgz#3fffda7847218e514332e398c6f5e90a64b3f68a"
+redux-first-router@^1.9.6:
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-1.9.6.tgz#965100abd2d5c6fcfd543e4ab2ea6b464d946822"
   dependencies:
     path-to-regexp "^1.7.0"
 
@@ -8169,9 +8169,9 @@ webpack-dev-middleware@^1.11.0:
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
 
-webpack-flush-chunks@^1.1.11:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.11.tgz#7af95f279ae4a06d973ff9e75645b3081ecb83a3"
+webpack-flush-chunks@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.14.tgz#9466eb1a74ed764b68032ad2b0585dd7db962a99"
 
 webpack-hot-middleware@^2.18.2:
   version "2.18.2"
