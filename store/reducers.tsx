@@ -152,11 +152,9 @@ export const drawer = (state = false, action: any = {}) => {
     }
 }
 
-export const profilesReducer = (state = {}, action: any = {}) => {
+export const profilesReducer = (state = { 123: profileStartup }, action: any = {}) => {
     switch (action.type) {
         case 'USER_FOUND':
-            console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]")
-            console.log(action.payload)
             let Newer = state
             Newer[action.payload.user.id] = action.payload.user
             return Newer

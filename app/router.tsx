@@ -6,6 +6,7 @@ import { compose } from "recompose"
 import { HomeContainer } from "./containers/home/home"
 import { UserContainer } from "./containers/user/user"
 import { APP_ACTIONS } from "../store/actions";
+import { NoMatchContainer } from "./containers/404/404";
 
 const AppRouterClass = (props) => {
     switch (props.location.type) {
@@ -15,7 +16,7 @@ const AppRouterClass = (props) => {
         case "USER":
             return (<UserContainer {...props} />)
         default:
-            return <h2>default</h2>
+            return <NoMatchContainer {...props} />
     }
 }
 

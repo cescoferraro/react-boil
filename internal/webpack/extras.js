@@ -2,7 +2,8 @@ const resolve = {
   extensions: ['.css', '.js', '.tsx', '.json', '.pcss']
 };
 
-const devTools = env => (env.production ? 'source-map' : 'eval');
+const devTools = env =>
+  env.production ? 'source-map' : 'cheap-module-eval-source-map';
 
 const publicPath = env =>
   env.production ? 'https://boil.cescoferraro.xyz/' : 'http://localhost:5000/';
