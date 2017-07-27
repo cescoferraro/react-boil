@@ -30,7 +30,7 @@
     "@types/offline-js": "^0.7.28",
     "@types/react": "^15.0.35",
     "@types/react-redux": "^4.4.45",
-    "awesome-typescript-loader": "^3.2.1",
+    "awesome-typescript-loader": "^3.2.2",
     "cachedfs": "^0.3.3",
     "classnames": "^2.2.5",
     "compression": "^1.7.0",
@@ -50,13 +50,13 @@
     "image-webpack-loader": "^3.3.1",
     "localforage": "^1.5.0",
     "lodash": "^4.17.4",
-    "material-ui": "^0.18.6",
+    "material-ui": "^0.18.7",
     "morgan": "^1.8.2",
     "noop-webpack-plugin": "^1.0.1",
     "offline-js": "^0.7.19",
     "org": "^0.2.0",
     "org-loader": "^1.0.1",
-    "postcss-cssnext": "^3.0.0",
+    "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
     "rapscallion": "^2.1.13",
@@ -72,13 +72,13 @@
     "react-redux-toastr": "^7.1.0",
     "react-sizeme": "^2.3.4",
     "react-tap-event-plugin": "^2.0.1",
-    "react-universal-component": "^1.4.1",
+    "react-universal-component": "^2.0.15",
     "react-world-flags": "^0.0.3",
     "recompose": "^0.24.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
-    "redux-first-router": "^1.8.5",
-    "redux-first-router-link": "^1.1.1",
+    "redux-first-router": "^1.9.0",
+    "redux-first-router-link": "^1.1.2",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.14.1",
     "redux-storage": "^4.1.2",
@@ -92,7 +92,7 @@
     "svg-to-react": "^0.1.0",
     "sw-precache-webpack-plugin": "^0.11.4",
     "tslint": "^5.5.0",
-    "tslint-react": "^3.0.0",
+    "tslint-react": "^3.1.0",
     "typed-css-modules-loader": "^0.0.10",
     "typescript": "^2.4.2",
     "uglifyjs-webpack-plugin": "v1.0.0-beta.1",
@@ -105,6 +105,6 @@
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "eslint": "^4.2.0"
+    "eslint": "^4.3.0"
   }
 }
