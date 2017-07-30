@@ -1,7 +1,6 @@
 import * as React from "react"
 import { renderToString, renderToStaticMarkup } from "react-dom/server"
 import { AppRouter } from "../app/router"
-import { WithStylesContext } from "../shared/components/styles.context";
 import { HTML } from "./html";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";

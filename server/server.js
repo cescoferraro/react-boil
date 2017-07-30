@@ -13,6 +13,7 @@ app.use('/vendor', express.static(path.join(__dirname, 'vendor'), maxAge));
 app.use('/icons', express.static(path.join(__dirname, 'icons'), maxAge));
 app.use('/css', express.static(path.join(__dirname, 'css'), maxAge));
 app.use('/html', express.static(path.join(__dirname, 'html'), maxAge));
+app.use('/flags', express.static(path.join(__dirname, 'flags'), maxAge));
 app.use('/images', express.static(path.join(__dirname, 'images'), maxAge));
 app.use('/appcache', express.static(path.join(__dirname, 'appcache'), maxAge));
 const clientStats = require('./stats.json');

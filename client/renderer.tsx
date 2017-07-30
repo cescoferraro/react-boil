@@ -1,7 +1,6 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import { AppContainer } from 'react-hot-loader';
-import { WithStylesContext } from "../shared/components/styles.context";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Provider as ReduxProvider } from "react-redux";
@@ -56,15 +55,13 @@ export const Renderer = Component => {
             .catch(() => console.log('Failed to load previous state'));
     }
     ReactDOM.render(
-        <WithStylesContext onInsertCss={styles => styles._insertCss()}>
-            <ReduxProvider store={store}>
-                <MuiThemeProvider muiTheme={
-                    getMuiTheme(BoilTheme, { userAgent: navigator.userAgent })}>
-                    <AppContainer>
-                        <Component />
-                    </AppContainer>
-                </MuiThemeProvider>
-            </ReduxProvider>
-        </WithStylesContext >
+        <ReduxProvider store={store}>
+            <MuiThemeProvider muiTheme={
+                getMuiTheme(BoilTheme, { userAgent: navigator.userAgent })}>
+                <AppContainer>
+                    <Component />
+                </AppContainer>
+            </MuiThemeProvider>
+        </ReduxProvider>
         , tag)
 }

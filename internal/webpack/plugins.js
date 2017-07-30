@@ -10,6 +10,7 @@ const noop = require('noop-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const Harmony = require('uglifyjs-webpack-plugin');
 const PreloadWebpackPlugin = require('./css.js');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 const icons = new FaviconsWebpackPlugin({
   config: {
@@ -53,20 +54,33 @@ const limit = () =>
     maxChunks: 1
   });
 
+const flags = () => {
+  return new CopyWebpackPlugin([
+    {
+      from: './node_modules/react-flags/vendor/flags',
+      to: './flags'
+    }
+  ]);
+};
+
 const copy = () => [
-  new CopyWebpackPlugin([{ from: './server/server.js', to: './server.js' }]),
-  new CopyWebpackPlugin([
-    {
-      from: './shared/signal/OneSignalSDKWorker.js',
-      to: './signal/OneSignalSDKWorker.js'
-    }
-  ]),
-  new CopyWebpackPlugin([
-    {
-      from: './shared/signal/OneSignalSDKUpdaterWorker.js',
-      to: './signal/OneSignalSDKUpdaterWorker.js'
-    }
-  ])
+  new CopyWebpackPlugin(
+    [
+      { from: './server/server.js', to: './server.js' },
+      {
+        from: './shared/signal/OneSignalSDKUpdaterWorker.js',
+        to: './signal/OneSignalSDKUpdaterWorker.js'
+      },
+      {
+        from: './shared/signal/OneSignalSDKWorker.js',
+        to: './signal/OneSignalSDKWorker.js'
+      },
+      { from: './node_modules/react-flags/vendor/flags', to: './flags' }
+    ],
+    { copyUnmodified: true }
+  ),
+  flags(),
+  new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
 ];
 
 const define = env =>
@@ -89,17 +103,39 @@ const vendor = () =>
     filename: 'js/vendor.js',
     name: 'vendor'
   });
+const stats = () => {
+  return new StatsPlugin('stats.json');
+};
+const analyzer = env => {
+  return env.analyzer ? new BundleAnalyzerPlugin() : noop();
+};
+const hmr = () => {
+  return new webpack.HotModuleReplacementPlugin();
+};
+const dllReference = () => {
+  return new webpack.DllReferencePlugin({
+    context: __dirname,
+    manifest: require('../../dll/vendor.dll.json'),
+    name: 'react'
+  });
+};
+const cssProd = () => {
+  return new ExtractCssChunks({ filename: 'css/[name]_[hash].css' });
+};
+const cssDev = () => {
+  return new ExtractCssChunks();
+};
 
 const clientPlugins = env => {
   if (env.production) {
     return [
       icons,
-      new StatsPlugin('stats.json'),
-      new ExtractCssChunks({ filename: 'css/[name]_[hash].css' }),
+      stats(),
+      cssProd(),
       common(),
       define(env),
+      analyzer(env),
       vendor(),
-      env.analyzer ? new BundleAnalyzerPlugin() : noop(),
       SW,
       ...HTML,
       Uglify
@@ -107,13 +143,9 @@ const clientPlugins = env => {
   } else {
     return [
       icons,
-      new webpack.DllReferencePlugin({
-        context: __dirname,
-        manifest: require('../../dll/vendor.dll.json'),
-        name: 'react'
-      }),
-      new webpack.HotModuleReplacementPlugin(),
-      new ExtractCssChunks(),
+      dllReference(),
+      hmr(),
+      cssDev(),
       common(),
       new webpack.NoEmitOnErrorsPlugin(),
       define(env),
@@ -126,7 +158,7 @@ const serverPlugins = env => {
   if (env.production) {
     return [...copy(), limit(), define(env), Uglify];
   } else {
-    return [limit(), define(env)];
+    return [flags(), limit(), define(env)];
   }
 };
 

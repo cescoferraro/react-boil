@@ -14,7 +14,8 @@
     "prod": "webpack --config webpack.config.js --env.production",
     "preview": "yarn run clear && yarn run prod && cd dist/ && node server.js",
     "analyzer": "webpack --config webpack.client.js --env.production --env.analyzer",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "lint": "tslint '**/*.tsx'",
     "docker/build": "docker build -f internal/docker/Dockerfile -t cescoferraro/boil:latest .",
     "docker/run": "docker run -p 4000:4000 -v dist/:/srv/boil cescoferraro/boil:latest",
     "docker/push": "docker push cescoferraro/boil:latest",
@@ -26,6 +27,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/debug": "^0.0.29",
+    "@types/jest": "^20.0.5",
     "@types/material-ui": "^0.17.18",
     "@types/offline-js": "^0.7.28",
     "@types/react": "^15.0.35",
@@ -47,7 +49,10 @@
     "global": "^4.3.2",
     "history": "^4.6.3",
     "html-webpack-plugin": "^2.29.0",
+    "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^3.3.1",
+    "imagemin-webpack-plugin": "^1.5.0-beta.0",
+    "jest": "^20.0.4",
     "localforage": "^1.5.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.7",
@@ -64,7 +69,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-flag-icon-css": "^1.0.19",
-    "react-flags": "^0.1.12",
+    "react-flags": "wiredmax/react-flags#9/head",
     "react-helmet": "^5.1.3",
     "react-hot-loader": "3.0.0-beta.6",
     "react-redux": "^5.0.5",
@@ -72,12 +77,13 @@
     "react-redux-toastr": "^7.1.0",
     "react-sizeme": "^2.3.4",
     "react-tap-event-plugin": "^2.0.1",
-    "react-universal-component": "^2.0.18",
+    "react-test-renderer": "^15.6.1",
+    "react-universal-component": "^2.0.19",
     "react-world-flags": "^0.0.3",
     "recompose": "^0.24.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
-    "redux-first-router": "^1.9.6",
+    "redux-first-router": "^1.9.7",
     "redux-first-router-link": "^1.1.3",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.14.1",
@@ -91,6 +97,7 @@
     "svg-react-loader": "^0.4.4",
     "svg-to-react": "^0.1.0",
     "sw-precache-webpack-plugin": "^0.11.4",
+    "ts-jest": "^20.0.7",
     "tslint": "^5.5.0",
     "tslint-react": "^3.1.0",
     "typed-css-modules-loader": "^0.0.10",
@@ -106,5 +113,20 @@
   },
   "devDependencies": {
     "eslint": "^4.3.0"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+   "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   }
 }

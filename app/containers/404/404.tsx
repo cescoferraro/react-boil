@@ -8,7 +8,7 @@ export const NoMatchContainer = (props) => {
     return (<Shell id="404" {...props}>
         <MyHelmet title="404" />
         <div>
-            <h2>NOT FOUDN</h2>
+            <h2>NOT FOUND!</h2>
         </div>
     </Shell>)
 }

@@ -23,6 +23,7 @@ import { Item } from "./item/item";
 import { compose } from "recompose"
 import sizeMe from 'react-sizeme'
 import { AsyncCountry } from "./country"
+
 class User extends React.Component<any, any> {
     render() {
         console.log(this.props.profiles)
@@ -37,13 +38,13 @@ class User extends React.Component<any, any> {
                         <img className={CSS.image} alt="" src={this.props.size.width > 300 ? profile.picture.large : profile.picture.medium} width={150} />
                         <div className={CSS.name}><a>{profile.name.first}</a></div>
                     </div>
-                    <Item CSS={CSS} title="Fullname" value={profile.fullname()} icon={<AccountCircle style={{ fill: "grey" }} />} />
-                    <Item CSS={CSS} title="Email" value={profile.email} icon={<GpsFixed style={{ fill: "grey" }} />} />
+                    <Item title="Fullname" value={profile.fullname()} icon={<AccountCircle style={{ fill: "grey" }} />} />
+                    <Item title="Email" value={profile.email} icon={<GpsFixed style={{ fill: "grey" }} />} />
                     <Subheader>Address</Subheader>
-                    <Item CSS={CSS} title="Street" value={profile.location.street} icon={<Code style={{ fill: "grey" }} className={CSS.flag} />} />
-                    <Item CSS={CSS} title="City" value={profile.location.city} icon={<LocationCity style={{ fill: "grey" }} className={CSS.flag} />} />
-                    <Item CSS={CSS} title="Zip-Code" value={profile.location.postcode} icon={<Code style={{ fill: "grey" }} className={CSS.flag} />} />
-                    <Item CSS={CSS} title="State" value={profile.location.state} icon={<Terrain style={{ fill: "grey" }} className={CSS.flag} />} />
+                    <Item title="Street" value={profile.location.street} icon={<Code style={{ fill: "grey" }} className={CSS.flag} />} />
+                    <Item title="City" value={profile.location.city} icon={<LocationCity style={{ fill: "grey" }} className={CSS.flag} />} />
+                    <Item title="Zip-Code" value={profile.location.postcode} icon={<Code style={{ fill: "grey" }} className={CSS.flag} />} />
+                    <Item title="State" value={profile.location.state} icon={<Terrain style={{ fill: "grey" }} className={CSS.flag} />} />
                     {/* <Item CSS={CSS} title="Nationality" value={profile.nat} icon={<Flag className={CSS.flag} code={profile.nat} />} /> */}
                     <AsyncCountry profile={profile} CSS={CSS} />
                     <Divider />
