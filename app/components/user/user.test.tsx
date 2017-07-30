@@ -1,6 +1,4 @@
 import * as React from "react"
-import * as renderer from "react-test-renderer"
-import { BoilTheme } from "../../../shared/theme"
 import { UserComponent } from "./user"
 import { profileStartup } from "../../../store/reducers"
 import { MUIProvider } from "../../../shared/components/MUIProvider"

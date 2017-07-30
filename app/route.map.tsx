@@ -5,7 +5,7 @@ import "rxjs/add/operator/delay"
 import "rxjs/add/observable/dom/ajax"
 import "rxjs/add/observable/of"
 import "rxjs/add/observable/if"
-import { isServer } from "../store/logger";
+import { isServer } from "../store/logger"
 
 const userThunk = (dispatch, getState) => {
     const { id } = getState().location.payload
