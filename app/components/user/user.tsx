@@ -1,7 +1,6 @@
 import * as React from "react"
 import * as CSS from "./css/teste.css"
 import { Card } from "material-ui/Card"
-import { UserHelmet } from "../../../shared/helmet"
 import Subheader from "material-ui/Subheader"
 import { ProfileClass } from "../../../store/reducers"
 import Code from "material-ui/svg-icons/action/code"
@@ -15,15 +14,11 @@ import { compose } from "recompose"
 import sizeMe from "react-sizeme"
 import { AsyncCountry } from "./country"
 
-class User extends React.Component<any, any> {
+export class UserComponent extends React.Component<any, any> {
     public render() {
-        console.log(this.props.profiles)
-        console.log(this.props.profile.id)
-        console.log(this.props)
         const profile: ProfileClass = new ProfileClass(this.props.profiles[this.props.profile.id])
         return (
             <div className={CSS.test}>
-                <UserHelmet id={this.props.profile.id} />
                 <Card>
                     <div className={CSS.title}>
                         <img
@@ -75,4 +70,4 @@ class User extends React.Component<any, any> {
     }
 }
 
-export default compose(sizeMe())(User)
+export default compose(sizeMe())(UserComponent)

@@ -14,7 +14,7 @@
     "prod": "webpack --config webpack.config.js --env.production",
     "preview": "yarn run clear && yarn run prod && cd dist/ && node server.js",
     "analyzer": "webpack --config webpack.client.js --env.production --env.analyzer",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "tslint --type-check --project tsconfig.json",
     "docker/build": "docker build -f internal/docker/Dockerfile -t cescoferraro/boil:latest .",
     "docker/run": "docker run -p 4000:4000 -v dist/:/srv/boil cescoferraro/boil:latest",

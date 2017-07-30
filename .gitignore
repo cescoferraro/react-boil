@@ -4,3 +4,4 @@ dll/
 
 node_modules/
 .wercker/
+coverage/
