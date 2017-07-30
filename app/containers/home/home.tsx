@@ -1,11 +1,7 @@
 import * as React from "react"
-import RaisedButton from 'material-ui/RaisedButton'
-import { connect } from 'react-redux'
 import { MyHelmet } from "../../../shared/helmet"
-import AppBar from 'material-ui/AppBar'
 import * as CSS from "./css/home.css"
 import { Shell } from "../../../shared/components/shell"
-const ImageSrc = require("../../../shared/images/boil.jpg")
 const test = require("../../../README.org")
 
 export const HomeContainer = (props) => {

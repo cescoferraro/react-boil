@@ -9,16 +9,16 @@ const spacing = {
     desktopDropDownMenuFontSize: 15,
     desktopDrawerMenuItemHeight: 48,
     desktopSubheaderHeight: 48,
-    desktopToolbarHeight: 56,
-};
+    desktopToolbarHeight: 56
+}
 /**
  *  Light Theme is the default theme used in material-ui. It is guaranteed to
  *  have all theme variables needed for every component. Variables not defined
  *  in a custom theme will default to these values.
  */
 export const BoilTheme = {
-    spacing: spacing,
-    fontFamily: 'Roboto, sans-serif',
+    spacing,
+    fontFamily: "Roboto, sans-serif",
     borderRadius: 2,
     palette: {
         primary1Color: "#303F9F",
@@ -32,9 +32,9 @@ export const BoilTheme = {
         /* alternateTextColor: darkBlack,*/
         /* canvasColor: white,*/
         borderColor: "#BDBDBD",
-        disabledColor: "#BDBDBD",
+        disabledColor: "#BDBDBD"
         /* pickerHeaderColor: cyan500,*/
         /* clockCircleColor: fade(darkBlack, 0.07),*/
         /* shadowColor: fullBlack,*/
-    },
-};
+    }
+}

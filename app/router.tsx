@@ -1,12 +1,10 @@
 import * as React from "react"
-import { connect } from 'react-redux'
-import { MyHelmet } from "../shared/helmet"
-import Link from 'redux-first-router-link'
+import { connect } from "react-redux"
 import { compose } from "recompose"
 import { HomeContainer } from "./containers/home/home"
 import { UserContainer } from "./containers/user/user"
-import { APP_ACTIONS } from "../store/actions";
-import { NoMatchContainer } from "./containers/404/404";
+import { APP_ACTIONS } from "../store/actions"
+import { NoMatchContainer } from "./containers/404/404"
 
 const AppRouterClass = (props) => {
     switch (props.location.type) {

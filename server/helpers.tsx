@@ -1,13 +1,15 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 
-const CachedFs = require('cachedfs'),
-    fs = new CachedFs();
+const CachedFs = require("cachedfs")
+const fs = new CachedFs()
 
 const path = require("path")
 
-declare module 'react' {
+declare module "react" {
+    /* tslint:disable */
     interface HTMLAttributes<T> extends React.DOMAttributes<T> {
+        /* tslint:enable */
         as?: string
     }
 }
@@ -52,10 +54,10 @@ export const Javascript = ({ scripts }) => (<span>{scripts}</span>)
 export const Manifest = ({ production }) => {
     return production ? <link rel="manifest" href="/manifest.json" /> : null
 }
-export const getScripts = (scripts: Array<string>, outputPath, production) => {
+export const getScripts = (scripts: string[], outputPath, production) => {
     return scripts.reduce(
         (acc, script: string) => {
-            const scriptPath = `/${script}`;
+            const scriptPath = `/${script}`
             const place = path.join(outputPath, scriptPath)
 
             let preload = (
@@ -65,7 +67,7 @@ export const getScripts = (scripts: Array<string>, outputPath, production) => {
                     key={script}
                     as="script"
                 />
-            );
+            )
 
             let scriptTag = (
                 <script
@@ -73,38 +75,38 @@ export const getScripts = (scripts: Array<string>, outputPath, production) => {
                     key={script}
                     type="text/javascript"
                 />
-            );
+            )
             if (production) {
                 if (place.includes("bootstrap")) {
                     scriptTag = (
                         <script
                             type="text/javascript"
-                            dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, 'utf8') }}
+                            dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, "utf8") }}
                         />
                     )
-                    preload = null;
+                    preload = null
                 }
             }
 
             return {
                 preload: [...acc.preload, preload],
-                scripts: [...acc.scripts, scriptTag],
-            };
+                scripts: [...acc.scripts, scriptTag]
+            }
         },
         {
             preload: [],
-            scripts: [],
-        },
-    );
-};
+            scripts: []
+        }
+    )
+}
 
-export const getStyles = (styles: Array<string>, outputPath, production) => {
+export const getStyles = (styles: string[], outputPath, production) => {
     return styles.map((style: string) => {
-        const stylePath = `/${style}`;
+        const stylePath = `/${style}`
         const place = outputPath + stylePath
         return production ? (
             <style
-                dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, 'utf8') }}
+                dangerouslySetInnerHTML={{ __html: fs.readFileSync(place, "utf8") }}
             />
         ) : (
                 <link
@@ -116,10 +118,9 @@ export const getStyles = (styles: Array<string>, outputPath, production) => {
                     type="text/css"
                     charSet="UTF-8"
                 />
-            );
-    });
-};
-
+            )
+    })
+}
 
 export const Helmator = () => {
     const HelmetApp = Helmet.renderStatic()

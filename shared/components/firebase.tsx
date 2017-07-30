@@ -6,4 +6,4 @@ export const FIREBASE_CONFIG = {
     storageBucket: "craigs-8e724.appspot.com",
     enableRedirectHandling: false,
     messagingSenderId: "794041684762"
-};
+}

@@ -1,29 +1,28 @@
 import { combineReducers } from "redux"
-import { reducer as toastrReducer } from 'react-redux-toastr'
+import { reducer as toastrReducer } from "react-redux-toastr"
 
-
-import { NOT_FOUND } from 'redux-first-router'
-import { DRAWER_ACTION_NAME, DRAWER_TOGGLE_ACTION_NAME } from "./actions";
+import { NOT_FOUND } from "redux-first-router"
+import { DRAWER_ACTION_NAME, DRAWER_TOGGLE_ACTION_NAME } from "./actions"
 export const userIdReducer = (state = null, action: any = {}) => {
     switch (action.type) {
-        case 'HOME':
+        case "HOME":
         case NOT_FOUND:
             return null
-        case 'USER':
+        case "USER":
             return action.payload.id
-        case 'USER_FOUND':
+        case "USER_FOUND":
             return action.payload.user.id
         default:
             return state
     }
 }
-interface Location {
+interface ILocation {
     city: string
     postcode: number
     state: string
     street: string
 }
-interface Login {
+interface ILogin {
     md5: string
     password: string
     salt: string
@@ -32,49 +31,49 @@ interface Login {
     username: string
 
 }
-interface Name {
+interface IName {
     first: string
     last: string
     title: string
 }
-interface Picture {
+interface IPicture {
     thumbnail: string
     medium: string
     large: string
 }
 
-export interface Profile {
+export interface IProfile {
     cell: string
     dob: string
     email: string
     gender: string
     id: number
-    location: Location
-    login: Login
-    name: Name
+    location: ILocation
+    login: ILogin
+    name: IName
     nat: string
     phone: string
     registered: string
-    picture: Picture
+    picture: IPicture
 }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+function capitalizeFirstLetter(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1)
 }
-export class ProfileClass implements Profile {
-    cell: string
-    dob: string
-    email: string
-    gender: string
-    id: number
-    location: Location
-    login: Login
-    name: Name
-    nat: string
-    phone: string
-    registered: string
-    picture: Picture
-    constructor(obj: Profile) {
+export class ProfileClass implements IProfile {
+    public cell: string
+    public dob: string
+    public email: string
+    public gender: string
+    public id: number
+    public location: ILocation
+    public login: ILogin
+    public name: IName
+    public nat: string
+    public phone: string
+    public registered: string
+    public picture: IPicture
+    constructor(obj: IProfile) {
         this.cell = obj.cell
         this.dob = obj.dob
         this.email = obj.email
@@ -88,7 +87,7 @@ export class ProfileClass implements Profile {
         this.registered = obj.registered
         this.picture = obj.picture
     }
-    fullname() {
+    public fullname() {
         return capitalizeFirstLetter(this.name.title) +
             " " +
             capitalizeFirstLetter(this.name.first) +
@@ -96,7 +95,7 @@ export class ProfileClass implements Profile {
             capitalizeFirstLetter(this.name.last)
     }
 }
-export const profileStartup: Profile = {
+export const profileStartup: IProfile = {
     cell: "(057)-526-3510",
     dob: "1986-08-29 16:48:32",
     email: "gabriel.mathieu@example.com",
@@ -107,8 +106,7 @@ export const profileStartup: Profile = {
         city: "pully",
         postcode: 8831,
         state: "graubünden",
-        street: "2976 quai charles-de-gaulle",
-
+        street: "2976 quai charles-de-gaulle"
     },
 
     login: {
@@ -129,13 +127,13 @@ export const profileStartup: Profile = {
     picture: {
         large: "http://via.placeholder.com/700x700",
         medium: "http://via.placeholder.com/300x300",
-        thumbnail: "http://via.placeholder.com/150x150",
+        thumbnail: "http://via.placeholder.com/150x150"
     },
     registered: "2013-02-04 00:12:29"
 }
 export const profileReducer = (state = profileStartup, action: any = {}) => {
     switch (action.type) {
-        case 'USER_FOUND':
+        case "USER_FOUND":
             return action.payload.user
         default:
             return state
@@ -154,8 +152,8 @@ export const drawer = (state = false, action: any = {}) => {
 
 export const profilesReducer = (state = { 123: profileStartup }, action: any = {}) => {
     switch (action.type) {
-        case 'USER_FOUND':
-            let Newer = state
+        case "USER_FOUND":
+            const Newer = state
             Newer[action.payload.user.id] = action.payload.user
             return Newer
         default:

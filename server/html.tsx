@@ -5,7 +5,7 @@ import {
 } from "./helpers"
 import { flushedAssets } from "./flush"
 import { ToastrCSS } from "../shared/components/toastrCSS"
-import * as serialize from 'serialize-javascript';
+import * as serialize from "serialize-javascript"
 
 export const HTML = (
     { clientStats, serverStats, outputPath, production, content, store }
@@ -14,6 +14,9 @@ export const HTML = (
     const { preload, scripts } = getScripts(assets.scripts, outputPath, production)
     const styles = getStyles(assets.stylesheets, outputPath, production)
     const MyHelmet = Helmator()
+    const inner = {
+        __html: `window.__PRODUCTION__ = ${serialize(production)}`
+    }
     return (
         <html {...MyHelmet.html}>
             <head >
@@ -25,11 +28,7 @@ export const HTML = (
                 {preload}
                 <BaseStyle />
                 <ToastrCSS />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `window.__PRODUCTION__ = ${serialize(production)}`
-                    }}
-                />
+                <script dangerouslySetInnerHTML={inner} />
                 <OneSignalCDN production={production} />
                 <OneSignalInit production={production} />
             </head>

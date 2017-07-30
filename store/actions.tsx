@@ -1,8 +1,5 @@
-import { bindActionCreators } from "redux";
-
-
-
-export const DRAWER_ACTION_NAME = "DRAWER";
+import { bindActionCreators } from "redux"
+export const DRAWER_ACTION_NAME = "DRAWER"
 
 export function DRAWER_ACTION(state) {
     return {
@@ -11,19 +8,19 @@ export function DRAWER_ACTION(state) {
     }
 }
 
-export const DRAWER_TOGGLE_ACTION_NAME = "DRAWER_TOOGLE";
+export const DRAWER_TOGGLE_ACTION_NAME = "DRAWER_TOOGLE"
 export function DRAWER_TOGGLE_ACTION() {
     return {
-        type: DRAWER_TOGGLE_ACTION_NAME,
+        type: DRAWER_TOGGLE_ACTION_NAME
     }
 }
 
 export function USER_ACTION(id) {
-    return { type: 'USER', payload: { id } }
+    return { type: "USER", payload: { id } }
 }
 
 export function GO_HOME_ACTION(id) {
-    return { type: 'HOME' }
+    return { type: "HOME" }
 }
 
 export const APP_ACTIONS = (dispatch) => {
@@ -33,5 +30,5 @@ export const APP_ACTIONS = (dispatch) => {
         GO_HOME_ACTION,
         DRAWER_TOGGLE_ACTION,
         dispatch
-    }, dispatch);
-};
+    }, dispatch)
+}

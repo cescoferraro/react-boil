@@ -1,11 +1,10 @@
-import { redirect } from 'redux-first-router'
 import { profileStartup } from "../store/reducers"
 import { Observable } from "rxjs/Observable"
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/delay'
-import 'rxjs/add/observable/dom/ajax'
-import 'rxjs/add/observable/of'
-import 'rxjs/add/observable/if'
+import "rxjs/add/operator/map"
+import "rxjs/add/operator/delay"
+import "rxjs/add/observable/dom/ajax"
+import "rxjs/add/observable/of"
+import "rxjs/add/observable/if"
 
 const userThunk = (dispatch, getState) => {
     const { id } = getState().location.payload
@@ -22,12 +21,12 @@ const userThunk = (dispatch, getState) => {
                     .map((user) => {
                         user.id = id
                         console.log(getState())
-                        dispatch({ type: 'USER_FOUND', payload: { user } })
+                        dispatch({ type: "USER_FOUND", payload: { user } })
                     }),
                 Observable.of(profileStartup)
                     .map((user) => {
                         user.id = id
-                        dispatch({ type: 'USER_FOUND', payload: { user } })
+                        dispatch({ type: "USER_FOUND", payload: { user } })
                     })
             )))
         .subscribe((success) => {
@@ -36,8 +35,7 @@ const userThunk = (dispatch, getState) => {
 
 }
 
-
 export const routesMap = {
     HOME: { path: "/" },
-    USER: { path: "/user/:id", thunk: userThunk },
+    USER: { path: "/user/:id", thunk: userThunk }
 }

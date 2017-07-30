@@ -1,63 +1,65 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { AppContainer } from 'react-hot-loader';
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import { Provider as ReduxProvider } from "react-redux";
-import { configureStore, engine } from "../store/createStore";
-import { createBrowserHistory } from "history";
-import { BoilTheme } from "../shared/theme";
+import { AppContainer } from "react-hot-loader"
+import getMuiTheme from "material-ui/styles/getMuiTheme"
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
+import { Provider as ReduxProvider } from "react-redux"
+import { configureStore, engine } from "../store/createStore"
+import { createBrowserHistory } from "history"
+import { BoilTheme } from "../shared/theme"
 import * as storage from "redux-storage"
 import { toastr } from "react-redux-toastr"
 
 export const tag = document.getElementById("root")
 
-var upHandler = (e) => {
-    toastr.success('The UP', 'cloud 9', {
+const upHandler = (e) => {
+    toastr.success("The UP", "cloud 9", {
         position: "bottom-left"
     })
     console.log("upppp")
 }
-var downHandler = (e) => {
-    toastr.error('The down', 'rot in hell', {
+const downHandler = (e) => {
+    toastr.error("The down", "rot in hell", {
         position: "bottom-left"
     })
     console.log("downnnnn")
 }
 
 const offlineCheck = (store) => {
-    const { Offline } = (window as any);
+    const { Offline } = (window as any)
     Offline.options = {
         checkOnLoad: true,
         checks: {
             image: {
-                url: () => ('https://esri.github.io/offline-editor-js/tiny-image.png?_='
+                url: () => ("https://esri.github.io/offline-editor-js/tiny-image.png?_="
                     + (Math.floor(Math.random() * 1000000000)))
 
             },
-            active: 'image'
+            active: "image"
         }
-    };
-    Offline.on("up", upHandler);
-    Offline.on("down", downHandler);
+    }
+    Offline.on("up", upHandler)
+    Offline.on("down", downHandler)
 }
 
-export const Renderer = Component => {
+export const Renderer = (Component) => {
     const history = createBrowserHistory()
     const store = configureStore(history)
     offlineCheck(store)
     if ((window as any).__PRODUCTION__) {
-        const load = storage.createLoader(engine);
+        const load = storage.createLoader(engine)
         load(store)
             .then((newState) => {
                 store.dispatch(newState.location)
             })
-            .catch(() => console.log('Failed to load previous state'));
+            .catch(() => console.log("Failed to load previous state"))
     }
     ReactDOM.render(
         <ReduxProvider store={store}>
-            <MuiThemeProvider muiTheme={
-                getMuiTheme(BoilTheme, { userAgent: navigator.userAgent })}>
+            <MuiThemeProvider
+                muiTheme={getMuiTheme(BoilTheme, { userAgent: navigator.userAgent })}
+            >
+
                 <AppContainer>
                     <Component />
                 </AppContainer>
