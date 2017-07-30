@@ -10,7 +10,7 @@ class Country extends React.Component<any, any> {
                 format="png"
                 pngSize={32}
                 basePath="/flags"
-                className={this.props.CSS.flag}
+                className={this.props.className}
                 alt="Canada Flag"
             />
         )

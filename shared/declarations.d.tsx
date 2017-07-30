@@ -3,3 +3,6 @@ declare const module: any
 declare let global: any
 declare let test: any
 declare let expect: any
+declare let shallow: any
+declare let render: any
+declare let mount: any
