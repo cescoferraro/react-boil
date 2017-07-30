@@ -10,7 +10,7 @@ const noop = require('noop-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const Harmony = require('uglifyjs-webpack-plugin');
 const PreloadWebpackPlugin = require('./css.js');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+// const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 const icons = new FaviconsWebpackPlugin({
   config: {
@@ -79,8 +79,8 @@ const copy = () => [
     ],
     { copyUnmodified: true }
   ),
-  flags(),
-  new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
+  flags()
+  // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
 ];
 
 const define = env =>

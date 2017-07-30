@@ -10,7 +10,6 @@ const app = express();
 const compiler = webpack(config);
 const publicPath = clientConfig.output.publicPath;
 const outputPath = clientConfig.output.path;
-
 app.use('/dll', express.static(path.join(__dirname, 'dll')));
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath }));
 app.use(
