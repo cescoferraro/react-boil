@@ -1,20 +1,36 @@
 import * as React from "react"
 import { connect } from "react-redux"
 import { compose } from "recompose"
-import { HomeContainer } from "./containers/home/home"
-import { UserContainer } from "./containers/user/user"
 import { APP_ACTIONS } from "../store/actions"
-import { NoMatchContainer } from "./containers/404/404"
+import { NoMatchContainer } from "./components/404/404"
+import { Shell } from "./components/shell/index"
+import { MyHelmet } from "../shared/helmet/index"
+import { AsyncUser } from "./components/user"
+import { HomeComponent } from "./components/home"
 
 const AppRouterClass = (props) => {
     switch (props.location.type) {
         case "HOME":
-        case "INDEX":
-            return (<HomeContainer {...props} />)
+            return (
+                <Shell {...props}>
+                    <MyHelmet title="Home" />
+                    <HomeComponent />
+                </Shell>
+            )
         case "USER":
-            return (<UserContainer {...props} />)
+            return (
+                <Shell id="USER" {...props}>
+                    <MyHelmet title="User" />
+                    <AsyncUser {...props} />
+                </Shell>
+            )
         default:
-            return <NoMatchContainer {...props} />
+            return (
+                <Shell id="404" {...props}>
+                    <MyHelmet title="404" />
+                    <NoMatchContainer {...props} />
+                </Shell>
+            )
     }
 }
 

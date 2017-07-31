@@ -6,3 +6,5 @@ declare let expect: any
 declare let shallow: any
 declare let render: any
 declare let mount: any
+declare var describe: any
+declare var it: any

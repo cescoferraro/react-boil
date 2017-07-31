@@ -5,10 +5,10 @@ import AppBar from "material-ui/AppBar"
 import * as CSS from "./shell.css"
 import Drawer from "material-ui/Drawer"
 import MenuItem from "material-ui/MenuItem"
-const BoilLogo = require("../../images/boil.svg")
-const Cancel = require("../../images/cancel.svg")
-const Boy = require("../../images/boy.svg")
-const Girl = require("../../images/girl.svg")
+const BoilLogo = require("../../../shared/images/boil.svg")
+const Cancel = require("../../../shared/images/cancel.svg")
+const Boy = require("../../../shared/images/boy.svg")
+const Girl = require("../../../shared/images/girl.svg")
 import ReduxToastr from "react-redux-toastr"
 
 export const Shell = (props) => {

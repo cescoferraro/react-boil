@@ -125,8 +125,12 @@
       "tsx",
       "js"
     ],
-    "setupFiles": ["<rootDir>/internal/test/jestSetup.js"],
-    "snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"],
+    "setupFiles": [
+      "<rootDir>/internal/test/jestSetup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|svg|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internal/test/jest.js",
       "\\.(css)$": "identity-obj-proxy"

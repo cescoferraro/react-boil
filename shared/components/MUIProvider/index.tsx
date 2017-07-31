@@ -1,10 +1,12 @@
 import * as React from "react"
-import getMuiTheme from "material-ui/styles/getMuiTheme"
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
-import { BoilTheme } from "../../theme"
+
+/* import getMuiTheme from "material-ui/styles/getMuiTheme"*/
+/* import { BoilTheme } from "../../theme"*/
+/* <MuiThemeProvider muiTheme={getMuiTheme(BoilTheme)}> */
 
 export const MUIProvider = ({ children }) => (
-    <MuiThemeProvider muiTheme={getMuiTheme(BoilTheme)}>
+    < MuiThemeProvider >
         {children}
-    </MuiThemeProvider>
+    </MuiThemeProvider >
 )
