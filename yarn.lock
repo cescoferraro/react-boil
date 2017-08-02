@@ -41,9 +41,9 @@
   version "20.0.5"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.5.tgz#f463e58b2de6e801f40e33b05db894babdbad98c"
 
-"@types/material-ui@^0.17.18":
-  version "0.17.18"
-  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.17.18.tgz#9bba8dcaf4b6466ae698c5d06083ab9a2af00ba9"
+"@types/material-ui@^0.17.19":
+  version "0.17.19"
+  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.17.19.tgz#24cd5fa629ce882b72e28bda8f0b83ec58c9b62d"
   dependencies:
     "@types/react" "*"
     "@types/react-addons-linked-state-mixin" "*"
@@ -3694,9 +3694,9 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.0.x"
 
-html-webpack-plugin@^2.29.0:
-  version "2.29.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.29.0.tgz#e987f421853d3b6938c8c4c8171842e5fd17af23"
+html-webpack-plugin@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.30.1.tgz#7f9c421b7ea91ec460f56527d78df484ee7537d5"
   dependencies:
     bluebird "^3.4.7"
     html-minifier "^3.2.3"
@@ -7096,9 +7096,9 @@ react-transition-group@^1.1.2:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-universal-component@^2.0.20:
-  version "2.0.20"
-  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.20.tgz#321c0eff0b9e8eb1a8453e2cb925a02d828cfab9"
+react-universal-component@^2.0.22:
+  version "2.0.22"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.0.22.tgz#01ee90906625a142c987274075b5dc94df85ad4d"
 
 react-world-flags@^0.0.3:
   version "0.0.3"
@@ -7310,9 +7310,9 @@ redux-first-router-link@^1.1.3:
     prop-types "15.5.10"
     rudy-match-path "^0.1.0"
 
-redux-first-router@^1.9.7:
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-1.9.7.tgz#85de49b0536ecd5745fce5a4a6ace54d7110e278"
+redux-first-router@^1.9.8:
+  version "1.9.8"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-1.9.8.tgz#db1a72cd6a6b22d8eb8c0edce33d2b19d958661f"
   dependencies:
     path-to-regexp "^1.7.0"
 
@@ -8468,6 +8468,10 @@ time-stamp@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
 
+time-stamp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-2.0.0.tgz#95c6a44530e15ba8d6f4a3ecb8c3a3fac46da357"
+
 timed-out@^3.0.0:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-3.1.3.tgz#95860bfcc5c76c277f8f8326fd0f5b2e20eba217"
@@ -8619,11 +8623,11 @@ tslib@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 
-tslint-react@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.1.0.tgz#a4de1a22fef41b663fa44daae27cbf04dc8a59d6"
+tslint-react@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.2.0.tgz#851fb505201c63d0343c51726e6364f7e9ad2e99"
   dependencies:
-    tsutils "^1.7.0"
+    tsutils "^2.8.0"
 
 tslint@^5.5.0:
   version "5.5.0"
@@ -8640,13 +8644,15 @@ tslint@^5.5.0:
     tslib "^1.7.1"
     tsutils "^2.5.1"
 
-tsutils@^1.7.0:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.9.1.tgz#b9f9ab44e55af9681831d5f28d0aeeaf5c750cb0"
-
 tsutils@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.5.1.tgz#c2001390c79eec1a5ccfa7ac12d599639683e0cf"
+  dependencies:
+    tslib "^1.7.1"
+
+tsutils@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.8.0.tgz#0160173729b3bf138628dd14a1537e00851d814a"
   dependencies:
     tslib "^1.7.1"
 
@@ -9098,18 +9104,19 @@ webpack-defaults@^1.5.0:
     chalk "^1.1.3"
     mrm-core "^1.1.0"
 
-webpack-dev-middleware@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.11.0.tgz#09691d0973a30ad1f82ac73a12e2087f0a4754f9"
+webpack-dev-middleware@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.12.0.tgz#d34efefb2edda7e1d3b5dbe07289513219651709"
   dependencies:
     memory-fs "~0.4.1"
     mime "^1.3.4"
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
+    time-stamp "^2.0.0"
 
-webpack-flush-chunks@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.16.tgz#017cb7c8387710ad13d792e73d1e3faa9a64b23e"
+webpack-flush-chunks@^1.1.17:
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.1.17.tgz#f49f84a26c0e59739e9b90bf24186cd30b12cddc"
 
 webpack-hot-middleware@^2.18.2:
   version "2.18.2"

@@ -9,61 +9,28 @@ import { createBrowserHistory } from "history"
 import { BoilTheme } from "../shared/theme"
 import * as storage from "redux-storage"
 import { toastr } from "react-redux-toastr"
+import { offlineCheck } from "./offline"
 
 export const tag = document.getElementById("root")
 
-const upHandler = (e) => {
-    toastr.success("The UP", "cloud 9", {
-        position: "bottom-left"
-    })
-    console.log("upppp")
-}
-const downHandler = (e) => {
-    toastr.error("The down", "rot in hell", {
-        position: "bottom-left"
-    })
-    console.log("downnnnn")
-}
 
-const offlineCheck = (store) => {
-    const { Offline } = (window as any)
-    Offline.options = {
-        checkOnLoad: true,
-        checks: {
-            image: {
-                url: () => ("https://esri.github.io/offline-editor-js/tiny-image.png?_="
-                    + (Math.floor(Math.random() * 1000000000)))
-
-            },
-            active: "image"
-        }
-    }
-    Offline.on("up", upHandler)
-    Offline.on("down", downHandler)
-}
 
 export const Renderer = (Component) => {
     const history = createBrowserHistory()
     const store = configureStore(history)
     offlineCheck(store)
     if ((window as any).__PRODUCTION__) {
-        const load = storage.createLoader(engine)
-        load(store)
-            .then((newState) => {
-                store.dispatch(newState.location)
-            })
+        storage.createLoader(engine)(store)
+            .then((newState) => { store.dispatch(newState.location) })
             .catch(() => console.log("Failed to load previous state"))
     }
+    const boilMUI = getMuiTheme(BoilTheme, { userAgent: navigator.userAgent })
     ReactDOM.render(
         <ReduxProvider store={store}>
-            <MuiThemeProvider
-                muiTheme={getMuiTheme(BoilTheme, { userAgent: navigator.userAgent })}
-            >
-
+            <MuiThemeProvider muiTheme={boilMUI} >
                 <AppContainer>
                     <Component />
                 </AppContainer>
             </MuiThemeProvider>
-        </ReduxProvider>
-        , tag)
+        </ReduxProvider>, tag)
 }
