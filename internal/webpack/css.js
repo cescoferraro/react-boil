@@ -4,8 +4,7 @@ const defaultOptions = { fileBlacklist: [/\.map/] };
 const serialize = require('serialize-javascript');
 const createCssHash = require('webpack-flush-chunks/dist/createApiWithCss')
   .createCssHash;
-const flush = require('webpack-flush-chunks');
-const { flushChunkNames } = require('react-universal-component/server');
+
 /** Class representing a point. */
 class PreloadPlugin {
   /**
@@ -29,14 +28,18 @@ class PreloadPlugin {
         (htmlPluginData, cb) => {
           extractedChunks = [...compilation.chunks.map(chunk => chunk.files)];
           const publicPath = compilation.outputOptions.publicPath || '';
+          const hashes = createCssHash({
+            publicPath,
+            assetsByChunkName: extractedChunks
+          });
+          Object.keys(hashes).forEach(function(key) {
+            const tt = hashes[key].split('_')[0].split('/').reverse()[0];
+            hashes[tt] = hashes[key];
+            delete hashes[key];
+          });
           filesToInclude =
             ' <script> window.__CSS_CHUNKS__ = ' +
-            serialize(
-              createCssHash({
-                publicPath,
-                assetsByChunkName: extractedChunks
-              })
-            ) +
+            serialize(hashes) +
             '</script> ';
           if (htmlPluginData.html.indexOf('</head>') !== -1) {
             htmlPluginData.html = htmlPluginData.html.replace(
