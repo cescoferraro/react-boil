@@ -8,7 +8,7 @@ import { configureStore, engine } from "../store/createStore"
 import { createBrowserHistory } from "history"
 import { BoilTheme } from "../shared/theme"
 import * as storage from "redux-storage"
-import { toastr } from "react-redux-toastr"
+/* import { toastr } from "react-redux-toastr-cesco"*/
 import { offlineCheck } from "./offline"
 
 export const tag = document.getElementById("root")

@@ -31,7 +31,6 @@ export const HTML = (
                 {styles}
                 {preload}
                 <BaseStyle />
-                <ToastrCSS />
                 <script dangerouslySetInnerHTML={inner} />
                 <script dangerouslySetInnerHTML={cssChunks} />
                 <OneSignalCDN production={production} />

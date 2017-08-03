@@ -9,7 +9,8 @@ const BoilLogo = require("../../../shared/images/boil.svg")
 const Cancel = require("../../../shared/images/cancel.svg")
 const Boy = require("../../../shared/images/boy.svg")
 const Girl = require("../../../shared/images/girl.svg")
-import ReduxToastr from "react-redux-toastr"
+
+/* import ReduxToastr from "react-redux-toastr-cesco"*/
 
 export const Shell = (props) => {
     const closeOnClick = (open) => { props.DRAWER_ACTION(open) }
@@ -38,15 +39,6 @@ export const Shell = (props) => {
             <div className={CSS.container}>
                 {props.children}
             </div>
-            <ReduxToastr
-                timeOut={4000}
-                newestOnTop={false}
-                preventDuplicates={true}
-                position="top-left"
-                transitionIn="fadeIn"
-                transitionOut="fadeOut"
-                progressBar={true}
-            />
             <Drawer
                 onRequestChange={closeOnClick}
                 docked={false}

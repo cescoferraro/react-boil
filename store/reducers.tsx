@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { reducer as toastrReducer } from "react-redux-toastr"
+/* import { reducer as toastrReducer } from "react-redux-toastr"*/
 
 import { NOT_FOUND } from "redux-first-router"
 import { DRAWER_ACTION_NAME, DRAWER_TOGGLE_ACTION_NAME } from "./actions"
@@ -162,7 +162,7 @@ export const profilesReducer = (state = { 123: profileStartup }, action: any = {
 }
 export let allReducers = (location) => combineReducers({
     location,
-    toastr: toastrReducer,
+    /* toastr: toastrReducer,*/
     userId: userIdReducer,
     profile: profileReducer,
     profiles: profilesReducer,
