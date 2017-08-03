@@ -1,6 +1,11 @@
 'use strict';
 const objectAssign = require('object-assign');
 const defaultOptions = { fileBlacklist: [/\.map/] };
+const serialize = require('serialize-javascript');
+const createCssHash = require('webpack-flush-chunks/dist/createApiWithCss')
+  .createCssHash;
+const flush = require('webpack-flush-chunks');
+const { flushChunkNames } = require('react-universal-component/server');
 /** Class representing a point. */
 class PreloadPlugin {
   /**
@@ -22,32 +27,17 @@ class PreloadPlugin {
       compilation.plugin(
         'html-webpack-plugin-before-html-processing',
         (htmlPluginData, cb) => {
-          let asyncChunksSource = null;
-          try {
-            asyncChunksSource = compilation.chunks
-              .filter(chunk => !chunk.isInitial())
-              .map(chunk => chunk.files);
-          } catch (e) {
-            asyncChunksSource = compilation.chunks.map(chunk => chunk.files);
-          }
-          extractedChunks = [...asyncChunksSource];
-
+          extractedChunks = [...compilation.chunks.map(chunk => chunk.files)];
           const publicPath = compilation.outputOptions.publicPath || '';
-
-          extractedChunks
-            .filter(entry => {
-              return this.options.fileBlacklist.every(
-                regex => regex.test(entry) === false
-              );
-            })
-            .forEach(entry => {
-              entry = `${publicPath}${entry}`;
-              if (entry.endsWith('css')) {
-                filesToInclude +=
-                  `<link ` +
-                  `rel="stylesheet" type="text/css" href="${entry}">\n`;
-              }
-            });
+          filesToInclude =
+            ' <script> window.__CSS_CHUNKS__ = ' +
+            serialize(
+              createCssHash({
+                publicPath,
+                assetsByChunkName: extractedChunks
+              })
+            ) +
+            '</script> ';
           if (htmlPluginData.html.indexOf('</head>') !== -1) {
             htmlPluginData.html = htmlPluginData.html.replace(
               '</head>',
