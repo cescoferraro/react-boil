@@ -17,7 +17,6 @@ export const HTML = (
     const inner = {
         __html: `window.__PRODUCTION__ = ${serialize(production)}`
     }
-
     const cssChunks = {
         __html: `window.__CSS_CHUNKS__ = ${serialize(assets.cssHashRaw)}`
     }
