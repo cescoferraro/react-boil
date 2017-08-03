@@ -1,12 +1,10 @@
 import * as React from "react"
 import { renderToStaticMarkup } from "react-dom/server"
 import { HTML } from "./html"
-import * as injectTapEventPlugin from "react-tap-event-plugin"
 import { configureStore } from "../store/createStore"
 import { Renderer } from "./renderer"
 import createHistory from "history/createMemoryHistory"
 global.XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
-injectTapEventPlugin()
 
 export default function serverRenderer(props) {
     return (req, res, next) => {
@@ -17,6 +15,7 @@ export default function serverRenderer(props) {
                 <HTML
                     store={store}
                     content={render.string}
+                    css={render.css}
                     {...props}
                 />
             ))
