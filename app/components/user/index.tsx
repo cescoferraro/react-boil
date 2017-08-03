@@ -1,7 +1,20 @@
 import universal from "react-universal-component"
 declare var System: any
+import * as importCss from 'babel-plugin-universal-import/importCss.js'
+import * as universalImport from 'babel-plugin-universal-import/universalImport.js'
+import path from "path"
 
+
+declare var __dirname: any
 export const AsyncUser = universal(
-    () => System.import(/* webpackChunkName: 'user' */ "./user"),
-    { chunkName: "user" }
+    universalImport({
+        path: () => path.join(__dirname, './user'),
+        load: () => Promise.all([
+            System.import(/* webpackChunkName: 'user' */ "./user"),
+            importCss("user")]).then(promises => promises[0]),
+        chunkName: () => "user",
+        resolve: () => require.resolveWeak('./user'),
+    })
 )
+
+

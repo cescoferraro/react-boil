@@ -17,6 +17,10 @@ export const HTML = (
     const inner = {
         __html: `window.__PRODUCTION__ = ${serialize(production)}`
     }
+
+    const cssChunks = {
+        __html: `window.__CSS_CHUNKS__ = ${serialize(assets.cssHashRaw)}`
+    }
     return (
         <html {...MyHelmet.html}>
             <head >
@@ -29,6 +33,7 @@ export const HTML = (
                 <BaseStyle />
                 <ToastrCSS />
                 <script dangerouslySetInnerHTML={inner} />
+                <script dangerouslySetInnerHTML={cssChunks} />
                 <OneSignalCDN production={production} />
                 <OneSignalInit production={production} />
             </head>
