@@ -1,18 +1,19 @@
 import * as React from "react"
 import * as CSS from "./css/teste.css"
 import { Card } from "material-ui/Card"
-import Subheader from "material-ui/Subheader"
 import { ProfileClass } from "../../../store/reducers"
-import Code from "material-ui/svg-icons/action/code"
-import Terrain from "material-ui/svg-icons/maps/terrain"
-import LocationCity from "material-ui/svg-icons/social/location-city"
-import AccountCircle from "material-ui/svg-icons/action/account-circle"
-import GpsFixed from "material-ui/svg-icons/device/gps-fixed"
+import Code from "material-ui-icons/Code.js"
+import Terrain from "material-ui-icons/Terrain.js"
+import LocationCity from "material-ui-icons/LocationCity.js"
+import AccountCircle from "material-ui-icons/AccountCircle.js"
+import GpsFixed from "material-ui-icons/GpsFixed.js"
 import Divider from "material-ui/Divider"
 import { Item } from "./item/item"
 import { compose } from "recompose"
 import sizeMe from "react-sizeme"
 import Country from "./country/country"
+import { ListSubheader } from 'material-ui/List';
+
 
 export class UserComponent extends React.Component<any, any> {
     public render() {
@@ -42,7 +43,7 @@ export class UserComponent extends React.Component<any, any> {
                         value={profile.email}
                         icon={<GpsFixed style={grey} />}
                     />
-                    <Subheader>Address</Subheader>
+                    <ListSubheader>Address</ListSubheader>
                     <Item
                         title="Street"
                         value={profile.location.street}

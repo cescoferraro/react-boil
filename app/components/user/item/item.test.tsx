@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Item } from "./item"
-import GpsFixed from "material-ui/svg-icons/device/gps-fixed"
 import { MUIProvider } from "../../../../shared/components/MUIProvider"
+import GpsFixed from "material-ui-icons/GpsFixed.js"
 
 test("Render an Item", () => {
     const icon = (<GpsFixed style={{ fill: "grey" }} />)

@@ -15,6 +15,7 @@ export default function serverRenderer(props) {
                 <HTML
                     store={store}
                     content={render.string}
+                    css={render.css}
                     {...props}
                 />
             ))
