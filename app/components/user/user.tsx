@@ -64,6 +64,11 @@ export class UserComponent extends React.Component<any, any> {
                             </div>
                         </div>
                         <Item
+                            title="Id"
+                            value={profile.id}
+                            icon={<AccountCircle style={grey} />}
+                        />
+                        <Item
                             title="Fullname"
                             value={profile.fullname()}
                             icon={<AccountCircle style={grey} />}

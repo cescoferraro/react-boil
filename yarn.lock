@@ -58,14 +58,14 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@^4.4.45":
-  version "4.4.45"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-4.4.45.tgz#afad851d8592119225aa6bcc402c7f6b9c7e4106"
+"@types/react-redux@^4.4.47":
+  version "4.4.47"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-4.4.47.tgz#12af1677116e08d413fe2620d0a85560c8a0536e"
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"
 
-"@types/react@*", "@types/react@^15.0.35":
+"@types/react@*":
   version "15.0.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.35.tgz#4672923cd502d03e1480d03816ebc5a719fb86da"
 
@@ -7058,14 +7058,14 @@ react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
-react-dom@^15.5.4:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
+react-dom@next:
+  version "16.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0-beta.2.tgz#55352e02d93112f06cce7f83ca378a1beae465d9"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
-    prop-types "^15.5.10"
+    prop-types "^15.5.6"
 
 react-event-listener@^0.4.5:
   version "0.4.5"
@@ -7182,9 +7182,9 @@ react-sizeme@^2.3.4:
     invariant "^2.2.2"
     lodash "^4.17.4"
 
-react-test-renderer@^15.6.1:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.6.1.tgz#026f4a5bb5552661fd2cc4bbcd0d4bc8a35ebf7e"
+react-test-renderer@16.0.0-beta.2:
+  version "16.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.0.0-beta.2.tgz#e558e96dccb6b7239bcea70dfe6da076de1c9a17"
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
@@ -7232,6 +7232,15 @@ react@^15.5.4:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
     prop-types "^15.5.10"
+
+react@next:
+  version "16.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0-beta.2.tgz#340bbaa28c8678499353586cf46d096438dee561"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "^15.5.6"
 
 read-all-stream@^3.0.0:
   version "3.1.0"
