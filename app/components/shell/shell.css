@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.base{
+    position: fixed !important;
+}
+
+.container{
+    height: calc( 100vh - 64px );
+    overflow: auto;
+}
+
+.button {
+    height: 48px;
+    width: 48px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    height: 30vh;
+}
+.svg{
+    height:20vh;
+    width: 40vw;
+
+
+}

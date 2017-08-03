@@ -1,7 +1,6 @@
-import { flushModuleIds } from 'react-universal-component/server'
-import flushChunks from 'webpack-flush-chunks'
-import { flushChunkNames } from 'react-universal-component/server'
-import { flushFiles } from 'webpack-flush-chunks'
+import { flushModuleIds } from "react-universal-component/server"
+import flushChunks from "webpack-flush-chunks"
+import { flushChunkNames } from "react-universal-component/server"
 
 export const flushedAssets = (clientStats, outputPath, production) => {
     const moduleIds = flushModuleIds()
@@ -12,7 +11,7 @@ export const flushedAssets = (clientStats, outputPath, production) => {
         ...flushChunks(clientStats, {
             chunkNames,
             before: production ? ["bootstrap", "vendor"] : ["bootstrap"],
-            after: ['main'],
+            after: ["main"],
             outputPath
         })
     }

@@ -1,21 +1,22 @@
 const path = require('path');
-const webpack = require('webpack');
 const dist = path.join(__dirname, 'dist');
-const extras = require("./internal/webpack/extras.js") 
-const plugins = require("./internal/webpack/plugins.js");
-const loaders = require("./internal/webpack/loaders.js");
+const extras = require('./internal/webpack/extras.js');
+const plugins = require('./internal/webpack/plugins.js');
+const loaders = require('./internal/webpack/loaders.js');
 
-module.exports = ( env ) => ( {
-    name: 'server',
-    target: 'node',
-    entry: "./server/middleware",
-    output: {
-        path: dist,
-        filename: 'server/[name].js',
-        libraryTarget: 'commonjs2'
-    },
-    devtool: extras.DEVTOOLS(env),
-    module: loaders.SERVER_LOADERS(env),
-    resolve: extras.resolve,
-    plugins: plugins.SERVER_PLUGINS(env)
-} );
+module.exports = env => ({
+  devtool: extras.devTools(env),
+  entry: './server/middleware',
+  externals: { vertx: 'vertx' },
+  module: loaders.serverLoaders(env),
+  name: 'server',
+  output: {
+    filename: 'server/[name].js',
+    libraryTarget: 'commonjs2',
+    path: dist,
+    publicPath: extras.publicPath(env)
+  },
+  plugins: plugins.serverPlugins(env),
+  resolve: extras.resolve,
+  target: 'node'
+});

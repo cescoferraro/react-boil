@@ -1,36 +1,46 @@
 import * as React from "react"
+import {
+    getScripts, getStyles, Helmator, Manifest,
+    OneSignalCDN, OneSignalInit, App, Dll, Javascript, BaseStyle
+} from "./helpers"
 import { flushedAssets } from "./flush"
-import { getScripts, getStyles, Helmator } from "./helpers"
-
-const path = require("path")
-const CachedFs = require('cachedfs'),
-    fs = new CachedFs();
+import { ToastrCSS } from "../shared/components/toastrCSS"
+import * as serialize from "serialize-javascript"
 
 export const HTML = (
     { clientStats, serverStats, outputPath, production, content, store }
 ) => {
-    const place = path.resolve(outputPath, '../dll/vendor.dll.js')
     const assets = flushedAssets(clientStats, outputPath, production)
-    const { preload, scripts } = getScripts(assets.scripts, outputPath, production);
-    const styles = getStyles(assets.stylesheets);
+    const { preload, scripts } = getScripts(assets.scripts, outputPath, production)
+    const styles = getStyles(assets.stylesheets, outputPath, production)
     const MyHelmet = Helmator()
-    console.log(place)
-    console.log(fs.existsSync(place))
+    const inner = {
+        __html: `window.__PRODUCTION__ = ${serialize(production)}`
+    }
+
+    const cssChunks = {
+        __html: `window.__CSS_CHUNKS__ = ${serialize(assets.cssHashRaw)}`
+    }
     return (
         <html {...MyHelmet.html}>
             <head >
+                <Manifest production={production} />
                 {MyHelmet.title}
                 {MyHelmet.meta}
                 {MyHelmet.link}
                 {styles}
+                {preload}
+                <BaseStyle />
+                <ToastrCSS />
+                <script dangerouslySetInnerHTML={inner} />
+                <script dangerouslySetInnerHTML={cssChunks} />
+                <OneSignalCDN production={production} />
+                <OneSignalInit production={production} />
             </head>
             <body {...MyHelmet.html}>
-                <div id="root"
-                    dangerouslySetInnerHTML={{ __html: content }} />
-                {fs.existsSync(place) ?
-                    <script id="dll" src="/dll/vendor.dll.js" type="text/javascript" /> :
-                    null}
-                {scripts}
+                <App content={content} />
+                <Dll outputPath={outputPath} />
+                <Javascript scripts={scripts} />
             </body>
         </html>
     )

@@ -1,0 +1,73 @@
+@import "../../../../shared/css/var/var.css";
+.button{
+    width:40px;
+    height:40px;
+    
+}
+.test{
+    background-color: orange;
+    height: 100%;
+    overflow:auto;
+}
+.flag {
+    object-fit: cover;
+    width:32px;
+    height:32px;
+    border-radius: 50%;
+}
+
+.flex{
+    display:flex;
+    align-items: center;
+}
+
+.title {
+    height: calc(var(--contentHeight)* 0.35);
+    padding:30px;
+}
+
+.image{
+    height: calc(var(--contentHeight)* 0.25);
+    width: calc(var(--contentHeight)* 0.25);
+    display: block;
+    margin:auto;
+}
+.name{
+    display: block;
+    margin:auto;
+    height: calc(var(--contentHeight)* 0.10);
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.item {
+    height: calc(var(--contentHeight)* 0.10);
+    display:flex;
+}
+.itemText{
+    height: calc(var(--contentHeight)* 0.10) !important;
+    width: 85vw;
+    display: inline-grid;
+}
+.itemIcon {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width: 15vw;
+}
+.key {
+    height: calc(var(--contentHeight)* 0.10 * 0.3) !important;
+    font-size: calc(var(--contentHeight)* 0.10 * 0.22) !important;
+    width: 85vw;
+    vertical-align: middle;
+    margin: 0px;
+    color: grey;
+}
+
+.value {
+    height: calc(var(--contentHeight)* 0.10 * 0.7) !important;
+    width: 85vw;
+    font-size: calc(var(--contentHeight)* 0.10 * 0.3) !important;
+    vertical-align: middle;
+    margin: 0px;
+}

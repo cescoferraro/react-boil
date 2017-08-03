@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: boil
+  name: boil-ing
+spec:
+  tls:		
+  - hosts:		
+    - boil.cescoferraro.xyz		
+    secretName: wild-tls 
+  rules:
+  - host: boil.cescoferraro.xyz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: boil-svc
+          servicePort: 5000

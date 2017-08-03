@@ -1,0 +1,23 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: boil
+  name: boil-deploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      namespace: boil
+      labels:
+        name: boil-pods
+    spec:
+      containers:
+        - image: cescoferraro/boil:latest
+          imagePullPolicy: Always
+          name: frontend
+          env:
+          - name: KUBERNETES
+            value: "true"
+          - name: NODE_ENV
+            value: "production"

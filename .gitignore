@@ -2,3 +2,6 @@ dist/
 dll/
 .awcache/
 
+node_modules/
+.wercker/
+coverage/

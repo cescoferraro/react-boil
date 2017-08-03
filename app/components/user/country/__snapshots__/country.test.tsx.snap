@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render an Item 1`] = `
+<div
+  class="item"
+>
+  <div
+    class="itemIcon"
+  >
+    <img
+      alt="Canada Flag"
+      class="coolClassName"
+      src="/flags/flags-iso/flat/32/BR.png"
+    />
+  </div>
+  <div
+    class="itemText"
+  >
+    <a
+      class="key"
+    >
+       Nationality 
+    </a>
+    <a
+      class="value"
+    >
+       BR 
+    </a>
+  </div>
+</div>
+`;

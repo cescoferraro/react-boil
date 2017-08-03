@@ -1,39 +1,40 @@
 import * as React from "react"
-import withStyles from 'isomorphic-style-loader/lib/withStyles'
-import RaisedButton from 'material-ui/RaisedButton'
-import { connect } from 'react-redux'
-import { UniversalComponent } from "./components/universal"
-import { MyHelmet } from "../shared/helmet"
-import Link from 'redux-first-router-link'
+import { connect } from "react-redux"
 import { compose } from "recompose"
-
+import { APP_ACTIONS } from "../store/actions"
+import { NoMatchContainer } from "./components/404/404"
+import { Shell } from "./components/shell/index"
+import { MyHelmet } from "../shared/helmet/index"
+import { AsyncUser } from "./components/user"
+import { HomeComponent } from "./components/home"
 
 const AppRouterClass = (props) => {
     switch (props.location.type) {
         case "HOME":
-            return <h2>
-                {props.location.type}
-                jsjsjsj</h2>
+            return (
+                <Shell {...props}>
+                    <MyHelmet title="Home" />
+                    <HomeComponent />
+                </Shell>
+            )
+        case "USER":
+            return (
+                <Shell id="USER" {...props}>
+                    <MyHelmet title="User" />
+                    <AsyncUser {...props} />
+                </Shell>
+            )
         default:
             return (
-                <div>
-                    {props.location.type}
-                    <MyHelmet title="Home" />
-                    <h2>React-boil</h2>
-                    <UniversalComponent />
-                    <Link to="/">User 123</Link>
-                    <Link to="/user/123">User 123</Link>
-                    <Link to={{ type: 'USER', payload: { id: 456 } }}>User 456</Link>
-                    <RaisedButton
-                        onClick={() => { props.dispatch({ type: "PING" }) }}
-                        label="Default"
-                        primary={true}
-                    />
-                </div >
+                <Shell id="404" {...props}>
+                    <MyHelmet title="404" />
+                    <NoMatchContainer {...props} />
+                </Shell>
             )
     }
 }
 
 export const AppRouter = compose(
-    connect(({ location }) => ({ location }))
+    connect(({ location, userId, profile, drawer, profiles }) =>
+        ({ location, userId, profile, drawer, profiles }), APP_ACTIONS)
 )(AppRouterClass)

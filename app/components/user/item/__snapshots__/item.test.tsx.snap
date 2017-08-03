@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render an Item 1`] = `
+<Component>
+  <MuiThemeProvider>
+    <Component
+      icon={
+        <DeviceGpsFixed
+          style={
+            Object {
+              "fill": "grey",
+            }
+          }
+        />
+      }
+      title="Email"
+      value="teste@example.com"
+    >
+      <div
+        className="item"
+      >
+        <div
+          className="itemIcon"
+        >
+          <DeviceGpsFixed
+            style={
+              Object {
+                "fill": "grey",
+              }
+            }
+          >
+            <SvgIcon
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={
+                Object {
+                  "fill": "grey",
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <svg
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                style={
+                  Object {
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "display": "inline-block",
+                    "fill": "grey",
+                    "height": 24,
+                    "muiPrepared": true,
+                    "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+                    "userSelect": "none",
+                    "width": 24,
+                  }
+                }
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+                />
+              </svg>
+            </SvgIcon>
+          </DeviceGpsFixed>
+        </div>
+        <div
+          className="itemText"
+        >
+          <a
+            className="key"
+          >
+             
+            Email
+             
+          </a>
+          <a
+            className="value"
+          >
+             
+            teste@example.com
+             
+          </a>
+        </div>
+      </div>
+    </Component>
+  </MuiThemeProvider>
+</Component>
+`;

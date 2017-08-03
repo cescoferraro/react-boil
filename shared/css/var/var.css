@@ -1,0 +1,5 @@
+:root {
+  --mainColor: red;
+  --contentHeight: calc( 100vh -64px );
+}
+
