@@ -38,3 +38,16 @@ export const BoilTheme = {
         /* shadowColor: fullBlack,*/
     }
 }
+
+import { createMuiTheme } from 'material-ui/styles';
+import createPalette from 'material-ui/styles/palette';
+import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
+import { green, red } from 'material-ui/colors';
+// Create a theme instance.
+export const theme = createMuiTheme({
+    palette: createPalette({
+        primary: green,
+        accent: red,
+        type: 'light',
+    }),
+});

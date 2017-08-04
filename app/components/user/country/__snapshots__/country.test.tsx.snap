@@ -2,29 +2,35 @@
 
 exports[`Render an Item 1`] = `
 <div
-  class="item"
+  className="item"
 >
   <div
-    class="itemIcon"
+    className="itemIcon"
   >
     <img
       alt="Canada Flag"
-      class="coolClassName"
+      className="coolClassName"
+      height={undefined}
       src="/flags/flags-iso/flat/32/BR.png"
+      width={undefined}
     />
   </div>
   <div
-    class="itemText"
+    className="itemText"
   >
     <a
-      class="key"
+      className="key"
     >
-       Nationality 
+       
+      Nationality
+       
     </a>
     <a
-      class="value"
+      className="value"
     >
-       BR 
+       
+      BR
+       
     </a>
   </div>
 </div>

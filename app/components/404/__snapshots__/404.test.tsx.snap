@@ -1,15 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<NoMatchContainer /> 404 1`] = `
-<Component>
-  <MuiThemeProvider>
-    <Component>
-      <div>
-        <h2>
-          NOT FOUND!
-        </h2>
-      </div>
-    </Component>
-  </MuiThemeProvider>
-</Component>
+<div>
+  <h2>
+    NOT FOUND!
+  </h2>
+</div>
 `;
